@@ -9,9 +9,13 @@ export const SignInPage = () => {
 
   const handleSignIn = () => {
     getUser().then((data) => {
-      localStorage.setItem('user', JSON.stringify(data));
-      user.handleUser(data);
-      navigate('/');
+      if (data.name === 'admin') {
+        navigate('/admin', { state: { ...data } });
+      } else {
+        localStorage.setItem('user', JSON.stringify(data));
+        user.handleUser(data);
+        navigate('/');
+      }
     });
   };
   return (

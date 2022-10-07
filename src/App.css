@@ -1,5 +1,19 @@
+:root {
+  --dark-color: #081b27;
+  --white-color: #fff;
+  --gray-color: #cad3da;
+  --yellow-color: #ffaa00;
+  --black-color: #040404;
+}
+
 .App {
   text-align: center;
+  font-family: 'Catamaran', sans-serif;
+  height: 100%;
+  background-color: var(--dark-color) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -7,6 +21,9 @@
   pointer-events: none;
 }
 
+#root {
+  height: 100%;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

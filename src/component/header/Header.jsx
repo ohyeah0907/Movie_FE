@@ -9,6 +9,7 @@ export const Header = () => {
 
   const handleSignOut = () => {
     user.handleUser({});
+    localStorage.clear();
     reverseHide();
   };
 
