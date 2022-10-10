@@ -1,10 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
+import React from "react";
+import { useState } from "react";
 
 export const userContext = React.createContext();
-const localUser = localStorage.getItem('user');
+const localUser = localStorage.getItem("user");
 
-export const UserContext = ({ children }) => {
+export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(localUser ? JSON.parse(localUser) : {});
 
   const globalUser = {
