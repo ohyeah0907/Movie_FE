@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,UAAU,EAAE,IAAI;CAUjB;;AAXD,AAGE,UAHQ,CAGN,KAAK,CAAC,EAAE,AAAA,OAAO,CAAC;EAChB,WAAW,EAAE,gCAAgC;EAC7C,OAAO,EAAE,kBAAkB;EAC3B,OAAO,EAAE,YAAY;EACrB,aAAa,EAAE,GAAG;EAClB,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,GAAG;CACjB",
+    "sources": [
+        "user-datatable.module.scss"
+    ],
+    "names": [],
+    "file": "user-datatable.module.css"
+}
