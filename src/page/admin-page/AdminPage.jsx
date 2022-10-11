@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import styles from './css/admin-page.module.scss';
 import user from '../../assets/image/user.png';
 import { UserDatatable } from '../../component/admin/user-datatable/UserDatatable';
-import { MovieDatatable } from '../../component/admin/movie-datatable/MovieDatatable';
+import { RoleDatatable } from '../../component/admin/role-datatable/RoleDatatable';
 
 const { Item, Header, UserPanel } = Sidebar;
 const { Entry } = Navbar;
@@ -21,7 +21,7 @@ const sidebar = [
     text={'Datatable'}
     children={[
       <Item text={'User'} to={'/user'} key="user" />,
-      <Item text={'Movie'} to={'/movie'} key="movie" />,
+      <Item text={'Role'} to={'/role'} key="role" />,
     ]}
     key={'datatable'}
   />,
@@ -40,7 +40,7 @@ export const AdminPage = () => {
           ></Entry>
         </Navbar.Core>
         <UserDatatable path={'/user'} />
-        <MovieDatatable path={'/movie'} />
+        <RoleDatatable path={'/role'} />
       </AdminLTE>
     </div>
   );
