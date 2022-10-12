@@ -5,6 +5,7 @@ import styles from './css/admin-page.module.scss';
 import user from '../../assets/image/user.png';
 import { UserDatatable } from '../../component/admin/user-datatable/UserDatatable';
 import { RoleDatatable } from '../../component/admin/role-datatable/RoleDatatable';
+import { CommentDatatable } from '../../component/admin/comment-datatable/CommentDatatable';
 
 const { Item, Header, UserPanel } = Sidebar;
 const { Entry } = Navbar;
@@ -22,6 +23,7 @@ const sidebar = [
     children={[
       <Item text={'User'} to={'/user'} key="user" />,
       <Item text={'Role'} to={'/role'} key="role" />,
+      <Item text={'Comment'} to={'/comment'} key="comment" />,
     ]}
     key={'datatable'}
   />,
@@ -41,6 +43,7 @@ export const AdminPage = () => {
         </Navbar.Core>
         <UserDatatable path={'/user'} />
         <RoleDatatable path={'/role'} />
+        <CommentDatatable path={'/comment'} />
       </AdminLTE>
     </div>
   );

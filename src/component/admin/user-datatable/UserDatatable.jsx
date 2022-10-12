@@ -25,6 +25,16 @@ const firstColumns = [
   { title: 'Name', data: 'name' },
   { title: 'Password', data: 'password' },
   { title: 'RoleId', data: 'roleId' },
+  {
+    title: 'Actions',
+    data: null,
+    render: () => (
+      <>
+        <Button text="Delete" className="on-delete-event" margin />
+        <Button text="Update" className="on-update-event" margin></Button>
+      </>
+    ),
+  },
 ];
 
 export const UserDatatable = () => {
@@ -207,28 +217,10 @@ export const UserDatatable = () => {
               />
             }
           >
-            <div className={clsx(styles.datatable)}>
+            {/* View Form */}
+            <div className={clsx(styles.datatable, styles.fixIcon)}>
               <DataTable
-                columns={firstColumns.concat([
-                  {
-                    title: 'Actions',
-                    data: null,
-                    render: () => (
-                      <>
-                        <Button
-                          text="Delete"
-                          className="on-delete-event"
-                          margin
-                        />
-                        <Button
-                          text="Update"
-                          className="on-update-event"
-                          margin
-                        ></Button>
-                      </>
-                    ),
-                  },
-                ])}
+                columns={firstColumns}
                 data={data}
                 footer
                 options={{

@@ -21,6 +21,16 @@ const { Text } = Inputs;
 const firstColumns = [
   { title: 'id', data: 'id' },
   { title: 'Name', data: 'name' },
+  {
+    title: 'Actions',
+    data: null,
+    render: () => (
+      <>
+        <Button text="Delete" className="on-delete-event" margin />
+        <Button text="Update" className="on-update-event" margin></Button>
+      </>
+    ),
+  },
 ];
 export const RoleDatatable = () => {
   const [data, setData] = useState([]);
@@ -124,28 +134,10 @@ export const RoleDatatable = () => {
               />
             }
           >
-            <div className={clsx(styles.datatable)}>
+            {/* View Form */}
+            <div className={clsx(styles.datatable, styles.fixIcon)}>
               <DataTable
-                columns={firstColumns.concat([
-                  {
-                    title: 'Actions',
-                    data: null,
-                    render: () => (
-                      <>
-                        <Button
-                          text="Delete"
-                          className="on-delete-event"
-                          margin
-                        />
-                        <Button
-                          text="Update"
-                          className="on-update-event"
-                          margin
-                        ></Button>
-                      </>
-                    ),
-                  },
-                ])}
+                columns={firstColumns}
                 data={data}
                 footer
                 options={{

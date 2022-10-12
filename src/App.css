@@ -7,14 +7,10 @@
 }
 
 .App {
-  text-align: center;
   font-family: 'Catamaran', sans-serif;
   width: 100%;
   height: 100%;
   background-color: var(--dark-color) !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .App-logo {

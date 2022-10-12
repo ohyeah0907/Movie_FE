@@ -1,6 +1,8 @@
 .datatable {
   text-align: left;
+}
 
+.fixIcon {
   & thead th::after {
     font-family: 'Font Awesome 6 Free' !important;
     content: '\f0dc' !important;
