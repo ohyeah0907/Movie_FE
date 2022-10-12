@@ -2,7 +2,7 @@
   text-align: left;
 }
 
-.datatable thead th::after {
+.fixIcon thead th::after {
   font-family: 'Font Awesome 6 Free' !important;
   content: '\f0dc' !important;
   display: inline-block;

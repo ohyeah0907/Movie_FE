@@ -1,14 +1,5 @@
 .datatable {
   text-align: left;
-
-  & thead th::after {
-    font-family: 'Font Awesome 6 Free' !important;
-    content: '\f0dc' !important;
-    display: inline-block;
-    padding-right: 3px;
-    vertical-align: middle;
-    font-weight: 900;
-  }
   & tbody tr td:nth-child(5) {
     width: 230px;
     overflow: hidden;

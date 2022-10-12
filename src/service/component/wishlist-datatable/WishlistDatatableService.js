@@ -1,9 +1,9 @@
 import Swal from 'sweetalert2';
 
 // Comment
-export const getComments = () => {
+export const getWishlists = () => {
   return fetch(
-    'https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/comment',
+    'https://6346a80f745bd0dbd383014b.mockapi.io/api/movie-management/admin/wish-list',
     { method: 'GET' }
   )
     .then((res) => {
@@ -11,7 +11,7 @@ export const getComments = () => {
         Swal.fire({
           icon: 'error',
           title: `Error ${res.status}`,
-          text: "Something went wrong, can't get comments!",
+          text: "Something went wrong, can't get wishlists!",
         });
       return res;
     })
@@ -20,9 +20,9 @@ export const getComments = () => {
       else return Promise.resolve([]);
     });
 };
-export const addComment = (requestBody) => {
+export const addWishlist = (requestBody) => {
   return fetch(
-    `https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/comment`,
+    'https://6346a80f745bd0dbd383014b.mockapi.io/api/movie-management/admin/wish-list',
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -33,20 +33,20 @@ export const addComment = (requestBody) => {
       Swal.fire({
         icon: 'success',
         title: 'Done',
-        text: 'Add comment successfully',
+        text: 'Add wishlist successfully',
       });
     else
       Swal.fire({
         icon: 'error',
         title: `Error ${res.status}`,
-        text: 'Something went wrong, add comment unsuccessfully!',
+        text: 'Something went wrong, add wishlist unsuccessfully!',
       });
   });
 };
 
-export const updateComment = (id, requestBody) => {
+export const updateWishlist = (id, requestBody) => {
   return fetch(
-    `https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/comment/${id}`,
+    `https://6346a80f745bd0dbd383014b.mockapi.io/api/movie-management/admin/wish-list/${id}`,
     {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -57,33 +57,33 @@ export const updateComment = (id, requestBody) => {
       Swal.fire({
         icon: 'success',
         title: 'Done',
-        text: 'Update comment successfully',
+        text: 'Update wishlist successfully',
       });
     else
       Swal.fire({
         icon: 'error',
         title: `Error ${res.status}`,
-        text: 'Something went wrong, update comment unsuccessfully!',
+        text: 'Something went wrong, update wishlist unsuccessfully!',
       });
   });
 };
 
-export const deleteComment = (id) => {
+export const deleteWishlist = (id) => {
   return fetch(
-    `https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/comment/${id}`,
+    `https://6346a80f745bd0dbd383014b.mockapi.io/api/movie-management/admin/wish-list/${id}`,
     { method: 'DELETE' }
   ).then((res) => {
     if (res.ok)
       Swal.fire({
         icon: 'success',
         title: 'Done',
-        text: 'Delete comment successfully',
+        text: 'Delete wishlist successfully',
       });
     else
       Swal.fire({
         icon: 'error',
         title: `Error ${res.status}`,
-        text: 'Something went wrong, delete comment unsuccessfully!',
+        text: 'Something went wrong, delete wishlist unsuccessfully!',
       });
   });
 };

@@ -8,27 +8,23 @@ import {
   Button,
   Inputs,
   ButtonGroup,
-  Label,
 } from 'adminlte-2-react';
 import clsx from 'clsx';
-import styles from './css/comment-datatable.module.css';
+import styles from './css/wishlist-datatable.module.css';
 import {
-  addComment,
-  deleteComment,
-  getComments,
-  updateComment,
-} from '../../../service/component/comment-datatable/CommentDatatableService';
-import { getMovies } from '../../../service/component/movie-datatable/MovieDatatableService';
+  getWishlists,
+  addWishlist,
+  deleteWishlist,
+  updateWishlist,
+} from '../../../service/component/wishlist-datatable/WishlistDatatableService';
 import { getUsers } from '../../../service/component/user-datatble/UserDatatableService';
-import DateTimePicker from 'react-datetime-picker';
+import { getMovies } from '../../../service/component/movie-datatable/MovieDatatableService';
 
 const { Text } = Inputs;
 const firstColumns = [
   { title: 'id', data: 'id' },
   { title: "User's id", data: 'user_id' },
   { title: "Movie's id", data: 'movie_id' },
-  { title: 'Date', data: 'date' },
-  { title: 'Content', data: 'content', width: '200px' },
   {
     title: 'Actions',
     data: null,
@@ -66,15 +62,11 @@ const movieColumns = [
     ),
   },
 ];
-
-export const CommentDatatable = () => {
-  const [data, setData] = useState([]);
+export const WishlistDatatable = () => {
+  const [data, setData] = useState();
   const [dataUpdate, setDataUpdate] = useState();
   const [dataAdd, setDataAdd] = useState(false);
-  const [inputAdd, setinputAdd] = useState({
-    date: new Date(),
-  });
-
+  const [inputAdd, setinputAdd] = useState({});
   //Foreign key in table
   const users = useRef({});
   const movies = useRef({});
@@ -84,18 +76,13 @@ export const CommentDatatable = () => {
   }, []);
 
   const getDataFirstTime = async () => {
-    await getUsers().then((data) => {
-      users.current = data;
-    });
-    await getMovies().then((data) => {
-      movies.current = data;
-    });
-    await getComments().then((data) => {
-      setData(data);
-    });
+    await getUsers().then((data) => (users.current = data));
+    await getMovies().then((data) => (movies.current = data));
+    await getWishlists().then((data) => setData(data));
   };
+
   return (
-    <Content title={'Comment'}>
+    <Content title={'Wishlist'}>
       <Row>
         <Col xs={12}>
           {/* Add Form */}
@@ -159,32 +146,6 @@ export const CommentDatatable = () => {
                   }}
                 />
               </div>
-              <Label type="info" children={'Date'} />
-              <DateTimePicker
-                onChange={(value) => {
-                  setinputAdd((prev) => ({
-                    ...prev,
-                    date: value,
-                  }));
-                }}
-                format="dd/MM/y"
-                disableClock
-                value={inputAdd.date}
-                className={styles.datetimePicker}
-              />
-
-              <Text
-                label="Content"
-                name="content"
-                type="textarea"
-                labelPosition="above"
-                onChange={(event) => {
-                  setinputAdd((prev) => ({
-                    ...prev,
-                    content: event.target.value,
-                  }));
-                }}
-              />
               <ButtonGroup>
                 <Button
                   text="Close"
@@ -195,8 +156,8 @@ export const CommentDatatable = () => {
                 <Button
                   text="Submit"
                   onClick={async () => {
-                    await addComment(inputAdd);
-                    await getComments().then((data) => setData(data));
+                    await addWishlist(inputAdd);
+                    await getWishlists().then((data) => setData(data));
                   }}
                 />
               </ButtonGroup>
@@ -265,32 +226,6 @@ export const CommentDatatable = () => {
                   }}
                 />
               </div>
-              <Label type="info" children={'Date'} />
-              <DateTimePicker
-                onChange={(value) => {
-                  setDataUpdate((prev) => ({
-                    ...prev,
-                    date: value,
-                  }));
-                }}
-                format="dd/MM/y"
-                disableClock
-                value={new Date(dataUpdate.date)}
-                className={styles.datetimePicker}
-              />
-
-              <Text
-                label="Content"
-                name="content"
-                type="textarea"
-                labelPosition="above"
-                onChange={(event) => {
-                  setDataUpdate((prev) => ({
-                    ...prev,
-                    content: event.target.value,
-                  }));
-                }}
-              />
               <ButtonGroup>
                 <Button
                   text="Close"
@@ -301,8 +236,9 @@ export const CommentDatatable = () => {
                 <Button
                   text="Submit"
                   onClick={async () => {
-                    await updateComment(dataUpdate.id, dataUpdate);
-                    await getComments().then((data) => setData(data));
+                    console.log(dataUpdate);
+                    await updateWishlist(dataUpdate.id, dataUpdate);
+                    await getWishlists().then((data) => setData(data));
                   }}
                 />
               </ButtonGroup>
@@ -339,8 +275,8 @@ export const CommentDatatable = () => {
                 border
                 onClickEvents={{
                   onDeleteEvent: async (data, rowIdx, rowData) => {
-                    await deleteComment(data.id);
-                    await getComments().then((data) => setData(data));
+                    await deleteWishlist(data.id);
+                    await getWishlists().then((data) => setData(data));
                   },
                   onUpdateEvent: (data, rowIdx, rowData) => {
                     setDataUpdate(data);

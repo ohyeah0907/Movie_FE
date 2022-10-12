@@ -10,7 +10,7 @@ import {
   ButtonGroup,
 } from 'adminlte-2-react';
 import clsx from 'clsx';
-import styles from './css/user-datatable.module.scss';
+import styles from './css/user-datatable.module.css';
 import {
   addUser,
   deleteUser,

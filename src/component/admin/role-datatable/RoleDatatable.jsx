@@ -10,7 +10,7 @@ import {
   ButtonGroup,
 } from 'adminlte-2-react';
 import clsx from 'clsx';
-import styles from './css/role-datatable.module.scss';
+import styles from './css/role-datatable.module.css';
 import {
   addRole,
   deleteRole,

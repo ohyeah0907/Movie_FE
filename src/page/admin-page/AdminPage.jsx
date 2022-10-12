@@ -6,6 +6,7 @@ import user from '../../assets/image/user.png';
 import { UserDatatable } from '../../component/admin/user-datatable/UserDatatable';
 import { RoleDatatable } from '../../component/admin/role-datatable/RoleDatatable';
 import { CommentDatatable } from '../../component/admin/comment-datatable/CommentDatatable';
+import { WishlistDatatable } from '../../component/admin/wishlist-datatable/WishlistDatatable';
 
 const { Item, Header, UserPanel } = Sidebar;
 const { Entry } = Navbar;
@@ -24,6 +25,7 @@ const sidebar = [
       <Item text={'User'} to={'/user'} key="user" />,
       <Item text={'Role'} to={'/role'} key="role" />,
       <Item text={'Comment'} to={'/comment'} key="comment" />,
+      <Item text={'Wishlist'} to={'/wish-list'} key="wishlist" />,
     ]}
     key={'datatable'}
   />,
@@ -44,6 +46,7 @@ export const AdminPage = () => {
         <UserDatatable path={'/user'} />
         <RoleDatatable path={'/role'} />
         <CommentDatatable path={'/comment'} />
+        <WishlistDatatable path={'/wish-list'} />
       </AdminLTE>
     </div>
   );

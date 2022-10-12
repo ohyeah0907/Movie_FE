@@ -2,15 +2,6 @@
   text-align: left;
 }
 
-.datatable thead th::after {
-  font-family: 'Font Awesome 6 Free' !important;
-  content: '\f0dc' !important;
-  display: inline-block;
-  padding-right: 3px;
-  vertical-align: middle;
-  font-weight: 900;
-}
-
 .datatable tbody tr td:nth-child(5) {
   width: 230px;
   overflow: hidden;
@@ -21,5 +12,19 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   padding-bottom: 0;
+}
+
+.fixIcon thead th::after {
+  font-family: 'Font Awesome 6 Free' !important;
+  content: '\f0dc' !important;
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  font-weight: 900;
+}
+
+.datetimePicker {
+  margin: 10px;
+  width: 100px !important;
 }
 /*# sourceMappingURL=comment-datatable.module.css.map */
