@@ -90,7 +90,7 @@ export const WishlistDatatable = () => {
             <Box title={'Add Form'} collapsed collapsable>
               <div className={clsx(styles.fixIcon)}>
                 <Text
-                  name="userId"
+                  name="user-id-add-form"
                   placeholder={inputAdd.user_id ? inputAdd.user_id : ''}
                   label="User's id"
                   labelPosition="above"
@@ -118,7 +118,7 @@ export const WishlistDatatable = () => {
                   }}
                 />
                 <Text
-                  name="movieId"
+                  name="movie-id-add-form"
                   placeholder={inputAdd.movie_id ? inputAdd.movie_id : ''}
                   label="Movie's id"
                   labelPosition="above"
@@ -148,12 +148,14 @@ export const WishlistDatatable = () => {
               </div>
               <ButtonGroup>
                 <Button
+                  name="close-button-add-form"
                   text="Close"
                   onClick={() => {
                     setDataAdd(false);
                   }}
                 />
                 <Button
+                  name="submit-button-add-form"
                   text="Submit"
                   onClick={async () => {
                     await addWishlist(inputAdd);
@@ -170,7 +172,7 @@ export const WishlistDatatable = () => {
             <Box title={'Update Form'} collapsed collapsable>
               <div className={clsx(styles.fixIcon)}>
                 <Text
-                  name="userId"
+                  name="user-id-update-form"
                   placeholder={dataUpdate.user_id}
                   label="User's id"
                   labelPosition="above"
@@ -198,7 +200,7 @@ export const WishlistDatatable = () => {
                   }}
                 />
                 <Text
-                  name="movieId"
+                  name="movie-id-update-form"
                   placeholder={dataUpdate.movie_id}
                   label="Movie's id"
                   labelPosition="above"
@@ -228,12 +230,14 @@ export const WishlistDatatable = () => {
               </div>
               <ButtonGroup>
                 <Button
+                  name="close-button--update-form"
                   text="Close"
                   onClick={() => {
                     setDataUpdate();
                   }}
                 />
                 <Button
+                  name="submit-button-update-form"
                   text="Submit"
                   onClick={async () => {
                     console.log(dataUpdate);
@@ -251,6 +255,7 @@ export const WishlistDatatable = () => {
             title="Data Table"
             header={
               <Button
+                name="add-button-add-form"
                 text="Add"
                 pullRight
                 onClick={() => {

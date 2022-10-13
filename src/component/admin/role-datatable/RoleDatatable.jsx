@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   Content,
   Box,
@@ -36,12 +36,7 @@ export const RoleDatatable = () => {
   const [data, setData] = useState([]);
   const [dataUpdate, setDataUpdate] = useState();
   const [dataAdd, setDataAdd] = useState(false);
-  const inputUpdate = useRef({});
   const inputAdd = useRef({});
-
-  useMemo(() => {
-    return (inputUpdate.current = dataUpdate);
-  }, [dataUpdate]);
 
   useEffect(() => {
     getRoles().then((data) => setData(data));
@@ -54,6 +49,7 @@ export const RoleDatatable = () => {
           {dataAdd ? (
             <Box title={'Add Form'} collapsed collapsable>
               <Text
+                name="name-add-form"
                 label="Name"
                 labelPosition="above"
                 placeholder="Enter name"
@@ -66,12 +62,14 @@ export const RoleDatatable = () => {
               />
               <ButtonGroup>
                 <Button
+                  name="close-button-add-form"
                   text="Close"
                   onClick={() => {
                     setDataAdd(false);
                   }}
                 />
                 <Button
+                  name="close-button-add-form"
                   text="Submit"
                   onClick={async () => {
                     await addRole(inputAdd.current);
@@ -87,33 +85,31 @@ export const RoleDatatable = () => {
           {dataUpdate ? (
             <Box title={'Update Form'} collapsed collapsable>
               <Text
-                name="name"
-                placeholder={inputUpdate.current.name}
+                name="name-update-form"
+                placeholder="Enter name"
                 label="Name"
+                value={dataUpdate.name}
                 labelPosition="above"
                 onChange={(event) => {
-                  if (event.currentTarget.value === '')
-                    event.currentTarget.placeholder = 'Enter name';
-                  inputUpdate.current = {
-                    ...inputUpdate.current,
-                    name: event.currentTarget.value.trim(),
-                  };
+                  setDataUpdate((prev) => ({
+                    ...prev,
+                    name: event.target.value,
+                  }));
                 }}
               />
               <ButtonGroup>
                 <Button
+                  name="close-button-update-form"
                   text="Close"
                   onClick={() => {
                     setDataUpdate();
                   }}
                 />
                 <Button
+                  name="submit-button-update-form"
                   text="Submit"
                   onClick={async () => {
-                    await updateRole(
-                      inputUpdate.current.id,
-                      inputUpdate.current
-                    );
+                    await updateRole(dataUpdate.id, dataUpdate);
                     await getRoles().then((data) => setData(data));
                   }}
                 />
@@ -122,10 +118,12 @@ export const RoleDatatable = () => {
           ) : (
             ''
           )}
+          {/* View Form */}
           <Box
             title="Data Table"
             header={
               <Button
+                name="add-button-view-form"
                 text="Add"
                 pullRight
                 onClick={() => {
@@ -134,7 +132,6 @@ export const RoleDatatable = () => {
               />
             }
           >
-            {/* View Form */}
             <div className={clsx(styles.datatable, styles.fixIcon)}>
               <DataTable
                 columns={firstColumns}
