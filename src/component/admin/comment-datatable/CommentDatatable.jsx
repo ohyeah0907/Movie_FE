@@ -103,7 +103,7 @@ export const CommentDatatable = () => {
             <Box title={'Add Form'} collapsed collapsable>
               <div className={clsx(styles.fixIcon)}>
                 <Text
-                  name="userId"
+                  name="user-id-add-form"
                   placeholder={inputAdd.user_id ? inputAdd.user_id : ''}
                   label="User's id"
                   labelPosition="above"
@@ -131,7 +131,7 @@ export const CommentDatatable = () => {
                   }}
                 />
                 <Text
-                  name="movieId"
+                  name="movie-id-add-form"
                   placeholder={inputAdd.movie_id ? inputAdd.movie_id : ''}
                   label="Movie's id"
                   labelPosition="above"
@@ -161,6 +161,7 @@ export const CommentDatatable = () => {
               </div>
               <Label type="info" children={'Date'} />
               <DateTimePicker
+                name="datetime-add-form"
                 onChange={(value) => {
                   setinputAdd((prev) => ({
                     ...prev,
@@ -174,9 +175,8 @@ export const CommentDatatable = () => {
               />
 
               <Text
+                name="content-add-form"
                 label="Content"
-                name="content"
-                type="textarea"
                 labelPosition="above"
                 onChange={(event) => {
                   setinputAdd((prev) => ({
@@ -188,12 +188,15 @@ export const CommentDatatable = () => {
               <ButtonGroup>
                 <Button
                   text="Close"
+                  name="close-button-add-form"
+                  Button
                   onClick={() => {
                     setDataAdd(false);
                   }}
                 />
                 <Button
                   text="Submit"
+                  name="submit-button-add-form"
                   onClick={async () => {
                     await addComment(inputAdd);
                     await getComments().then((data) => setData(data));
@@ -209,7 +212,7 @@ export const CommentDatatable = () => {
             <Box title={'Update Form'} collapsed collapsable>
               <div className={clsx(styles.fixIcon)}>
                 <Text
-                  name="userId"
+                  name="user-id-update-form"
                   placeholder={dataUpdate.user_id}
                   label="User's id"
                   labelPosition="above"
@@ -237,7 +240,7 @@ export const CommentDatatable = () => {
                   }}
                 />
                 <Text
-                  name="movieId"
+                  name="movie-id-update-form"
                   placeholder={dataUpdate.movie_id}
                   label="Movie's id"
                   labelPosition="above"
@@ -267,6 +270,7 @@ export const CommentDatatable = () => {
               </div>
               <Label type="info" children={'Date'} />
               <DateTimePicker
+                name="datetime-update-form"
                 onChange={(value) => {
                   setDataUpdate((prev) => ({
                     ...prev,
@@ -281,8 +285,9 @@ export const CommentDatatable = () => {
 
               <Text
                 label="Content"
-                name="content"
-                type="textarea"
+                name="content-update-form"
+                placeholder="Enter content"
+                value={dataUpdate.content}
                 labelPosition="above"
                 onChange={(event) => {
                   setDataUpdate((prev) => ({
@@ -294,12 +299,14 @@ export const CommentDatatable = () => {
               <ButtonGroup>
                 <Button
                   text="Close"
+                  name="close-button-update-form"
                   onClick={() => {
                     setDataUpdate();
                   }}
                 />
                 <Button
                   text="Submit"
+                  name="submit-button-update-form"
                   onClick={async () => {
                     await updateComment(dataUpdate.id, dataUpdate);
                     await getComments().then((data) => setData(data));
@@ -315,6 +322,7 @@ export const CommentDatatable = () => {
             title="Data Table"
             header={
               <Button
+                name="add-button-view-form"
                 text="Add"
                 pullRight
                 onClick={() => {

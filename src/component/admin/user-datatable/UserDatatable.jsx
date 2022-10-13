@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Content,
   Box,
@@ -41,14 +41,10 @@ export const UserDatatable = () => {
   const [data, setData] = useState([]);
   const [dataUpdate, setDataUpdate] = useState();
   const [dataAdd, setDataAdd] = useState(false);
-  const inputUpdate = useRef({});
+
   const inputAdd = useRef({});
   //Foreign key in table
   const roles = useRef({});
-
-  useMemo(() => {
-    return (inputUpdate.current = dataUpdate);
-  }, [dataUpdate]);
 
   //Fetch data first time and fetch foreign key first time
   useEffect(() => {
@@ -72,6 +68,7 @@ export const UserDatatable = () => {
           {dataAdd ? (
             <Box title={'Add Form'} collapsed collapsable>
               <Text
+                name="name-add-form"
                 label="Name"
                 labelPosition="above"
                 placeholder="Enter name"
@@ -83,6 +80,7 @@ export const UserDatatable = () => {
                 }}
               />
               <Text
+                name="password-add-form"
                 label="Password"
                 labelPosition="above"
                 placeholder="Enter password"
@@ -97,7 +95,7 @@ export const UserDatatable = () => {
                 options={
                   roles
                     ? roles.current.map((data, key) => ({
-                        id: `option ${key}`,
+                        id: `role-option-add-form-${key}`,
                         value: `${data.id}`,
                         label: `${data.name}`,
                       }))
@@ -105,7 +103,7 @@ export const UserDatatable = () => {
                 }
                 label="Role"
                 labelPosition="above"
-                name="role"
+                name="role-add-form"
                 onChange={(event) => {
                   inputAdd.current = {
                     ...inputAdd.current,
@@ -115,12 +113,14 @@ export const UserDatatable = () => {
               />
               <ButtonGroup>
                 <Button
+                  name="close-button-add-form"
                   text="Close"
                   onClick={() => {
                     setDataAdd(false);
                   }}
                 />
                 <Button
+                  name="submit-button-add-form"
                   text="Submit"
                   onClick={async () => {
                     await addUser(inputAdd.current);
@@ -136,67 +136,65 @@ export const UserDatatable = () => {
           {dataUpdate ? (
             <Box title={'Update Form'} collapsed collapsable>
               <Text
-                name="name"
-                placeholder={inputUpdate.current.name}
+                name="name-update-form"
+                placeholder="Enter name"
                 label="Name"
+                value={dataUpdate.name}
                 labelPosition="above"
                 onChange={(event) => {
-                  if (event.currentTarget.value === '')
-                    event.currentTarget.placeholder = 'Enter name';
-                  inputUpdate.current = {
-                    ...inputUpdate.current,
-                    name: event.currentTarget.value.trim(),
-                  };
+                  setDataUpdate((prev) => ({
+                    ...prev,
+                    name: event.target.value,
+                  }));
                 }}
               />
               <Text
-                name="password"
-                placeholder={inputUpdate.current.password}
+                name="password-update-form"
+                placeholder="Enter password"
                 label="Password"
+                value={dataUpdate.password}
                 labelPosition="above"
                 onChange={(event) => {
-                  if (event.currentTarget.value === '')
-                    event.currentTarget.placeholder = 'Enter password';
-                  inputUpdate.current = {
-                    ...inputUpdate.current,
-                    password: event.currentTarget.value.trim(),
-                  };
+                  setDataUpdate((prev) => ({
+                    ...prev,
+                    password: event.target.value,
+                  }));
                 }}
               />
               <Radio
                 options={
                   roles
                     ? roles.current.map((data, key) => ({
-                        id: `option ${key}`,
+                        id: `role-option-update-form-${key}`,
                         value: `${data.id}`,
                         label: `${data.name}`,
+                        checked: dataUpdate.roleId === data.id ? true : false,
                       }))
                     : ''
                 }
                 label="Role"
                 labelPosition="above"
-                name="role"
+                name="role-update-form"
                 onChange={(event) => {
-                  inputUpdate.current = {
-                    ...inputUpdate.current,
-                    roleId: event.currentTarget.value,
-                  };
+                  setDataUpdate((prev) => ({
+                    ...prev,
+                    roleId: event.target.value,
+                  }));
                 }}
               />
               <ButtonGroup>
                 <Button
+                  name="close-button-update-form"
                   text="Close"
                   onClick={() => {
                     setDataUpdate();
                   }}
                 />
                 <Button
+                  name="submit-button-update-form"
                   text="Submit"
                   onClick={async () => {
-                    await updateUser(
-                      inputUpdate.current.id,
-                      inputUpdate.current
-                    );
+                    await updateUser(dataUpdate.id, dataUpdate);
                     await getUsers().then((data) => setData(data));
                   }}
                 />
@@ -205,10 +203,12 @@ export const UserDatatable = () => {
           ) : (
             ''
           )}
+          {/* View Form */}
           <Box
             title="Data Table"
             header={
               <Button
+                name="add-button-view-form"
                 text="Add"
                 pullRight
                 onClick={() => {
@@ -217,7 +217,6 @@ export const UserDatatable = () => {
               />
             }
           >
-            {/* View Form */}
             <div className={clsx(styles.datatable, styles.fixIcon)}>
               <DataTable
                 columns={firstColumns}
