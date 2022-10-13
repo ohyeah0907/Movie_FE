@@ -5,10 +5,10 @@ import { Main } from '../component/main/Main';
 
 export const Default = () => {
   return (
-    <div>
+    <>
       <Header />
       <Main />
       <Footer />
-    </div>
+    </>
   );
 };

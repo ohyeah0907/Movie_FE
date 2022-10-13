@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import {
   Content,
   Box,
@@ -10,21 +10,17 @@ import {
   ButtonGroup,
 } from 'adminlte-2-react';
 import clsx from 'clsx';
-import styles from './css/user-datatable.module.css';
+import styles from './css/role-datatable.module.css';
 import {
-  addUser,
-  deleteUser,
-  getUsers,
-  updateUser,
-} from '../../../service/component/user-datatble/UserDatatableService';
-import { getRoles } from '../../../service/component/role-datatable/RoleDatableService';
-
-const { Text, Radio } = Inputs;
+  addRole,
+  deleteRole,
+  getRoles,
+  updateRole,
+} from '../../../service/component/role-datatable/RoleDatableService';
+const { Text } = Inputs;
 const firstColumns = [
   { title: 'id', data: 'id' },
   { title: 'Name', data: 'name' },
-  { title: 'Password', data: 'password' },
-  { title: 'RoleId', data: 'roleId' },
   {
     title: 'Actions',
     data: null,
@@ -36,36 +32,22 @@ const firstColumns = [
     ),
   },
 ];
-
-export const UserDatatable = () => {
+export const RoleDatatable = () => {
   const [data, setData] = useState([]);
   const [dataUpdate, setDataUpdate] = useState();
   const [dataAdd, setDataAdd] = useState(false);
   const inputUpdate = useRef({});
   const inputAdd = useRef({});
-  //Foreign key in table
-  const roles = useRef({});
 
   useMemo(() => {
     return (inputUpdate.current = dataUpdate);
   }, [dataUpdate]);
 
-  //Fetch data first time and fetch foreign key first time
   useEffect(() => {
-    getDataFirstTime();
+    getRoles().then((data) => setData(data));
   }, []);
-
-  const getDataFirstTime = async () => {
-    await getRoles().then((data) => {
-      roles.current = data;
-    });
-    await getUsers().then((data) => {
-      setData(data);
-    });
-  };
-
   return (
-    <Content title="User">
+    <Content title="Role">
       <Row>
         <Col xs={12}>
           {/* Add Form */}
@@ -82,37 +64,6 @@ export const UserDatatable = () => {
                   };
                 }}
               />
-              <Text
-                label="Password"
-                labelPosition="above"
-                placeholder="Enter password"
-                onChange={(event) => {
-                  inputAdd.current = {
-                    ...inputAdd.current,
-                    password: event.currentTarget.value,
-                  };
-                }}
-              />
-              <Radio
-                options={
-                  roles
-                    ? roles.current.map((data, key) => ({
-                        id: `option ${key}`,
-                        value: `${data.id}`,
-                        label: `${data.name}`,
-                      }))
-                    : ''
-                }
-                label="Role"
-                labelPosition="above"
-                name="role"
-                onChange={(event) => {
-                  inputAdd.current = {
-                    ...inputAdd.current,
-                    roleId: event.currentTarget.value,
-                  };
-                }}
-              />
               <ButtonGroup>
                 <Button
                   text="Close"
@@ -123,8 +74,8 @@ export const UserDatatable = () => {
                 <Button
                   text="Submit"
                   onClick={async () => {
-                    await addUser(inputAdd.current);
-                    await getUsers().then((data) => setData(data));
+                    await addRole(inputAdd.current);
+                    await getRoles().then((data) => setData(data));
                   }}
                 />
               </ButtonGroup>
@@ -149,40 +100,6 @@ export const UserDatatable = () => {
                   };
                 }}
               />
-              <Text
-                name="password"
-                placeholder={inputUpdate.current.password}
-                label="Password"
-                labelPosition="above"
-                onChange={(event) => {
-                  if (event.currentTarget.value === '')
-                    event.currentTarget.placeholder = 'Enter password';
-                  inputUpdate.current = {
-                    ...inputUpdate.current,
-                    password: event.currentTarget.value.trim(),
-                  };
-                }}
-              />
-              <Radio
-                options={
-                  roles
-                    ? roles.current.map((data, key) => ({
-                        id: `option ${key}`,
-                        value: `${data.id}`,
-                        label: `${data.name}`,
-                      }))
-                    : ''
-                }
-                label="Role"
-                labelPosition="above"
-                name="role"
-                onChange={(event) => {
-                  inputUpdate.current = {
-                    ...inputUpdate.current,
-                    roleId: event.currentTarget.value,
-                  };
-                }}
-              />
               <ButtonGroup>
                 <Button
                   text="Close"
@@ -193,11 +110,11 @@ export const UserDatatable = () => {
                 <Button
                   text="Submit"
                   onClick={async () => {
-                    await updateUser(
+                    await updateRole(
                       inputUpdate.current.id,
                       inputUpdate.current
                     );
-                    await getUsers().then((data) => setData(data));
+                    await getRoles().then((data) => setData(data));
                   }}
                 />
               </ButtonGroup>
@@ -234,8 +151,8 @@ export const UserDatatable = () => {
                 border
                 onClickEvents={{
                   onDeleteEvent: async (data, rowIdx, rowData) => {
-                    await deleteUser(data.id);
-                    await getUsers().then((data) => setData(data));
+                    await deleteRole(data.id);
+                    await getRoles().then((data) => setData(data));
                   },
                   onUpdateEvent: (data, rowIdx, rowData) => {
                     setDataUpdate(data);

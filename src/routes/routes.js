@@ -4,6 +4,7 @@ import { ListPage } from '../page/list-page/ListPage';
 import { ProfilePage } from '../page/profile-page/ProfilePage';
 import { SignInPage } from '../page/sign-in-page/SignInPage';
 import { SignUpPage } from '../page/sign-up-page/SignUpPage';
+import { AdminPage } from '../page/admin-page/AdminPage';
 
 export var routes = [
   {
