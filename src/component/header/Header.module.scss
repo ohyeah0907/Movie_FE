@@ -1,0 +1,52 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
+.navbar {
+  background-color: #0c2738;
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__nav {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 80px;
+    .navItem {
+      margin-left: 40px;
+      height: 100%;
+      &__link {
+        display: block;
+        color: #899e9e;
+        height: 100%;
+        font-weight: 600;
+        font-size: 1.6rem;
+        padding: 27px 0 0 0;
+        border-bottom: 2px solid transparent;
+        transition: 0.2s ease-in;
+        &:hover {
+          color: var(--white-color);
+        }
+        &--active {
+          color: var(--white-color);
+          border-color: var(--primary-color);
+        }
+      }
+    }
+  }
+  &__text {
+    margin: 0;
+    font-size: 3rem;
+    color: var(--white-color);
+    font-weight: 300;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .navbar {
+    &__nav {
+      display: none;
+    }
+  }
+}
