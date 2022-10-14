@@ -10,7 +10,7 @@ import { SignUpPage } from "../../page/sign-up-page/SignUpPage";
 import { AdminPage } from "../../page/admin-page/AdminPage";
 export const Main = () => {
   return (
-    <div>
+    <>
       <Routes>
         <Route path="/" element={<HomePage />} index />
         <Route path="/category" element={<CategoryPage />} />
@@ -21,6 +21,6 @@ export const Main = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
-    </div>
+    </>
   );
 };

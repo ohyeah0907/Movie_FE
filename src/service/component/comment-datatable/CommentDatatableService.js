@@ -1,8 +1,9 @@
 import Swal from 'sweetalert2';
 
-export const getUsers = () => {
+// Comment
+export const getComments = () => {
   return fetch(
-    'https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/user',
+    'https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/comment',
     { method: 'GET' }
   )
     .then((res) => {
@@ -10,7 +11,7 @@ export const getUsers = () => {
         Swal.fire({
           icon: 'error',
           title: `Error ${res.status}`,
-          text: "Something went wrong, can't get users!",
+          text: "Something went wrong, can't get comments!",
         });
       return res;
     })
@@ -19,9 +20,9 @@ export const getUsers = () => {
       else return Promise.resolve([]);
     });
 };
-export const addUser = (requestBody) => {
+export const addComment = (requestBody) => {
   return fetch(
-    `https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/user`,
+    `https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/comment`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -32,20 +33,20 @@ export const addUser = (requestBody) => {
       Swal.fire({
         icon: 'success',
         title: 'Done',
-        text: 'Add user successfully',
+        text: 'Add comment successfully',
       });
     else
       Swal.fire({
         icon: 'error',
         title: `Error ${res.status}`,
-        text: 'Something went wrong, add user unsuccessfully!',
+        text: 'Something went wrong, add comment unsuccessfully!',
       });
   });
 };
 
-export const updateUser = (id, requestBody) => {
+export const updateComment = (id, requestBody) => {
   return fetch(
-    `https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/user/${id}`,
+    `https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/comment/${id}`,
     {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -56,33 +57,33 @@ export const updateUser = (id, requestBody) => {
       Swal.fire({
         icon: 'success',
         title: 'Done',
-        text: 'Update user successfully',
+        text: 'Update comment successfully',
       });
     else
       Swal.fire({
         icon: 'error',
         title: `Error ${res.status}`,
-        text: 'Something went wrong, update user unsuccessfully!',
+        text: 'Something went wrong, update comment unsuccessfully!',
       });
   });
 };
 
-export const deleteUser = (id) => {
+export const deleteComment = (id) => {
   return fetch(
-    `https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/user/${id}`,
+    `https://6344eda5dcae733e8fe69405.mockapi.io/api/movie-management/admin/comment/${id}`,
     { method: 'DELETE' }
   ).then((res) => {
     if (res.ok)
       Swal.fire({
         icon: 'success',
         title: 'Done',
-        text: 'Delete user successfully',
+        text: 'Delete comment successfully',
       });
     else
       Swal.fire({
         icon: 'error',
         title: `Error ${res.status}`,
-        text: 'Something went wrong, delete user unsuccessfully!',
+        text: 'Something went wrong, delete comment unsuccessfully!',
       });
   });
 };
