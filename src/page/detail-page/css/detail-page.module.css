@@ -1,0 +1,173 @@
+.detailPage {
+  background-color: var(--green-dark-color);
+  color: var(--white-color);
+  min-height: 100vh;
+  position: relative;
+  padding-top: 30px;
+}
+
+.detailPage__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+  height: 70%;
+  z-index: 0;
+}
+
+.detailPage__background::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: '';
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--green-dark-color)));
+  background-image: linear-gradient(to bottom, transparent, var(--green-dark-color));
+  height: 50px;
+}
+
+.detailPage__wrapper {
+  position: relative;
+}
+
+.detailPage__wrapper__generalInfo {
+  width: 100%;
+}
+
+.detailPage__wrapper__generalInfo__image {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 12px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.detailPage__wrapper__generalInfo__image__rating {
+  border-radius: 50%;
+  background-color: var(--yellow-color);
+  font-size: 2rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: absolute;
+  padding: 20px 35px;
+  top: 0;
+  left: 0;
+  -webkit-transform: translate(-30%, -30%);
+          transform: translate(-30%, -30%);
+}
+
+.detailPage__wrapper__generalInfo__image img {
+  width: 340px;
+  height: 510px;
+  max-width: 340px;
+  max-height: 510px;
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 8px 8px 60px -10px rgba(0, 0, 0, 0.4);
+          box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 8px 8px 60px -10px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+}
+
+.detailPage__wrapper__generalInfo__content {
+  padding: 50px;
+  width: 100%;
+  height: 510px;
+  max-height: 510px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.detailPage__wrapper__generalInfo__content__name {
+  font-size: 3rem;
+}
+
+.detailPage__wrapper__generalInfo__content__starGenres {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.detailPage__wrapper__generalInfo__content__starGenres .star {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.detailPage__wrapper__generalInfo__content__starGenres .star__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 50%;
+  white-space: nowrap;
+}
+
+.detailPage__wrapper__generalInfo__content__starGenres .star__inner__content {
+  color: var(--yellow-color);
+}
+
+.detailPage__wrapper__generalInfo__content__starGenres .genres {
+  display: inline-block;
+  text-align: left;
+}
+
+.detailPage__wrapper__generalInfo__content__starGenres .genres__link {
+  display: inline-block;
+  color: var(--gray-color);
+  margin: 0 4px;
+  text-decoration: underline;
+}
+
+.detailPage__wrapper__generalInfo__content__starGenres .genres__link:hover {
+  color: var(--white-color);
+  text-decoration: underline;
+}
+
+.detailPage__wrapper__generalInfo__content__starGenres .genres__icon {
+  color: var(--yellow-color);
+  margin-right: 4px;
+}
+
+.detailPage__wrapper__generalInfo__content__overview {
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.detailPage__wrapper__generalInfo__content__button .buttonWatch {
+  display: inline-block;
+  position: relative;
+  border: 1px solid var(--yellow-color);
+  color: var(--white-color);
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: rgba(255, 255, 22, 0.4);
+}
+/*# sourceMappingURL=detail-page.module.css.map */

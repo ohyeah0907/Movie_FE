@@ -7,7 +7,7 @@ export const BreadCrumb = () => {
   const pathnames = location.pathname.split('/').filter((pathname) => pathname);
   return (
     <div>
-      <Link to="/">Home</Link>
+      <Link to="/">home</Link>
       {pathnames
         ? pathnames.map((pathname, index) => (
             <Link to={pathnames.slice(0, index + 1).join('/')} key={index}>
