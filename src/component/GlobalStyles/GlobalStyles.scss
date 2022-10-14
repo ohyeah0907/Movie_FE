@@ -7,11 +7,13 @@
 .link {
   text-decoration: none;
 }
-.container::before {
-  content: none;
-}
-.container::after {
-  content: none;
+.container {
+  &::before {
+    content: none;
+  }
+  &::after {
+    content: none;
+  }
 }
 .bold {
   font-weight: 600;
