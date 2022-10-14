@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import clsx from "clsx";
 
 const MainLogo = ({ width, height }) => {
@@ -65,4 +65,4 @@ const MainLogo = ({ width, height }) => {
   );
 };
 
-export default MainLogo;
+export default memo(MainLogo);
