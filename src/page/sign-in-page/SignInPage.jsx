@@ -6,7 +6,6 @@ import { getUser } from '../../service/sign-in-page/SignInPageService';
 export const SignInPage = () => {
   const user = useContext(userContext);
   const navigate = useNavigate();
-
   const handleSignIn = () => {
     getUser().then((data) => {
       if (data.name === 'admin') {
