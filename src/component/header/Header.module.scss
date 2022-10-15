@@ -8,6 +8,9 @@
     display: flex;
     justify-content: space-between;
   }
+  &__logo {
+    z-index: 100;
+  }
   &__nav {
     display: flex;
     margin: 0;
@@ -30,7 +33,7 @@
         }
         &--active {
           color: var(--white-color);
-          border-color: var(--primary-color);
+          border-color: var(--primary-color) !important;
         }
       }
     }
@@ -45,8 +48,47 @@
 
 @include media-breakpoint-down(lg) {
   .navbar {
+    position: relative;
     &__nav {
-      display: none;
+      position: absolute;
+      background-color: var(--base-color);
+      box-shadow: -4px 0 16px rgba(#111, 0.3);
+      display: block;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding: 50px;
+      height: 100vh;
+      width: 360px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-out;
     }
+    .navItem {
+      margin: 0;
+      height: fit-content;
+      &__link {
+        text-align: left;
+        padding: 15px 0;
+        border-color: rgba(#899ead, 0.2);
+      }
+    }
+    &__text {
+      font-size: 2rem;
+    }
+  }
+  .burger__btn {
+    z-index: 100;
+  }
+  .burger__btn--over ~ .navbar__nav {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    right: -50%;
+  }
+  to {
+    right: 0;
   }
 }

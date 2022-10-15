@@ -9,7 +9,12 @@ import { MainLogo } from "../Logo";
 export const Header = () => {
   const [navHeader, setNavHeader] = useState(routes);
   const [active, setActive] = useState("Home");
+  const [showSideBar, setShowSideBar] = useState(false);
   const user = useContext(userContext);
+
+  const handleShow = () => {
+    setShowSideBar(!showSideBar);
+  };
 
   const handleSignOut = () => {
     user.handleUser({});
@@ -41,7 +46,7 @@ export const Header = () => {
     <div className={styles.navbar}>
       <div
         className={clsx(
-          "container-md align-items-center justify-content-betwwen ",
+          "container-lg align-items-center justify-content-betwwen ",
           styles.container
         )}
       >
@@ -57,6 +62,18 @@ export const Header = () => {
             <span className="bold">Relax</span>
           </h1>
         </Link>
+        <div
+          onClick={() => {
+            handleShow();
+          }}
+          className={clsx(
+            "d-xl-none d-lg-none d-md-block text-white z",
+            styles.burger__btn,
+            showSideBar ? styles["burger__btn--over"] : ""
+          )}
+        >
+          Burger
+        </div>
         <ul className={clsx("align-items-center", styles.navbar__nav)}>
           {user.name ? <div>{user.name}</div> : ""}
           {navHeader.map((route) => {
