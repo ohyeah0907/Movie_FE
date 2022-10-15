@@ -4,12 +4,17 @@ import { routes } from '../../routes/routes';
 import { userContext } from '../../layout/UserContext';
 import styles from './Header.module.scss';
 import clsx from 'clsx';
-import { MainLogo } from '../Logo';
+import { MainLogo, Burger } from '../Logo';
 
 export const Header = () => {
   const [navHeader, setNavHeader] = useState(routes);
   const [active, setActive] = useState('Home');
+  const [showSideBar, setShowSideBar] = useState(false);
   const user = useContext(userContext);
+
+  const handleShow = () => {
+    setShowSideBar(!showSideBar);
+  };
 
   const handleSignOut = () => {
     user.handleUser({});
@@ -41,7 +46,7 @@ export const Header = () => {
     <div className={styles.navbar}>
       <div
         className={clsx(
-          'container-md align-items-center justify-content-betwwen ',
+          'container-lg  px-0 align-items-center justify-content-betwwen ',
           styles.container
         )}
       >
@@ -50,6 +55,7 @@ export const Header = () => {
             'd-flex align-items-center link',
             styles.navbar__logo
           )}
+          to="/"
         >
           <MainLogo />
           <h1 className={clsx(styles.navbar__text)}>
@@ -57,6 +63,18 @@ export const Header = () => {
             <span className="bold">Relax</span>
           </h1>
         </Link>
+        <div
+          className={clsx(
+            'd-xl-none d-lg-none d-md-block text-white z',
+            styles.burger__btn,
+            showSideBar ? styles['burger__btn--over'] : ''
+          )}
+          onClick={() => {
+            handleShow();
+          }}
+        >
+          <Burger size="30" fill="#fff"></Burger>
+        </div>
         <ul className={clsx('align-items-center', styles.navbar__nav)}>
           {user.name ? <div>{user.name}</div> : ''}
           {navHeader.map((route) => {
