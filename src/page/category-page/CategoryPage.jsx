@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const listProduct = [
+const listFilm = [
   {
     id: 1,
-    name: 'samsung',
+    name: 'movie-1',
   },
-  { id: 2, name: 'apple' },
+  { id: 2, name: 'movie-2' },
 ];
 export const CategoryPage = () => {
   return (
     <div>
       <div>CategoryPage</div>
-      {listProduct.map((product) => (
-        <Link to={`${product.id}`} key={product.id}>
-          {product.name}
+      {listFilm.map((film) => (
+        <Link to={`${film.id}`} key={film.id}>
+          {film.name}
         </Link>
       ))}
     </div>

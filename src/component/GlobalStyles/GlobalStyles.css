@@ -4,17 +4,20 @@
   --base-color: #081b27;
   --text-color: #333;
 }
+
 .link {
   text-decoration: none;
 }
-.container {
-  &::before {
-    content: none;
-  }
-  &::after {
-    content: none;
-  }
+
+.container::before {
+  content: none;
 }
+
+.container::after {
+  content: none;
+}
+
 .bold {
   font-weight: 600;
 }
+/*# sourceMappingURL=GlobalStyles.css.map */
