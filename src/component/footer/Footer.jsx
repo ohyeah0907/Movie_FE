@@ -46,7 +46,7 @@ export const Footer = () => {
                     styles["icon"]
                   )}
                 >
-                  <i class="fa-brands fa-square-facebook"></i>
+                  <i className="fa-brands fa-square-facebook"></i>
                 </div>
                 <div className={clsx(styles["footer-social-title"])}>
                   Facebook
@@ -62,7 +62,7 @@ export const Footer = () => {
                     styles["icon"]
                   )}
                 >
-                  <i class="fa-brands fa-instagram"></i>
+                  <i className="fa-brands fa-instagram"></i>
                 </div>
                 <div className={clsx(styles["footer-social-title"])}>
                   Instagram
@@ -72,23 +72,23 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div class={clsx(styles["bottom-footer"])}>
-        <div class="container  px-0 ">
-          <div class={clsx(styles["bottom-footer-paragraph"])}>
+      <div className={clsx(styles["bottom-footer"])}>
+        <div className="container  px-0 ">
+          <div className={clsx(styles["bottom-footer-paragraph"])}>
             Copyright © Movie Reviews
           </div>
-          <div class={clsx(styles["bottom-footer-paragraph"])}>
+          <div className={clsx(styles["bottom-footer-paragraph"])}>
             Template design by
-            <a href="" class={clsx("link", styles["bottom-footer-link"])}>
+            <a href="/" className={clsx("link", styles["bottom-footer-link"])}>
               Studio Corvus
             </a>
             Powerd by
-            <a href="" class={clsx("link", styles["bottom-footer-link"])}>
+            <a href="/" className={clsx("link", styles["bottom-footer-link"])}>
               Webflow
             </a>
           </div>
-          <div class={clsx(styles["bottom-footer-paragraph"])}>
-            <a href="" class={clsx("link", styles["bottom-footer-link"])}>
+          <div className={clsx(styles["bottom-footer-paragraph"])}>
+            <a href="/" className={clsx("link", styles["bottom-footer-link"])}>
               Image Licensing Info
             </a>
           </div>
