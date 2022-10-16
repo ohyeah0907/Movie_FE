@@ -48,6 +48,25 @@
       color: var(--primary-color);
     }
   }
+
+  .bottom-footer {
+    margin-top: 80px;
+    padding: 40px 0;
+    border-top: 1px solid rgba(#888, 0.2);
+    background-color: transparent;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #8f9da7;
+    &-paragraph {
+      display: inline-block;
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+
+    &-link {
+      margin: 0 5px;
+    }
+  }
 }
 
 @include media-breakpoint-down(lg) {

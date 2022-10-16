@@ -71,24 +71,26 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <div class="bottom-footer">
-          <div class="container ">
-            <div class="bottom-footer-paragraph">Copyright © Movie Reviews</div>
-            <div class="bottom-footer-paragraph">
-              Template design by&nbsp;
-              <a href="" class="bottom-footer-link">
-                Studio Corvus
-              </a>
-              &nbsp;-&nbsp;Powerd by{" "}
-              <a href="" class="bottom-footer-link">
-                Webflow
-              </a>
-            </div>
-            <div class="bottom-footer-paragraph">
-              <a href="" class="bottom-footer-link">
-                Image Licensing Info
-              </a>
-            </div>
+      </div>
+      <div class={clsx(styles["bottom-footer"])}>
+        <div class="container  px-0 ">
+          <div class={clsx(styles["bottom-footer-paragraph"])}>
+            Copyright © Movie Reviews
+          </div>
+          <div class={clsx(styles["bottom-footer-paragraph"])}>
+            Template design by
+            <a href="" class={clsx("link", styles["bottom-footer-link"])}>
+              Studio Corvus
+            </a>
+            Powerd by
+            <a href="" class={clsx("link", styles["bottom-footer-link"])}>
+              Webflow
+            </a>
+          </div>
+          <div class={clsx(styles["bottom-footer-paragraph"])}>
+            <a href="" class={clsx("link", styles["bottom-footer-link"])}>
+              Image Licensing Info
+            </a>
           </div>
         </div>
       </div>
