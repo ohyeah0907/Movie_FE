@@ -1,0 +1,70 @@
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+.footer {
+  padding-bottom: 0 !important;
+  background-image: linear-gradient(180deg, #0f355c, rgba(8, 27, 39, 0.8)),
+    url(https://cdn.tgdd.vn/Files/2022/08/22/1458489/anhnetflix2_1280x843-800-resize.png);
+  background-repeat: no-repeat;
+  background-size: auto, cover;
+  font-size: 1.5rem;
+
+  &-nav {
+    &__wrapper {
+      width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  &-title {
+    font-size: 2.4rem;
+    color: var(--white-color);
+    margin-bottom: 30px;
+  }
+
+  &-link {
+    display: block;
+    margin-top: 15px;
+    color: #74a8cf;
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+  &-social {
+    &-link {
+      display: block;
+      margin-top: 15px;
+      color: #74a8cf;
+    }
+    &-title {
+      display: inline-block;
+      &:hover {
+        color: var(--white-color);
+      }
+    }
+    &-title.icon {
+      margin-right: 8px;
+      color: var(--primary-color);
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .footer {
+    &-nav {
+      &__wrapper {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .footer {
+    &-col {
+      padding-top: 40px;
+      text-align: center;
+    }
+  }
+}
