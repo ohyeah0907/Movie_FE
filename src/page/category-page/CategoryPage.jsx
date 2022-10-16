@@ -2,17 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const listFilm = [
   {
-    id: 1,
+    id: 634649,
     name: 'movie-1',
+    isMovie: true,
   },
-  { id: 2, name: 'movie-2' },
+  { id: 436270, name: 'movie-2', isMovie: true },
 ];
 export const CategoryPage = () => {
   return (
     <div>
       <div>CategoryPage</div>
       {listFilm.map((film) => (
-        <Link to={`${film.id}`} key={film.id}>
+        <Link to={`${film.id}?is-movie=${film.isMovie}`} key={film.id}>
           {film.name}
         </Link>
       ))}

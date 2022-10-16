@@ -8,6 +8,7 @@ import { ListPage } from '../../page/list-page/ListPage';
 import { SignInPage } from '../../page/sign-in-page/SignInPage';
 import { SignUpPage } from '../../page/sign-up-page/SignUpPage';
 import { AdminPage } from '../../page/admin-page/AdminPage';
+import { ErrorPage } from '../../page/error-page/ErrorPage';
 export const Main = () => {
   return (
     <>
@@ -20,6 +21,7 @@ export const Main = () => {
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
