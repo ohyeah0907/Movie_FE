@@ -39,13 +39,13 @@
     }
     &-title {
       display: inline-block;
-      &:hover {
-        color: var(--white-color);
-      }
     }
     &-title.icon {
       margin-right: 8px;
-      color: var(--primary-color);
+      color: var(--primary-color) !important;
+    }
+    &-link:hover &-title {
+      color: var(--white-color);
     }
   }
 
