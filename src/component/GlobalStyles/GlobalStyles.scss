@@ -1,3 +1,7 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
 :root {
   --primary-color: #f1b722;
   --white-color: #fff;
@@ -24,4 +28,10 @@
   padding-top: 100px;
   padding-bottom: 100px;
   background-color: #081b27;
+}
+
+@include media-breakpoint-down(md) {
+  .section {
+    padding: 50px 20px;
+  }
 }
