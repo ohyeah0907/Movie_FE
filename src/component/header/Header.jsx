@@ -5,6 +5,7 @@ import { userContext } from "../../layout/UserContext";
 import styles from "./Header.module.scss";
 import clsx from "clsx";
 import { MainLogo, Burger } from "../Logo";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export const Header = () => {
   const [navHeader, setNavHeader] = useState(routes);
@@ -15,7 +16,6 @@ export const Header = () => {
   const handleShow = () => {
     setShowSideBar(!showSideBar);
   };
-
   const handleSignOut = () => {
     user.handleUser({});
     localStorage.clear();
@@ -23,7 +23,6 @@ export const Header = () => {
   };
 
   const handleActive = (text) => {
-    console.log(text);
     setActive(text);
   };
 
@@ -38,9 +37,16 @@ export const Header = () => {
       });
     });
   };
+
   useEffect(() => {
     if (user.name) reverseHide();
   }, [user]);
+
+  useEffect(() => {
+    const nav = document.getElementById("nav");
+    const burger = document.getElementById("burger");
+    console.log(burger);
+  });
 
   return (
     <div className={styles.navbar}>
@@ -64,6 +70,7 @@ export const Header = () => {
           </h1>
         </Link>
         <div
+          id="burger"
           className={clsx(
             "d-xl-none d-lg-none d-md-block text-white z",
             styles.burger__btn,
@@ -75,7 +82,7 @@ export const Header = () => {
         >
           <Burger size="30" fill="#fff"></Burger>
         </div>
-        <ul className={clsx("align-items-center", styles.navbar__nav)}>
+        <ul id="nav" className={clsx("align-items-center", styles.navbar__nav)}>
           {user.name ? <div>{user.name}</div> : ""}
           {navHeader.map((route) => {
             if (route.hasOwnProperty("hide")) {
