@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const listFilm = [
   {
-    id: 634649,
+    id: 94997,
     name: 'movie-1',
-    isMovie: true,
+    isMovie: false,
   },
   { id: 436270, name: 'movie-2', isMovie: true },
 ];

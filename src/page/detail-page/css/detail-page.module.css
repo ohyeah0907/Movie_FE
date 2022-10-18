@@ -16,7 +16,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.4;
-  height: 70%;
+  height: 700px;
   z-index: 0;
 }
 
@@ -213,5 +213,66 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
+}
+
+.detailPage__wrapper__season {
+  width: 100%;
+  margin-top: 35px;
+}
+
+.detailPage__wrapper__season__content {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: var(--black-color);
+  padding: 15px 20px;
+}
+
+.detailPage__wrapper__season__content__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.detailPage__wrapper__season__content__heading .headingWord {
+  font-weight: 700;
+}
+
+.detailPage__wrapper__season__content__heading__dropbox {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.detailPage__wrapper__season__content__episode {
+  padding: 0;
+  max-height: 600px;
+  height: 600px;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.detailPage__wrapper__season__content__episode::-webkit-scrollbar {
+  width: 5px;
+}
+
+.detailPage__wrapper__season__content__episode::-webkit-scrollbar-thumb {
+  background-color: var(--white-color);
+  border-radius: 10px;
+}
+
+.detailPage__wrapper__comment {
+  margin-top: 45px;
 }
 /*# sourceMappingURL=detail-page.module.css.map */

@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.4;
-    height: 70%;
+    height: 700px;
     z-index: 0;
 
     &::after {
@@ -167,6 +167,47 @@
           }
         }
       }
+    }
+    &__season {
+      width: 100%;
+      margin-top: 35px;
+      &__content {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        background-color: var(--black-color);
+        padding: 15px 20px;
+
+        &__heading {
+          display: flex;
+          justify-content: space-between;
+          & .headingWord {
+            font-weight: 700;
+          }
+          &__dropbox {
+            width: fit-content;
+          }
+        }
+        &__episode {
+          padding: 0;
+          max-height: 600px;
+          height: 600px;
+          margin: 0;
+
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            width: 5px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: var(--white-color);
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+    &__comment {
+      margin-top: 45px;
     }
   }
 }

@@ -1,0 +1,84 @@
+.dropbox {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.dropbox__selected {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dropbox__selected input {
+  background-color: var(--green-dark-color);
+  width: 100px;
+  border: 1px solid var(--white-color);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.dropbox__selected__icon {
+  position: absolute;
+  right: 10px;
+  line-height: 0;
+}
+
+.dropbox__list {
+  position: absolute;
+  background-color: var(--green-dark-color);
+  outline: 1px solid var(--white-color);
+  height: 0;
+  overflow-y: scroll;
+  left: 0;
+  right: 0;
+  padding-left: 0;
+  margin: 0;
+  -webkit-transition: height 1s;
+  transition: height 1s;
+}
+
+.dropbox__list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dropbox__list::-webkit-scrollbar-thumb {
+  background-color: var(--white-color);
+  border-radius: 10px;
+}
+
+.dropbox__list__item {
+  text-align: left;
+  height: 25%;
+  padding-left: 3px;
+}
+
+.dropbox__list__item:hover {
+  background-color: var(--light-green-dark-color);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.dropbox .showDropBox {
+  height: 100px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+/*# sourceMappingURL=season-dropbox.module.css.map */

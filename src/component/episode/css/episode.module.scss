@@ -1,0 +1,54 @@
+.episode__wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  height: 25%;
+  box-sizing: border-box;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-size: 1.2rem;
+  align-items: center;
+  padding: 20px 15px;
+  border-bottom: 1px solid var(--white-color);
+  user-select: none;
+  &:hover {
+    transition: all 0.7s;
+    cursor: pointer;
+    background-color: var(--green-dark-color);
+  }
+  &__number {
+    font-size: 1.6rem;
+    width: fit-content;
+  }
+  &__image {
+    flex: 1 1 40%;
+    height: 100%;
+    & img {
+      width: 80%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__content {
+    flex: 1 1 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+    &__heading {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.4rem;
+    }
+    &__overview {
+      text-align: left;
+      overflow: hidden;
+      word-break: break-word;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      opacity: 0.8;
+    }
+  }
+}

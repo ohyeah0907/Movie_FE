@@ -8,11 +8,11 @@ export const SignInPage = () => {
   const navigate = useNavigate();
   const handleSignIn = () => {
     getUser().then((data) => {
-      if (data.name === 'admin') {
-        navigate('/admin', { state: { ...data } });
+      if (data[0].roleId === 2) {
+        navigate('/admin');
       } else {
-        localStorage.setItem('user', JSON.stringify(data));
-        user.handleUser(data);
+        localStorage.setItem('user', JSON.stringify(data[0]));
+        user.handleUser(data[0]);
         navigate('/');
       }
     });

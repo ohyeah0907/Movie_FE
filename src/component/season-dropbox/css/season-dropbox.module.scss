@@ -1,0 +1,57 @@
+.dropbox {
+  width: fit-content;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  &__selected {
+    position: relative;
+    width: fit-content;
+    padding: 10 15px;
+    display: flex;
+    align-items: center;
+    & input {
+      background-color: var(--green-dark-color);
+      width: 100px;
+      border: 1px solid var(--white-color);
+      user-select: none;
+    }
+    &__icon {
+      position: absolute;
+      right: 10px;
+      line-height: 0;
+    }
+  }
+  &__list {
+    position: absolute;
+    background-color: var(--green-dark-color);
+    outline: 1px solid var(--white-color);
+    height: 0;
+    overflow-y: scroll;
+    left: 0;
+    right: 0;
+    padding-left: 0;
+    margin: 0;
+    transition: height 1s;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--white-color);
+      border-radius: 10px;
+    }
+    &__item {
+      text-align: left;
+      height: 25%;
+      padding-left: 3px;
+      &:hover {
+        background-color: var(--light-green-dark-color);
+        transition: all 1s;
+      }
+    }
+  }
+  .showDropBox {
+    height: 100px;
+    transition: all 1s;
+  }
+}
