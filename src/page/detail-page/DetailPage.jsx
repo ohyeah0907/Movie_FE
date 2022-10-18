@@ -129,8 +129,8 @@ export const DetailPage = () => {
       <Container className={clsx(styles.detailPage__wrapper)}>
         {/* Movie general infomation */}
         <div className={clsx(styles.detailPage__wrapper__generalInfo)}>
-          <Row xl={12} lg={12}>
-            <Col xl={4} lg={12}>
+          <Row xl={12} lg={12} xs={12}>
+            <Col xl={4} lg={12} xs={12}>
               <div
                 className={clsx(styles.detailPage__wrapper__generalInfo__image)}
               >
@@ -144,7 +144,7 @@ export const DetailPage = () => {
                 <img src={movie.poster} alt="movie" />
               </div>
             </Col>
-            <Col xl={8} lg={12}>
+            <Col xl={8} lg={12} xs={12}>
               <div
                 className={clsx(
                   styles.detailPage__wrapper__generalInfo__content
@@ -235,6 +235,9 @@ export const DetailPage = () => {
                 >
                   <a href="#video" className={clsx(styles.buttonWatch)}>
                     Watch
+                  </a>
+                  <a href="#" className={clsx(styles.buttonWishList)}>
+                    Add to my favorite
                   </a>
                 </div>
               </div>
