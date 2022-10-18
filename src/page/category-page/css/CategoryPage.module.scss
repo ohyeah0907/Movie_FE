@@ -1,8 +1,8 @@
 .category {
   background-color: var(--base-color);
-
   &-nav {
     padding: 8px 0;
+    border-bottom: 1px solid rgba(yellow, 0.3);
     &__title {
       display: inline-block;
       font-size: 3.2rem;
@@ -45,7 +45,37 @@
     }
   }
 }
+.section {
+  padding: 40px 0;
+}
 .movie {
+  &-title {
+    font-size: 4rem;
+    color: var(--white-color);
+    margin: 0 0 30px;
+
+    &--feature {
+      text-align: center;
+      font-size: 5rem;
+      font-weight: 600;
+    }
+  }
   &-feature {
+    padding-bottom: 30px;
+    &__wrapper {
+      width: 1000px;
+      margin: 0 auto;
+    }
+    &__list {
+      height: 400px;
+    }
+    &__item {
+      height: 100%;
+    }
+  }
+  &-default {
+    &__item {
+      height: 120px;
+    }
   }
 }
