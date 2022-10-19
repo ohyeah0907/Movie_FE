@@ -1,3 +1,6 @@
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
 .category {
   background-color: var(--base-color);
   &-nav {
@@ -46,7 +49,8 @@
   }
 }
 .section {
-  padding: 40px 0;
+  padding-top: 30px;
+  padding-bottom: 40px;
 }
 .movie {
   &-title {
@@ -67,15 +71,44 @@
       margin: 0 auto;
     }
     &__list {
-      height: 400px;
+      height: fit-content;
     }
     &__item {
-      height: 100%;
+      height: 400px;
     }
   }
   &-default {
     &__item {
-      height: 120px;
+      height: fit-content;
+    }
+  }
+}
+
+// Table and Phone
+@include media-breakpoint-down(xl) {
+  .movie-feature {
+    &__wrapper {
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
+
+// Phone
+
+@include media-breakpoint-down(md) {
+  .category {
+    &-nav {
+      &__title {
+        font-size: 2rem;
+      }
+    }
+  }
+  .movie {
+    &-feature {
+      .movie-title {
+        font-size: 3rem;
+      }
     }
   }
 }
