@@ -8,18 +8,29 @@
     display: flex;
     justify-content: flex-start;
     &__totalComment {
+      color: var(--gray-color);
     }
   }
   &__input {
     margin: 15px 0;
     width: 100%;
-    padding: 0 20px;
     input {
       background-color: var(--black-color);
       width: 100%;
       border: none;
       outline: none;
       border-bottom: 1px solid var(--white-color);
+    }
+    &__notify {
+      width: fit-content;
+      color: var(--gray-color);
+      a {
+        text-decoration: none;
+        color: var(--white-color);
+        &:hover {
+          color: var(--yellow-color);
+        }
+      }
     }
   }
   &_list {

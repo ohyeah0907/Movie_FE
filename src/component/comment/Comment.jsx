@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { userContext } from '../../layout/UserContext';
 import {
@@ -8,12 +9,6 @@ import {
 } from '../../service/component/comment/Comment';
 import { UserComment } from '../user-comment/UserComment';
 import styles from './css/comment.module.css';
-
-const option = {
-  year: 'numeric',
-  month: 'numeric',
-  day: 'numeric',
-};
 
 export const Comment = ({ movieId }) => {
   let controller = new AbortController();
@@ -55,11 +50,17 @@ export const Comment = ({ movieId }) => {
         </div>
       </div>
       <div className={clsx(styles.comment__input)}>
-        <input
-          onKeyDown={(e) => {
-            if (e.key == 'Enter') handleAddComment(e.target.value);
-          }}
-        />
+        {user.id ? (
+          <input
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleAddComment(e.target.value);
+            }}
+          />
+        ) : (
+          <p className={clsx(styles.comment__input__notify)}>
+            Please <Link to={'/sign-in'}>sign in</Link> to use comment
+          </p>
+        )}
       </div>
       <div className={clsx(styles.comment_list)}>
         {listUserComment &&

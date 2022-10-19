@@ -15,10 +15,13 @@
           justify-content: flex-start;
 }
 
+.comment__heading__totalComment {
+  color: var(--gray-color);
+}
+
 .comment__input {
   margin: 15px 0;
   width: 100%;
-  padding: 0 20px;
 }
 
 .comment__input input {
@@ -27,6 +30,22 @@
   border: none;
   outline: none;
   border-bottom: 1px solid var(--white-color);
+}
+
+.comment__input__notify {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: var(--gray-color);
+}
+
+.comment__input__notify a {
+  text-decoration: none;
+  color: var(--white-color);
+}
+
+.comment__input__notify a:hover {
+  color: var(--yellow-color);
 }
 
 .comment_list {
