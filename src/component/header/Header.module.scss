@@ -3,7 +3,7 @@
 @import "../../../node_modules/bootstrap/scss/mixins";
 
 .navbar {
-  background-color: #0c2738;
+  background-color: var(--header-color);
   .container {
     display: flex;
     justify-content: space-between;
@@ -16,7 +16,7 @@
     margin: 0;
     padding: 0;
     height: 80px;
-    z-index: 10;
+    z-index: 150;
     .navItem {
       margin-left: 40px;
       height: 100%;
