@@ -122,6 +122,14 @@ const categoryList = [
     id: 7,
     name: "LMAO",
   },
+  {
+    id: 6,
+    name: "Sussy",
+  },
+  {
+    id: 7,
+    name: "LMAO",
+  },
 ];
 
 export const CategoryPage = () => {
@@ -149,7 +157,12 @@ export const CategoryPage = () => {
           <div className={clsx(styles["category-nav__title"])}>
             Category Type
           </div>
-          <div className={clsx(styles["category-nav__wrapper"])}>
+          <div
+            className={clsx(
+              styles["category-nav__wrapper"],
+              styles["category-nav__wrapper--focus"]
+            )}
+          >
             <div className={clsx(styles["category-nav__button"])}>
               Genres{" "}
               <i className={clsx("fa-solid fa-caret-down", styles.icon)}></i>
@@ -167,8 +180,9 @@ export const CategoryPage = () => {
                   key={index}
                   className={clsx("col", styles["category-nav__menu-col"])}
                 >
-                  {menuCol.map((menuLink) => (
+                  {menuCol.map((menuLink, index) => (
                     <Link
+                      key={index}
                       className={clsx(
                         "link",
                         styles["category-nav__menu-link"]

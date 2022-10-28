@@ -42,14 +42,14 @@
       position: absolute;
       top: 100%;
       left: 0;
-      min-width: 240px;
-      background-color: rgba(#000, 0.75);
+      background-color: #000;
+      min-width: 300px;
       z-index: 100;
 
       &-link {
         display: block;
         color: var(--white-color);
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         padding: 6px 0;
         width: 100%;
         &:hover {
