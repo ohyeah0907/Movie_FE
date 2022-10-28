@@ -93,35 +93,93 @@ const movieList = [
   },
 ];
 
-const featureList = movieList.filter((movie, index) => {
-  return movie.rating > 50 && index < 4 ? movie : undefined;
-});
+const categoryList = [
+  {
+    id: 1,
+    name: "Action",
+  },
+  {
+    id: 2,
+    name: "Anime",
+  },
+  {
+    id: 3,
+    name: "Dramas",
+  },
+  {
+    id: 4,
+    name: "Romance",
+  },
+  {
+    id: 5,
+    name: "Sus",
+  },
+  {
+    id: 6,
+    name: "Sussy",
+  },
+  {
+    id: 7,
+    name: "LMAO",
+  },
+];
 
 export const CategoryPage = () => {
-  const renderMenuLinks = (maxRow) => {};
+  const featureList = movieList.filter((movie, index) => {
+    return movie.rating > 50 && index < 4 ? movie : undefined;
+  });
+
+  const renderMenuColumns = (menuList = [], maxRow) => {
+    var menuColumn = [];
+    while (menuList.length > 0) menuColumn.push(menuList.splice(0, maxRow));
+    return menuColumn;
+  };
+
+  let menuColumns = renderMenuColumns(categoryList, 3);
+
   return (
     <div className={clsx(styles.category)}>
       <div className={clsx(styles["category-nav"])}>
-        <div className="container d-flex align-items-center">
+        <div
+          className={clsx(
+            "container d-flex align-items-center",
+            styles["category__wrapper"]
+          )}
+        >
           <div className={clsx(styles["category-nav__title"])}>
             Category Type
           </div>
-          <div className="dropdown">
-            <div
-              className={clsx(styles["category-nav__button"])}
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
+          <div className={clsx(styles["category-nav__wrapper"])}>
+            <div className={clsx(styles["category-nav__button"])}>
               Genres{" "}
               <i className={clsx("fa-solid fa-caret-down", styles.icon)}></i>
             </div>
             <div
-              className={clsx("row", styles["category-nav__menu"])}
-              aria-labelledby="dropdownMenuButton"
-            ></div>
+              className={clsx("d-none row mx-0", styles["category-nav__menu"])}
+            >
+              <div className={styles["category-nav__menu-close"]}>
+                <span className={styles["category-nav__menu-close-btn"]}>
+                  Exit
+                </span>
+              </div>
+              {menuColumns.map((menuCol, index) => (
+                <div
+                  key={index}
+                  className={clsx("col", styles["category-nav__menu-col"])}
+                >
+                  {menuCol.map((menuLink) => (
+                    <Link
+                      className={clsx(
+                        "link",
+                        styles["category-nav__menu-link"]
+                      )}
+                    >
+                      {menuLink.name}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
