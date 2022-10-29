@@ -4,8 +4,8 @@ import styles from "./css/Footer.module.scss";
 
 export const Footer = () => {
   return (
-    <footer className={clsx("section", styles.footer)}>
-      <div className="container px-0">
+    <footer className={clsx("section section--footer", styles.footer)}>
+      <div className="container  px-0">
         <div className={clsx(styles["footer-nav__wrapper"])}>
           <div className="row flex-column flex-md-row">
             <div
