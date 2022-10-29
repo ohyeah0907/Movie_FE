@@ -38,6 +38,5 @@ export var routes = [
     path: "/list",
     component: ListPage,
     text: "My List",
-    hide: true,
   },
 ];
