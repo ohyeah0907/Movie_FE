@@ -13,7 +13,7 @@ export const Item = memo((props) => {
       <div className={clsx(styles.item__imageWrapper)}>
         <img
           className={clsx(styles.item__imageWrapper__content)}
-          src={layout === "feature" ? movie.poster : movie.backdrop}
+          src={layout.includes("feature") ? movie.poster : movie.backdrop}
           alt="movie"
         />
       </div>
