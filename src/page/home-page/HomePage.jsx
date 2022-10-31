@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./css/HomePage.module.scss";
 import { movieList } from "../../component/testdata";
 import { Item } from "../../component/item/Item";
-import { Col } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 export const HomePage = () => {
   const featureList = movieList.filter((movie, index) => {
@@ -12,6 +12,21 @@ export const HomePage = () => {
 
   return (
     <div className="home">
+      <div className={styles.section__hero}>
+        <div className="row h-100 gx-0">
+          <Col lg={8}>
+            <Item movie={movieList[0]} layout="recommend-hero-xl" />
+          </Col>
+          <Col >
+            <div className="row gx-0 h-50">
+              <Item movie={movieList[2]} layout="recommend-hero-md" />
+            </div>
+            <div className="row gx-0 h-50">
+              <Item movie={movieList[3]} layout="recommend-hero-md" />
+            </div>
+          </Col>
+        </div>
+      </div>
       <div className={clsx("section", styles["section__highlight"])}>
         <div className="container">
           <div className={clsx(styles["section__heading"])}>
