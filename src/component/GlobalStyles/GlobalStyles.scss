@@ -33,6 +33,25 @@
     padding: 100px 0;
   }
 }
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 25px 11px;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: ease-in 0.15s;
+  &--secondary {
+    border: 2px solid var(--white-color);
+    color: var(--white-color);
+    &:hover {
+      background-color: var(--white-color);
+      color: var(--text-color);
+    }
+  }
+}
 
 @include media-breakpoint-down(md) {
   .section {
