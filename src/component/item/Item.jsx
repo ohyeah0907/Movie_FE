@@ -19,8 +19,12 @@ export const Item = memo((props) => {
       </div>
       {/* Layout content */}
       <div className={clsx(styles["item__content__overlay"])}>
-        <div className={clsx(styles.item__content)}>
-          <div className={clsx(styles["item__content"])}>
+        <div
+          className={clsx(styles.item__content, {
+            container: layout.includes("recommend"),
+          })}
+        >
+          <div className={clsx(styles["item__content-wrapper"])}>
             {/* Name and Rating */}
             <div className="d-flex">
               <div className={clsx(styles.item__name)}>{movie.name}</div>
@@ -84,9 +88,18 @@ export const Item = memo((props) => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className={clsx(styles["item__content-right"])}>
-            {/* Rating */}
+            {layout.includes("recommend") ? (
+              <span
+                className={clsx(
+                  "button button--secondary",
+                  styles.item__button
+                )}
+              >
+                Watch now
+              </span>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

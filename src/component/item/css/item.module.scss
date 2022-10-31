@@ -312,6 +312,64 @@
       left: 0;
     }
   }
+  &--recommend {
+    position: relative;
+    height: 100vh;
+    .item {
+      &__content {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        &-wrapper {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          gap: 16px 0;
+        }
+
+        color: var(--white-color);
+        &__overlay {
+          position: absolute;
+          display: flex;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-image: linear-gradient(
+            90deg,
+            rgba(#000, 0.5) 40%,
+            transparent
+          );
+        }
+      }
+      &__name {
+        display: -webkit-box;
+        font-size: 5rem;
+        line-height: 5rem;
+        letter-spacing: 4px;
+      }
+
+      &__star {
+        order: 1;
+        display: block;
+        font-size: 2.4rem;
+      }
+      &__genres {
+        order: 2;
+        display: flex;
+        font-size: 2rem;
+      }
+      &__overview {
+        order: 3;
+        display: -webkit-box;
+        font-size: 2rem;
+        -webkit-line-clamp: 6;
+      }
+      &__button {
+        order: 4;
+      }
+    }
+  }
 }
 
 @include media-breakpoint-down(xl) {
@@ -319,6 +377,86 @@
     &--normal {
       .item__imageWrapper {
         height: 100px;
+      }
+    }
+
+    &--normal-home {
+      .item__imageWrapper {
+        height: 100px;
+      }
+    }
+  }
+}
+@include media-breakpoint-down(lg) {
+  .item {
+    &--recommend {
+      .item {
+        &__content {
+          &-wrapper {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .item {
+    &--normal-home {
+      .item__imageWrapper {
+        height: 80px;
+      }
+    }
+    &--feature-home {
+      .item {
+        &__content {
+          justify-content: center;
+        }
+        &__name {
+          text-align: center;
+          padding: 20px 0;
+        }
+        &__star,
+        &__genres {
+          display: none;
+        }
+        &__content__overlay {
+          background-image: linear-gradient(180deg, transparent 60%, #000);
+          position: absolute;
+          display: flex;
+          align-items: flex-end;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+        }
+      }
+    }
+    &--recommend {
+      .item {
+        &__overview {
+          display: none;
+        }
+        &__imageWrapper {
+          &__content {
+            object-fit: cover;
+          }
+        }
+        &__content {
+          &__overlay {
+            background-color: rgba(#000, 0.3);
+          }
+        }
+        &__name {
+          text-align: center;
+        }
+        &__star {
+          display: none;
+        }
+        &__genres {
+          justify-content: center;
+        }
       }
     }
   }
