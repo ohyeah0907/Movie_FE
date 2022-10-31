@@ -40,6 +40,9 @@ export const HomePage = () => {
           </div>
         </div>
       </div>
+      <div className={clsx("section", styles.section__recommend)}>
+        <Item movie={movieList[0]} layout="recommend"></Item>
+      </div>
       <div className={clsx("section", styles["section__new"])}>
         <div className="container">
           <div className={clsx(styles["section__heading"])}>
@@ -48,20 +51,20 @@ export const HomePage = () => {
               Our most recently released movies.
             </div>
           </div>
-          <div className={clsx(styles.section__content)}>
+          <div className={clsx(styles.section__content, styles.movie__new)}>
             <div className={clsx("row", styles["section__content-wrapper"])}>
-              <Col xl={3}>
+              <Col lg={3} md={4} sm={0}>
                 <Item movie={movieList[0]} layout="feature-home" />
               </Col>
-              <div className={clsx("col", styles["movie__list-alt"])}>
+              <Col className={styles["movie__list-alt"]}>
                 <div className="row gx-2 gy-3">
                   {movieList.map((movie, index) => (
-                    <Col xl={3}>
+                    <Col lg={3} xs={4}>
                       <Item movie={movie} layout="normal-home" />
                     </Col>
                   ))}
                 </div>
-              </div>
+              </Col>
             </div>
           </div>
         </div>

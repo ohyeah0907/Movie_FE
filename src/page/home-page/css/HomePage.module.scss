@@ -24,6 +24,10 @@
       }
     }
   }
+  &__recommend {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 .movie {
   &__feature {
@@ -32,6 +36,14 @@
     }
     &-item {
       height: 500px;
+    }
+  }
+  &__new {
+    .movie {
+      &__list-alt {
+        max-height: 400px;
+        overflow: hidden;
+      }
     }
   }
 }
@@ -58,7 +70,14 @@
   .movie {
     &__feature {
       &-item {
-        height: 280px;
+        height: 320px;
+      }
+    }
+    &__new {
+      .movie {
+        &__list-alt {
+          margin: 12px 0;
+        }
       }
     }
   }
