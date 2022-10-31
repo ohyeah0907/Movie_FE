@@ -6,10 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export const Item = memo((props) => {
-  const { movie, layout = "normal" } = props;
+  const { movie, layout = "normal", size = "" } = props;
   return (
     <div className={clsx(styles.item, styles[`item--${layout}`])}>
-      {/* Image */}
       <div className={clsx(styles.item__imageWrapper)}>
         <img
           className={clsx(styles.item__imageWrapper__content)}
@@ -21,7 +20,7 @@ export const Item = memo((props) => {
       <div className={clsx(styles["item__content__overlay"])}>
         <div
           className={clsx(styles.item__content, {
-            container: layout.includes("recommend"),
+            container: layout.includes("recommend") && !layout.includes("hero"),
           })}
         >
           <div className={clsx(styles["item__content-wrapper"])}>
