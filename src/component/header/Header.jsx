@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { MainLogo, Burger } from '../Logo';
 
 export const Header = () => {
+  console.log('rerender');
   const [navHeader, setNavHeader] = useState(routes);
   const [active, setActive] = useState('Home');
   const [showSideBar, setShowSideBar] = useState(false);

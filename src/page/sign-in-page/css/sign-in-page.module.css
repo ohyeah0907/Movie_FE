@@ -1,0 +1,175 @@
+.signInPage {
+  position: relative;
+  background-image: url("https://assets.website-files.com/59f5ae906a27c400013267f0/5d2e08b2b78ea88af7876ace_Photo-16.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.signInPage__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: var(--black-color);
+  opacity: 0.3;
+  height: 100vh;
+}
+
+.signInPage__wrapper {
+  position: relative;
+  color: var(--white-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+  z-index: 1;
+}
+
+.signInPage__wrapper__modal {
+  width: 100%;
+  position: relative;
+}
+
+.signInPage__wrapper__modal__content {
+  position: relative;
+  margin: 0 auto;
+  background-color: transparent;
+  padding: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.signInPage__wrapper__modal__content__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: var(--black-color);
+  opacity: 0.7;
+  height: 100%;
+  z-index: -1;
+  border-radius: 15px;
+}
+
+.signInPage__wrapper__modal__content__heading {
+  font-size: 3rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.signInPage__wrapper__modal__content__heading__close {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  line-height: 0;
+  padding: 10px;
+  margin: 0;
+}
+
+.signInPage__wrapper__modal__content__heading__close:hover {
+  cursor: pointer;
+}
+
+.signInPage__wrapper__modal__content__heading__title {
+  width: 100%;
+}
+
+.signInPage__wrapper__modal__content__info {
+  font-size: 1.6rem;
+  padding: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px 0;
+}
+
+.signInPage__wrapper__modal__content__info input {
+  width: 100%;
+  outline: 0;
+  border: none;
+  border-bottom: 2px solid var(--gray-color);
+  background-color: transparent;
+  padding: 10px 20px 10px 25px;
+}
+
+.signInPage__wrapper__modal__content__info input:focus ~ .progressing {
+  width: 100%;
+}
+
+.signInPage__wrapper__modal__content__info .progressing {
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background-color: var(--yellow-color);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.signInPage__wrapper__modal__content__info__name {
+  position: relative;
+}
+
+.signInPage__wrapper__modal__content__info__name svg {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.signInPage__wrapper__modal__content__info__password {
+  position: relative;
+}
+
+.signInPage__wrapper__modal__content__info__password svg {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.signInPage__wrapper__modal__content__submitButton {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--light-green-dark-color);
+  font-size: 1.6rem;
+}
+
+.signInPage__wrapper__modal__content__form {
+  margin-top: 20px;
+}
+
+.signInPage__wrapper__modal__content__form__signIn {
+  border: 1px solid var(--yellow-color);
+  background-color: transparent;
+  width: 50%;
+  font-size: 1.6rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.signInPage__wrapper__modal__content__form__signIn:hover {
+  background-color: var(--yellow-color);
+  color: var(--black-color);
+}
+/*# sourceMappingURL=sign-in-page.module.css.map */

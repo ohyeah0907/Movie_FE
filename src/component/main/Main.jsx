@@ -18,7 +18,7 @@ export const Main = () => {
         <Route path="/category/:movieId" element={<DetailPage />} />
         <Route path="/list" element={<ListPage />} />
         <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
+        {/* <Route path="/sign-up" element={<SignUpPage />} /> */}
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="*" element={<ErrorPage />} />
