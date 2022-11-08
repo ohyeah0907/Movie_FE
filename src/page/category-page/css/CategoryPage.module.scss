@@ -1,0 +1,168 @@
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+.category {
+  background-color: var(--base-color);
+
+  &-nav {
+    padding: 8px 0;
+    background-color: var(--header-color);
+    &__title {
+      display: inline-block;
+      font-size: 3.2rem;
+      color: var(--white-color);
+      margin-right: 45px;
+    }
+    &__button {
+      background-color: #000;
+      padding: 0 8px;
+      font-size: 1.6rem;
+      font-weight: 600;
+      transition: ease-in 0.1s;
+      border: 1.5px solid var(--white-color);
+      color: var(--white-color);
+      &:hover {
+        background-color: transparent;
+      }
+
+      .icon {
+        margin-left: 20px;
+      }
+    }
+
+    &__wrapper {
+      position: relative;
+      width: fit-content;
+      &--focus .category-nav__menu {
+        display: flex !important;
+      }
+    }
+
+    &__menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #000;
+      min-width: 300px;
+      z-index: 100;
+
+      &-link {
+        display: block;
+        color: var(--white-color);
+        font-size: 1.5rem;
+        padding: 6px 0;
+        width: 100%;
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+      &-close {
+        display: none;
+      }
+    }
+  }
+}
+.section {
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+.movie {
+  &-title {
+    font-size: 4rem;
+    color: var(--white-color);
+    margin: 0 0 30px;
+
+    &--feature {
+      text-align: center;
+      font-size: 5rem;
+      font-weight: 600;
+    }
+  }
+  &-feature {
+    padding-bottom: 30px;
+    &__wrapper {
+      width: 1000px;
+      margin: 0 auto;
+    }
+    &__list {
+      height: fit-content;
+      gap: 12px 0;
+    }
+    &__item {
+      height: 400px;
+    }
+  }
+  &-default {
+    &__item {
+      height: fit-content;
+    }
+  }
+}
+
+// Table and Phone
+@include media-breakpoint-down(xl) {
+  .movie-feature {
+    &__wrapper {
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
+
+// Phone
+
+@include media-breakpoint-down(md) {
+  .category {
+    position: relative;
+    &__wrapper {
+      justify-content: center;
+    }
+    &-nav {
+      &__wrapper {
+        position: static;
+        &--focus .category-nav__menu {
+          display: block !important;
+        }
+      }
+      &__title {
+        font-size: 2rem;
+      }
+      &__button {
+        border: none;
+        background-color: transparent;
+      }
+      &__menu {
+        --backgroundColor: var(--base-color);
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        padding-top: 20px;
+        background-color: rgba(#081b27, 0.9);
+        &-link {
+          text-align: center;
+          font-size: 2rem;
+          padding: 0;
+          margin: 16px 0;
+        }
+        &-close {
+          display: flex;
+          justify-content: flex-end;
+
+          &-btn {
+            font-size: 2rem;
+            color: #999;
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+  }
+  .movie {
+    &-feature {
+      .movie-title {
+        font-size: 3rem;
+      }
+    }
+  }
+}

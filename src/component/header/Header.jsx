@@ -16,7 +16,6 @@ export const Header = () => {
   const handleShow = () => {
     setShowSideBar(!showSideBar);
   };
-
   const handleSignOut = () => {
     user.handleUser({});
     localStorage.clear();
@@ -24,7 +23,6 @@ export const Header = () => {
   };
 
   const handleActive = (text) => {
-    console.log(text);
     setActive(text);
   };
 
@@ -39,6 +37,7 @@ export const Header = () => {
       });
     });
   };
+
   useEffect(() => {
     if (user.name) reverseHide();
   }, [user]);
@@ -51,38 +50,27 @@ export const Header = () => {
           styles.container
         )}
       >
-        <Link
-          className={clsx(
-            'd-flex align-items-center link',
-            styles.navbar__logo
-          )}
-          to="/"
-        >
-          <MainLogo />
-          <h1 className={clsx(styles.navbar__text)}>
-            <span className="bold">Rest</span> and{' '}
-            <span className="bold">Relax</span>
-          </h1>
-        </Link>
-        <div
-          className={clsx(
-            'd-xl-none d-lg-none d-md-block text-white z',
-            styles.burger__btn,
-            showSideBar ? styles['burger__btn--over'] : ''
-          )}
-          onClick={() => {
-            handleShow();
-          }}
-        >
-          <Burger size="30" fill="#fff"></Burger>
-        </div>
-        <ul className={clsx('align-items-center', styles.navbar__nav)}>
-          {user.name ? <div>{user.name}</div> : ''}
-          {navHeader.map((route) => {
-            if (route.hasOwnProperty('hide')) {
-              if (route.hide === false) {
+        <div className={clsx('d-flex h-100', styles['navbar__nav-left'])}>
+          <Link
+            onClick={() => setActive('Home')}
+            className={clsx(
+              'd-inline-flex align-items-center link',
+              styles.navbar__logo
+            )}
+            to="/"
+          >
+            <MainLogo />
+          </Link>
+          <div
+            className={clsx(
+              'd-inline-flex align-items-center',
+              styles.navbar__nav
+            )}
+          >
+            {navHeader.map((route) => {
+              if (route.hasOwnProperty('hide') === false) {
                 return (
-                  <li className={styles.navItem} key={route.text}>
+                  <span className={styles.navItem} key={route.text}>
                     <Link
                       className={clsx(
                         'link',
@@ -96,28 +84,49 @@ export const Header = () => {
                     >
                       {route.text}
                     </Link>
-                  </li>
+                  </span>
                 );
               }
-            } else
-              return (
-                <li className={styles.navItem} key={route.text}>
-                  <Link
-                    className={clsx(
-                      'link',
-                      styles.navItem__link,
-                      route.text === active
-                        ? styles['navItem__link--active']
-                        : ''
-                    )}
-                    to={route.path}
-                    onClick={() => handleActive(route.text)}
-                  >
-                    {route.text}
-                  </Link>
-                </li>
-              );
-            return null;
+            })}
+          </div>
+        </div>
+        <div
+          id="burger"
+          className={clsx(
+            'd-xl-none d-lg-none d-md-block text-white z',
+            styles.burger__btn,
+            showSideBar ? styles['burger__btn--over'] : ''
+          )}
+          onClick={() => {
+            handleShow();
+          }}
+        >
+          <Burger size="30" fill="#fff"></Burger>
+        </div>
+        <ul id="nav" className={clsx('align-items-center', styles.navbar__nav)}>
+          {user.name ? <div>{user.name}</div> : ''}
+          {navHeader.map((route) => {
+            if (route.hasOwnProperty('hide')) {
+              if (route.hide === false) {
+                return (
+                  <span className={styles.navItem} key={route.text}>
+                    <Link
+                      className={clsx(
+                        'link',
+                        styles.navItem__link,
+                        route.text === active
+                          ? styles['navItem__link--active']
+                          : ''
+                      )}
+                      to={route.path}
+                      onClick={() => handleActive(route.text)}
+                    >
+                      {route.text}
+                    </Link>
+                  </span>
+                );
+              }
+            }
           })}
           {user.name ? <button onClick={handleSignOut}>Sign out</button> : ''}
         </ul>

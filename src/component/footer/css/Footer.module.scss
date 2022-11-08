@@ -1,0 +1,89 @@
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+.footer {
+  padding-bottom: 0 !important;
+  background-image: linear-gradient(180deg, #0f355c, rgba(8, 27, 39, 0.8)),
+    url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cea6768a-2841-42e6-84d2-b32883c7d6da/decsx4s-0fd3a9fc-d074-44a6-969a-f1949f9fa163.png/v1/fill/w_1600,h_900,strp/movie_posters_wallpaper_8k_by_dskstudiosl_decsx4s-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAwIiwicGF0aCI6IlwvZlwvY2VhNjc2OGEtMjg0MS00MmU2LTg0ZDItYjMyODgzYzdkNmRhXC9kZWNzeDRzLTBmZDNhOWZjLWQwNzQtNDRhNi05NjlhLWYxOTQ5ZjlmYTE2My5wbmciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.nqDRS6Z2VZMGfrD3Slp0p5B6OlLELAWd_EvadL60qk8);
+  background-repeat: no-repeat;
+  background-size: auto, cover;
+  font-size: 1.5rem;
+
+  &-nav {
+    &__wrapper {
+      width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  &-title {
+    font-size: 2.4rem;
+    color: var(--white-color);
+    margin-bottom: 30px;
+  }
+
+  &-link {
+    display: block;
+    margin-top: 15px;
+    color: #74a8cf;
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+  &-social {
+    &-link {
+      display: block;
+      margin-top: 15px;
+      color: #74a8cf;
+    }
+    &-title {
+      display: inline-block;
+    }
+    &-title.icon {
+      margin-right: 8px;
+      color: var(--primary-color) !important;
+    }
+    &-link:hover &-title {
+      color: var(--white-color);
+    }
+  }
+
+  .bottom-footer {
+    margin-top: 80px;
+    padding: 40px 0;
+    border-top: 1px solid rgba(#888, 0.2);
+    background-color: transparent;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #8f9da7;
+    &-paragraph {
+      display: inline-block;
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+
+    &-link {
+      margin: 0 5px;
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .footer {
+    &-nav {
+      &__wrapper {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .footer {
+    &-col {
+      padding-top: 40px;
+      text-align: center;
+    }
+  }
+}
