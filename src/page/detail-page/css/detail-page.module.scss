@@ -43,7 +43,7 @@
         margin: 0 auto;
         &__rating {
           border-radius: 50%;
-          background-color: var(--yellow-color);
+          background-color: var(--primary-color);
           font-size: 2rem;
           width: fit-content;
           height: fit-content;
@@ -94,7 +94,7 @@
               width: 50%;
               white-space: nowrap;
               &__content {
-                color: var(--yellow-color);
+                color: var(--primary-color);
               }
             }
           }
@@ -112,7 +112,7 @@
               }
             }
             &__icon {
-              color: var(--yellow-color);
+              color: var(--primary-color);
               margin-right: 4px;
             }
           }
@@ -144,7 +144,7 @@
             background-color: #d9cb50;
             &:hover {
               opacity: 1;
-              background-color: var(--yellow-color);
+              background-color: var(--primary-color);
             }
           }
           .buttonWishList {
@@ -172,7 +172,7 @@
         &__heading {
           width: fit-content;
           font-size: 2.9rem;
-          color: var(--yellow-color);
+          color: var(--primary-color);
           margin-bottom: 50px;
         }
         &__video {

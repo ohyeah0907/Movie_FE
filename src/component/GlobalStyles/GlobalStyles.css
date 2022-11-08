@@ -1,8 +1,14 @@
 :root {
   --primary-color: #f1b722;
   --white-color: #fff;
+  --header-color: #0c2738;
   --base-color: #081b27;
   --text-color: #333;
+  --black-color: #040404;
+  --green-dark-color: #081b27;
+  --light-green-dark-color: #355569;
+  --gray-color: #d8e1e8b0;
+  --dark-color: #081b27;
 }
 
 .link {
@@ -20,4 +26,50 @@
 .bold {
   font-weight: 600;
 }
-/*# sourceMappingURL=globalstyles.css.map */
+
+.section {
+  font-family: inherit;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  background-color: var(--base-color);
+}
+
+.section--footer {
+  padding: 100px 0;
+}
+
+.button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 14px 25px 11px;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 4px;
+  -webkit-transition: ease-in 0.15s;
+  transition: ease-in 0.15s;
+}
+
+.button--secondary {
+  border: 2px solid var(--white-color);
+  color: var(--white-color);
+}
+
+.button--secondary:hover {
+  background-color: var(--white-color);
+  color: var(--text-color);
+}
+
+@media (max-width: 767.98px) {
+  .section {
+    padding: 30px 20px;
+  }
+}
+/*# sourceMappingURL=GlobalStyles.css.map */

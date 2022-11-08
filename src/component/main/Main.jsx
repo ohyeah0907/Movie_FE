@@ -9,6 +9,7 @@ import {
   SignInPage,
   SignUpPage,
   AdminPage,
+  ErrorPage,
 } from '../../page';
 
 // import { CategoryPage } from "../../page/category-page/CategoryPage";

@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #0c2738;
+  background-color: var(--header-color);
 }
 
 .navbar .container {
@@ -9,10 +9,12 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 80px;
 }
 
 .navbar__logo {
   z-index: 100;
+  margin-left: -24px;
 }
 
 .navbar__nav {
@@ -21,34 +23,7 @@
   display: flex;
   margin: 0;
   padding: 0;
-  height: 80px;
-}
-
-.navbar__nav .navItem {
-  margin-left: 40px;
-  height: 100%;
-  cursor: pointer;
-}
-
-.navbar__nav .navItem__link {
-  display: block;
-  color: #899e9e;
-  height: 100%;
-  font-weight: 600;
-  font-size: 1.6rem;
-  padding: 27px 0 0 0;
-  border-bottom: 2px solid transparent;
-  -webkit-transition: 0.2s ease-in;
-  transition: 0.2s ease-in;
-}
-
-.navbar__nav .navItem__link:hover {
-  color: var(--white-color);
-}
-
-.navbar__nav .navItem__link--active {
-  color: var(--white-color);
-  border-color: var(--primary-color) !important;
+  z-index: 150;
 }
 
 .navbar__text {
@@ -56,6 +31,26 @@
   font-size: 3rem;
   color: var(--white-color);
   font-weight: 300;
+}
+
+.navbar .navItem__link {
+  margin-right: 40px;
+  display: block;
+  color: #899e9e;
+  height: 100%;
+  font-weight: 600;
+  font-size: 1.6rem;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.navbar .navItem__link:hover {
+  color: var(--white-color);
+}
+
+.navbar .navItem__link--active {
+  color: var(--white-color);
 }
 
 @media (max-width: 991.98px) {
@@ -70,11 +65,11 @@
     background-color: var(--base-color);
     -webkit-box-shadow: -4px 0 16px rgba(17, 17, 17, 0.3);
             box-shadow: -4px 0 16px rgba(17, 17, 17, 0.3);
-    display: none;
+    display: block;
     top: 0;
     right: 0;
     padding: 50px;
-    height: 100vh;
+    min-height: 100vh;
     width: 360px;
     -webkit-transform: translateX(100%);
             transform: translateX(100%);
@@ -98,9 +93,8 @@
     font-size: 2rem;
   }
   .burger__btn {
-    z-index: 100;
+    z-index: 200;
     padding: 10px;
-    height: 100%;
   }
   .burger__btn--over {
     background-color: rgba(136, 136, 136, 0.5);
@@ -108,25 +102,6 @@
   .burger__btn--over ~ .navbar__nav {
     -webkit-transform: translateX(0);
             transform: translateX(0);
-    display: block;
-  }
-}
-
-@-webkit-keyframes slideIn {
-  from {
-    right: -50%;
-  }
-  to {
-    right: 0;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    right: -50%;
-  }
-  to {
-    right: 0;
   }
 }
 /*# sourceMappingURL=Header.module.css.map */

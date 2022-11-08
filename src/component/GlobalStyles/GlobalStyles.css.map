@@ -1,9 +1,38 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,eAAe,CAAA,QAAC;EAChB,aAAa,CAAA,KAAC;EACd,YAAY,CAAA,QAAC;EACb,YAAY,CAAA,KAAC;CACd;;AACD,AAAA,KAAK,CAAC;EACJ,eAAe,EAAE,IAAI;CACtB;;AACD,AACE,UADQ,AACP,QAAQ,CAAC;EACR,OAAO,EAAE,IAAI;CACd;;AAHH,AAIE,UAJQ,AAIP,OAAO,CAAC;EACP,OAAO,EAAE,IAAI;CACd;;AAEH,AAAA,KAAK,CAAC;EACJ,WAAW,EAAE,GAAG;CACjB",
+    "mappings": "AAIA,AAAA,KAAK,CAAC;EACJ,eAAe,CAAA,QAAC;EAChB,aAAa,CAAA,KAAC;EACd,cAAc,CAAA,QAAC;EACf,YAAY,CAAA,QAAC;EACb,YAAY,CAAA,KAAC;EACb,aAAa,CAAA,QAAC;EACd,kBAAkB,CAAA,QAAC;EACnB,wBAAwB,CAAA,QAAC;EACzB,YAAY,CAAA,UAAC;EACb,YAAY,CAAA,QAAC;CACd;;AACD,AAAA,KAAK,CAAC;EACJ,eAAe,EAAE,IAAI;CACtB;;AACD,AACE,UADQ,AACP,QAAQ,CAAC;EACR,OAAO,EAAE,IAAI;CACd;;AAHH,AAIE,UAJQ,AAIP,OAAO,CAAC;EACP,OAAO,EAAE,IAAI;CACd;;AAEH,AAAA,KAAK,CAAC;EACJ,WAAW,EAAE,GAAG;CACjB;;AAED,AAAA,QAAQ,CAAC;EACP,WAAW,EAAE,OAAO;EACpB,WAAW,EAAE,IAAI;EACjB,cAAc,EAAE,IAAI;EACpB,gBAAgB,EAAE,iBAAiB;CAIpC;;AAHE,AAAD,gBAAS,CAAC;EACR,OAAO,EAAE,OAAO;CACjB;;AAEH,AAAA,OAAO,CAAC;EACN,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;EACnB,OAAO,EAAE,cAAc;EACvB,SAAS,EAAE,MAAM;EACjB,cAAc,EAAE,SAAS;EACzB,WAAW,EAAE,GAAG;EAChB,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,aAAa;CAS1B;;AARE,AAAD,kBAAY,CAAC;EACX,MAAM,EAAE,GAAG,CAAC,KAAK,CAAC,kBAAkB;EACpC,KAAK,EAAE,kBAAkB;CAK1B;;AAPA,AAGC,kBAHU,AAGT,MAAM,CAAC;EACN,gBAAgB,EAAE,kBAAkB;EACpC,KAAK,EAAE,iBAAiB;CACzB;;AMoBD,MAAM,EAAE,SAAS,EAAE,QAAQ;ENf7B,AAAA,QAAQ,CAAC;IACP,OAAO,EAAE,SAAS;GACnB",
     "sources": [
-        "globalstyles.scss"
+        "GlobalStyles.scss",
+        "../../../node_modules/bootstrap/scss/_functions.scss",
+        "../../../node_modules/bootstrap/scss/_variables.scss",
+        "../../../node_modules/bootstrap/scss/_mixins.scss",
+        "../../../node_modules/bootstrap/scss/vendor/_rfs.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_deprecate.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_breakpoints.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_color-scheme.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_image.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_resize.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_visually-hidden.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_reset-text.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_text-truncate.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_utilities.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_alert.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_backdrop.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_buttons.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_caret.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_pagination.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_lists.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_list-group.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_forms.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_table-variants.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_border-radius.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_box-shadow.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_gradients.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_transition.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_clearfix.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_container.scss",
+        "../../../node_modules/bootstrap/scss/mixins/_grid.scss"
     ],
     "names": [],
-    "file": "globalstyles.css"
+    "file": "GlobalStyles.css"
 }

@@ -50,7 +50,7 @@
 
 .detailPage__wrapper__generalInfo__image__rating {
   border-radius: 50%;
-  background-color: var(--yellow-color);
+  background-color: var(--primary-color);
   font-size: 2rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -127,7 +127,7 @@
 }
 
 .detailPage__wrapper__generalInfo__content__starGenres .star__inner__content {
-  color: var(--yellow-color);
+  color: var(--primary-color);
 }
 
 .detailPage__wrapper__generalInfo__content__starGenres .genres {
@@ -148,7 +148,7 @@
 }
 
 .detailPage__wrapper__generalInfo__content__starGenres .genres__icon {
-  color: var(--yellow-color);
+  color: var(--primary-color);
   margin-right: 4px;
 }
 
@@ -184,7 +184,7 @@
 
 .detailPage__wrapper__generalInfo__content__button .buttonWatch:hover {
   opacity: 1;
-  background-color: var(--yellow-color);
+  background-color: var(--primary-color);
 }
 
 .detailPage__wrapper__generalInfo__content__button .buttonWishList {
@@ -224,7 +224,7 @@
   width: -moz-fit-content;
   width: fit-content;
   font-size: 2.9rem;
-  color: var(--yellow-color);
+  color: var(--primary-color);
   margin-bottom: 50px;
 }
 

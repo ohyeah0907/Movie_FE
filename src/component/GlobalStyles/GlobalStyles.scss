@@ -1,6 +1,6 @@
-@import "../../../node_modules/bootstrap/scss/functions";
-@import "../../../node_modules/bootstrap/scss/variables";
-@import "../../../node_modules/bootstrap/scss/mixins";
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../../node_modules/bootstrap/scss/mixins';
 
 :root {
   --primary-color: #f1b722;
@@ -8,6 +8,11 @@
   --header-color: #0c2738;
   --base-color: #081b27;
   --text-color: #333;
+  --black-color: #040404;
+  --green-dark-color: #081b27;
+  --light-green-dark-color: #355569;
+  --gray-color: #d8e1e8b0;
+  --dark-color: #081b27;
 }
 .link {
   text-decoration: none;
