@@ -120,7 +120,7 @@
   bottom: 0;
   left: 0;
   width: 0;
-  background-color: var(--yellow-color);
+  background-color: var(--primary-color);
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -160,7 +160,7 @@
 }
 
 .signInPage__wrapper__modal__content__form__signIn {
-  border: 1px solid var(--yellow-color);
+  border: 1px solid var(--primary-color);
   background-color: transparent;
   width: 50%;
   font-size: 1.6rem;
@@ -169,7 +169,7 @@
 }
 
 .signInPage__wrapper__modal__content__form__signIn:hover {
-  background-color: var(--yellow-color);
+  background-color: var(--primary-color);
   color: var(--black-color);
 }
 /*# sourceMappingURL=sign-in-page.module.css.map */
