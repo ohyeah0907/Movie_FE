@@ -1,12 +1,22 @@
-import clsx from 'clsx';
-import styles from './css/CategoryPage.module.scss';
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Action } from '@remix-run/router';
-import { Item } from '../../component/item/Item';
-import { movieList, categoryList } from '../../component/testdata';
+import clsx from "clsx";
+import styles from "./css/CategoryPage.module.scss";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { Action } from "@remix-run/router";
+import { Item } from "../../component/item/Item";
+import { movieList, categoryList } from "../../component/testdata";
 
 export const CategoryPage = () => {
+  const [data, setData] = useState(movieList);
+
+  const [currentGenre, setCurrentGenre] = useState("Genres");
+  const [showCategoryMenu, setShowCatergoryMenu] = useState(false);
+
+  const handleChangeGenre = (selectedGenre) => {
+    setCurrentGenre(selectedGenre);
+    setShowCatergoryMenu(false);
+  };
+
   const featureList = movieList.filter((movie, index) => {
     return movie.rating > 50 && index < 4 ? movie : undefined;
   });
@@ -23,49 +33,56 @@ export const CategoryPage = () => {
 
   return (
     <div className={clsx(styles.category)}>
-      <div className={clsx(styles['category-nav'])}>
+      <div className={clsx(styles["category-nav"])}>
         <div
           className={clsx(
-            'container d-flex align-items-center',
-            styles['category__wrapper']
+            "container d-flex align-items-center",
+            styles["category__wrapper"]
           )}
         >
-          <div className={clsx(styles['category-nav__title'])}>
+          <div className={clsx(styles["category-nav__title"])}>
             Category Type
           </div>
           <div
-            className={clsx(
-              styles['category-nav__wrapper'],
-              styles['category-nav__wrapper--focus']
-            )}
+            className={clsx([
+              styles["category-nav__wrapper"],
+              showCategoryMenu ? styles["category-nav__wrapper--focus"] : "",
+            ])}
           >
-            <div className={clsx(styles['category-nav__button'])}>
-              Genres{' '}
-              <i className={clsx('fa-solid fa-caret-down', styles.icon)}></i>
+            <div
+              className={clsx(
+                "d-flex justify-content-between align-items-center",
+                styles["category-nav__button"]
+              )}
+              onClick={() => {
+                setShowCatergoryMenu(!showCategoryMenu);
+                console.log(showCategoryMenu);
+              }}
+            >
+              {currentGenre}
+              <i className={clsx("fa-solid fa-caret-down", styles.icon)}></i>
             </div>
             <div
-              className={clsx('d-none row mx-0', styles['category-nav__menu'])}
+              className={clsx("d-none row mx-0", styles["category-nav__menu"])}
             >
-              <div className={styles['category-nav__menu-close']}>
-                <span className={styles['category-nav__menu-close-btn']}>
+              <div className={styles["category-nav__menu-close"]}>
+                <span className={styles["category-nav__menu-close-btn"]}>
                   Exit
                 </span>
               </div>
               {menuColumns.map((menuCol, index) => (
                 <div
                   key={index}
-                  className={clsx('col', styles['category-nav__menu-col'])}
+                  className={clsx("col", styles["category-nav__menu-col"])}
                 >
                   {menuCol.map((menuLink, index) => (
-                    <Link
-                      key={index}
-                      className={clsx(
-                        'link',
-                        styles['category-nav__menu-link']
-                      )}
+                    <div
+                      key={menuLink.name}
+                      className={clsx(styles["category-nav__menu-link"])}
+                      onClick={() => handleChangeGenre(menuLink.name)}
                     >
                       {menuLink.name}
-                    </Link>
+                    </div>
                   ))}
                 </div>
               ))}
@@ -75,26 +92,26 @@ export const CategoryPage = () => {
       </div>
       <div className="content-section">
         <div
-          className={clsx('container', styles.section, styles['movie-feature'])}
+          className={clsx("container", styles.section, styles["movie-feature"])}
         >
-          <div className={clsx(styles['movie-feature__wrapper'])}>
+          <div className={clsx(styles["movie-feature__wrapper"])}>
             <div
               className={clsx(
-                styles['movie-title'],
-                styles['movie-title--feature']
+                styles["movie-title"],
+                styles["movie-title--feature"]
               )}
             >
               Featuring Movies
             </div>
             <div
-              className={clsx('row flex-wrap', styles['movie-feature__list'])}
+              className={clsx("row flex-wrap", styles["movie-feature__list"])}
             >
               {featureList.map((movie, index) => (
                 <div
                   key={index}
                   className={clsx(
-                    'col-md-3 col-6 ',
-                    styles['movie-feature__item']
+                    "col-md-3 col-6 ",
+                    styles["movie-feature__item"]
                   )}
                 >
                   <Item movie={movie} layout="feature" />
@@ -102,18 +119,18 @@ export const CategoryPage = () => {
               ))}
             </div>
           </div>
-          <div className={clsx(styles['movie-default'])}>
+          <div className={clsx(styles["movie-default"])}>
             <div className={clsx(styles.section)}>
-              <div className={clsx(styles['movie-title'])}>Movies</div>
+              <div className={clsx(styles["movie-title"])}>Movies</div>
               <div
-                className={clsx('row flex-wrap', styles['movie-default__list'])}
+                className={clsx("row flex-wrap", styles["movie-default__list"])}
               >
                 {movieList.map((movie, index) => (
                   <div
                     key={index}
                     className={clsx(
-                      'col-lg-2 col-md-3 col-sm-4 col-6',
-                      styles['movie-default__item']
+                      "col-lg-2 col-md-3 col-sm-4 col-6",
+                      styles["movie-default__item"]
                     )}
                   >
                     <Item movie={movie} layout="normal" />
