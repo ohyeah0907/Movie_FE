@@ -1,6 +1,6 @@
-@import '../../../node_modules/bootstrap/scss/functions';
-@import '../../../node_modules/bootstrap/scss/variables';
-@import '../../../node_modules/bootstrap/scss/mixins';
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
 
 .navbar {
   background-color: var(--header-color);
@@ -27,7 +27,7 @@
   }
   .navItem {
     &__link {
-      margin-right: 40px;
+      margin-left: 40px;
       display: block;
       color: #899e9e;
       height: 100%;
