@@ -23,6 +23,7 @@
       border: 1.5px solid var(--white-color);
       color: var(--white-color);
       &:hover {
+        cursor: pointer;
         background-color: transparent;
       }
 

@@ -1,28 +1,44 @@
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./css/HomePage.module.scss";
 import { movieList } from "../../component/testdata";
 import { Item } from "../../component/item/Item";
 import { Col, Row } from "react-bootstrap";
+import { useMemo } from "react";
 
 export const HomePage = () => {
   const featureList = movieList.filter((movie, index) => {
     return movie.rating > 50 && index < 4 ? movie : undefined;
   });
 
+  const randomHerroList = () => {
+    const randomList = [];
+    while (randomList.length < 3) {
+      const randomIndex = Math.floor(Math.random() * movieList.length);
+      if (randomList.includes(randomIndex) === false) {
+        console.log(randomIndex);
+        randomList.push(movieList[randomIndex]);
+      } else {
+        console.log("trung hop");
+      }
+    }
+    return randomList;
+  };
+  let random = randomHerroList();
+
   return (
     <div className="home">
       <div className={styles.section__hero}>
-        <div className="row h-100 gx-0">
-          <Col lg={8}>
-            <Item movie={movieList[0]} layout="recommend-hero-xl" />
+        <div className={clsx("row h-100 gx-0", styles.hero__content)}>
+          <Col lg={8} sm={12}>
+            <Item movie={random[0]} layout="recommend-hero-xl" />
           </Col>
-          <Col >
+          <Col lg={4} sm={12}>
             <div className="row gx-0 h-50">
-              <Item movie={movieList[2]} layout="recommend-hero-md" />
+              <Item movie={random[1]} layout="recommend-hero-md" />
             </div>
             <div className="row gx-0 h-50">
-              <Item movie={movieList[3]} layout="recommend-hero-md" />
+              <Item movie={random[2]} layout="recommend-hero-md" />
             </div>
           </Col>
         </div>
@@ -68,13 +84,10 @@ export const HomePage = () => {
           </div>
           <div className={clsx(styles.section__content, styles.movie__new)}>
             <div className={clsx("row", styles["section__content-wrapper"])}>
-              <Col lg={3} md={4} sm={0}>
-                <Item movie={movieList[0]} layout="feature-home" />
-              </Col>
               <Col className={styles["movie__list-alt"]}>
                 <div className="row gx-2 gy-3">
                   {movieList.map((movie, index) => (
-                    <Col lg={3} xs={4}>
+                    <Col lg={2} xs={4}>
                       <Item movie={movie} layout="normal-home" />
                     </Col>
                   ))}
