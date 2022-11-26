@@ -1,0 +1,28 @@
+.swiper {
+  height: 90vh;
+  position: relative;
+  &Navigation {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 5%;
+    z-index: 100;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 4rem;
+    color: rgba(#777, 0.6);
+    cursor: pointer;
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    &--next {
+      right: 0;
+    }
+    &--previous {
+      left: 0;
+    }
+  }
+}
