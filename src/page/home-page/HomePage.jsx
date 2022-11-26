@@ -4,44 +4,17 @@ import styles from "./css/HomePage.module.scss";
 import { movieList } from "../../component/testdata";
 import { Item } from "../../component/item/Item";
 import { Col, Row } from "react-bootstrap";
-import { useMemo } from "react";
+import { HeroSlider } from "../../component/slider";
 
 export const HomePage = () => {
   const featureList = movieList.filter((movie, index) => {
     return movie.rating > 50 && index < 4 ? movie : undefined;
   });
 
-  const randomHerroList = () => {
-    const randomList = [];
-    while (randomList.length < 3) {
-      const randomIndex = Math.floor(Math.random() * movieList.length);
-      if (randomList.includes(randomIndex) === false) {
-        console.log(randomIndex);
-        randomList.push(movieList[randomIndex]);
-      } else {
-        console.log("trung hop");
-      }
-    }
-    return randomList;
-  };
-  let random = randomHerroList();
-
   return (
     <div className="home">
       <div className={styles.section__hero}>
-        <div className={clsx("row h-100 gx-0", styles.hero__content)}>
-          <Col lg={8} sm={12}>
-            <Item movie={random[0]} layout="recommend-hero-xl" />
-          </Col>
-          <Col lg={4} sm={12}>
-            <div className="row gx-0 h-50">
-              <Item movie={random[1]} layout="recommend-hero-md" />
-            </div>
-            <div className="row gx-0 h-50">
-              <Item movie={random[2]} layout="recommend-hero-md" />
-            </div>
-          </Col>
-        </div>
+        <HeroSlider></HeroSlider>
       </div>
       <div className={clsx("section", styles["section__highlight"])}>
         <div className="container">
