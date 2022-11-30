@@ -1,6 +1,6 @@
-@import '../../../node_modules/bootstrap/scss/functions';
-@import '../../../node_modules/bootstrap/scss/variables';
-@import '../../../node_modules/bootstrap/scss/mixins';
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
 
 :root {
   --primary-color: #f1b722;
@@ -13,6 +13,7 @@
   --light-green-dark-color: #355569;
   --gray-color: #d8e1e8b0;
   --dark-color: #081b27;
+  --red-color: #f5474a;
 }
 .link {
   text-decoration: none;
@@ -56,10 +57,22 @@
       color: var(--text-color);
     }
   }
+  &--favourite {
+    border: 2px solid var(--red-color);
+    color: var(--red-color);
+    background-color: rgba(#f36e70, 0.2);
+    &:hover {
+      background-color: var(--red-color);
+      color: var(--white-color);
+    }
+  }
 }
 
 @include media-breakpoint-down(md) {
   .section {
     padding: 30px 20px;
+  }
+  .button {
+    font-size: 1.2rem;
   }
 }
