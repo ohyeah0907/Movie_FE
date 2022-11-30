@@ -1,7 +1,11 @@
 @import "../../../../node_modules/bootstrap/scss/functions";
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../../node_modules/bootstrap/scss/mixins";
+.home {
+  background-color: var(--base-color);
+}
 .section {
+  background-color: var(--base-color);
   &__heading {
     margin-bottom: 40px;
   }
@@ -23,6 +27,9 @@
         letter-spacing: 4px;
       }
     }
+  }
+  &__hero {
+    margin-bottom: 30px;
   }
   &__recommend {
     height: 100vh;

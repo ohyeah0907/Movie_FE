@@ -5,6 +5,7 @@ import { movieList } from "../../component/testdata";
 import { Item } from "../../component/item/Item";
 import { Col, Row } from "react-bootstrap";
 import { HeroSlider } from "../../component/slider";
+import { NormalItem, HighlightItem } from "../../component/item";
 
 export const HomePage = () => {
   const featureList = movieList.filter((movie, index) => {
@@ -13,7 +14,7 @@ export const HomePage = () => {
 
   return (
     <div className="home">
-      <div className={styles.section__hero}>
+      <div className={clsx(styles.section, styles.section__hero)}>
         <HeroSlider></HeroSlider>
       </div>
       <div className={clsx("section", styles["section__highlight"])}>
@@ -38,14 +39,14 @@ export const HomePage = () => {
                   styles["movie__feature-item"]
                 )}
               >
-                <Item movie={movie} layout="feature"></Item>
+                <NormalItem movie={movie} layout="feature"></NormalItem>
               </div>
             ))}
           </div>
         </div>
       </div>
       <div className={clsx("section", styles.section__recommend)}>
-        <Item movie={movieList[0]} layout="recommend"></Item>
+        <HighlightItem movie={movieList[0]} layout="recommend"></HighlightItem>
       </div>
       <div className={clsx("section", styles["section__new"])}>
         <div className="container">
@@ -61,7 +62,7 @@ export const HomePage = () => {
                 <div className="row gx-2 gy-3">
                   {movieList.map((movie, index) => (
                     <Col lg={2} xs={4}>
-                      <Item movie={movie} layout="normal-home" />
+                      <NormalItem movie={movie} layout="normal-home" />
                     </Col>
                   ))}
                 </div>
