@@ -3,9 +3,9 @@ import styles from "./css/CategoryPage.module.scss";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Action } from "@remix-run/router";
-import { Item } from "../../component/item/Item";
 import { movieList, categoryList } from "../../component/testdata";
 
+import { NormalItem } from "../../component/item";
 export const CategoryPage = () => {
   const [data, setData] = useState(movieList);
 
@@ -114,7 +114,7 @@ export const CategoryPage = () => {
                     styles["movie-feature__item"]
                   )}
                 >
-                  <Item movie={movie} layout="feature" />
+                  <NormalItem movie={movie} layout="feature" />
                 </div>
               ))}
             </div>
@@ -133,7 +133,7 @@ export const CategoryPage = () => {
                       styles["movie-default__item"]
                     )}
                   >
-                    <Item movie={movie} layout="normal" />
+                    <NormalItem movie={movie} />
                   </div>
                 ))}
               </div>

@@ -2,7 +2,6 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import styles from "./css/HomePage.module.scss";
 import { movieList } from "../../component/testdata";
-import { Item } from "../../component/item/Item";
 import { Col, Row } from "react-bootstrap";
 import { FadeSlider, HeroSlider } from "../../component/slider";
 import { NormalItem, HighlightItem } from "../../component/item";
