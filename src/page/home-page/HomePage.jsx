@@ -2,45 +2,19 @@ import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import styles from './css/HomePage.module.scss';
 import { movieList } from '../../component/testdata';
-import { Item } from '../../component/item/Item';
 import { Col, Row } from 'react-bootstrap';
-import { useMemo } from 'react';
+import { FadeSlider, HeroSlider } from '../../component/slider';
+import { NormalItem, HighlightItem } from '../../component/item';
 
 export const HomePage = () => {
   const featureList = movieList.filter((movie, index) => {
     return movie.rating > 50 && index < 4 ? movie : undefined;
   });
 
-  const randomHerroList = () => {
-    const randomList = [];
-    while (randomList.length < 3) {
-      const randomIndex = Math.floor(Math.random() * movieList.length);
-      if (randomList.includes(randomIndex) === false) {
-        randomList.push(movieList[randomIndex]);
-      } else {
-        console.log('trung hop');
-      }
-    }
-    return randomList;
-  };
-  let random = randomHerroList();
-
   return (
     <div className="home">
-      <div className={styles.section__hero}>
-        <div className={clsx('row h-100 gx-0', styles.hero__content)}>
-          <Col lg={8} sm={12}>
-            <Item movie={random[0]} layout="recommend-hero-xl" />
-          </Col>
-          <Col lg={4} sm={12}>
-            <div className="row gx-0 h-50">
-              <Item movie={random[1]} layout="recommend-hero-md" />
-            </div>
-            <div className="row gx-0 h-50">
-              <Item movie={random[2]} layout="recommend-hero-md" />
-            </div>
-          </Col>
-        </div>
+      <div className={clsx(styles.section, styles.section__hero)}>
+        <HeroSlider></HeroSlider>
       </div>
       <div className={clsx('section', styles['section__highlight'])}>
         <div className="container">
@@ -65,14 +39,14 @@ export const HomePage = () => {
                 )}
                 key={index}
               >
-                <Item movie={movie} layout="feature"></Item>
+                <NormalItem movie={movie} layout="feature"></NormalItem>
               </div>
             ))}
           </div>
         </div>
       </div>
       <div className={clsx('section', styles.section__recommend)}>
-        <Item movie={movieList[0]} layout="recommend"></Item>
+        <FadeSlider></FadeSlider>
       </div>
       <div className={clsx('section', styles['section__new'])}>
         <div className="container">
@@ -87,8 +61,8 @@ export const HomePage = () => {
               <Col className={styles['movie__list-alt']}>
                 <div className="row gx-2 gy-3">
                   {movieList.map((movie, index) => (
-                    <Col lg={2} xs={4} key={index}>
-                      <Item movie={movie} layout="normal-home" />
+                    <Col lg={2} xs={4}>
+                      <NormalItem movie={movie} layout="normal-home" />
                     </Col>
                   ))}
                 </div>

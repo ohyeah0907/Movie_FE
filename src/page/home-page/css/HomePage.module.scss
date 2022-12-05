@@ -1,7 +1,11 @@
 @import "../../../../node_modules/bootstrap/scss/functions";
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../../node_modules/bootstrap/scss/mixins";
+.home {
+  background-color: var(--base-color);
+}
 .section {
+  background-color: var(--base-color);
   &__heading {
     margin-bottom: 40px;
   }
@@ -24,13 +28,11 @@
       }
     }
   }
-  &__recommend {
-    height: 100vh;
-    padding: 0 !important;
-  }
   &__hero {
-    height: 90vh;
-    overflow: hidden;
+    margin-bottom: 30px;
+  }
+  &__recommend {
+    padding: 0 !important;
   }
 }
 .movie {
@@ -69,6 +71,9 @@
     }
     &__paragraph {
       font-size: 1.4rem;
+    }
+    &__hero {
+      margin: 0;
     }
   }
   .movie {
