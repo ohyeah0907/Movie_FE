@@ -12,7 +12,9 @@ export const Item = memo((props) => {
       <div className={clsx(styles.item__imageWrapper)}>
         <img
           className={clsx(styles.item__imageWrapper__content)}
-          src={layout.includes("feature") ? movie.poster : movie.backdrop}
+          src={
+            layout.includes("feature") ? movie.poster_path : movie.backdrop_path
+          }
           alt="movie"
         />
       </div>
@@ -22,10 +24,10 @@ export const Item = memo((props) => {
           <div className={clsx(styles["item__content-wrapper"])}>
             {/* Name and Rating */}
             <div className="d-flex align-items-center">
-              <div className={clsx(styles.item__name)}>{movie.name}</div>
+              <div className={clsx(styles.item__name)}>{movie.title}</div>
               {layout.includes("feature") ? (
                 <p className={clsx(styles["item__rating-wrapper"])}>
-                  <span className={styles.item__rating}>{movie.rating}</span>
+                  <span className={styles.item__rating}>{movie.vote_average}</span>
                   /100
                 </p>
               ) : (
