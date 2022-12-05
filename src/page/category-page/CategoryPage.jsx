@@ -55,11 +55,17 @@ export const CategoryPage = () => {
               )}
               onClick={() => {
                 setShowCatergoryMenu(!showCategoryMenu);
-                console.log(showCategoryMenu);
               }}
             >
               {currentGenre}
               <i className={clsx('fa-solid fa-caret-down', styles.icon)}></i>
+              <div>
+                <i
+                  className={clsx("fa-sharp fa-solid fa-film", styles.icon)}
+                ></i>
+                {currentGenre}
+              </div>
+              <i className={clsx("fa-solid fa-caret-down")}></i>
             </div>
             <div
               className={clsx('d-none row mx-0', styles['category-nav__menu'])}

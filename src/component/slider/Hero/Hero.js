@@ -58,7 +58,7 @@ export function HeroSlider() {
         ))}
       </Swiper>
       <div className={styles["pagination-wrapper"]}>
-        <div class={clsx("container", styles.pagination)}>
+        <div className={clsx("container", styles.pagination)}>
           <Swiper
             loop={true}
             speed={600}
