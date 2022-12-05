@@ -56,43 +56,6 @@ export const Item = memo((props) => {
                 <div className={clsx(styles.item__overview)}>
                   {movie.overview}
                 </div>
-                {/* Star */}
-                <div className={clsx(styles.item__star)}>
-                  <FontAwesomeIcon
-                    icon={icon({ name: "star", style: "solid" })}
-                  />
-                  <FontAwesomeIcon
-                    icon={icon({ name: "star", style: "solid" })}
-                  />
-                  <FontAwesomeIcon
-                    icon={icon({ name: "star", style: "solid" })}
-                  />
-                  <FontAwesomeIcon
-                    icon={icon({ name: "star", style: "solid" })}
-                  />
-                  <FontAwesomeIcon
-                    icon={icon({ name: "star", style: "solid" })}
-                  />
-                  <div className={clsx(styles.item__star__inner)}>
-                    <div className={clsx(styles.item__star__inner__content)}>
-                      <FontAwesomeIcon
-                        icon={icon({ name: "star", style: "solid" })}
-                      />
-                      <FontAwesomeIcon
-                        icon={icon({ name: "star", style: "solid" })}
-                      />
-                      <FontAwesomeIcon
-                        icon={icon({ name: "star", style: "solid" })}
-                      />
-                      <FontAwesomeIcon
-                        icon={icon({ name: "star", style: "solid" })}
-                      />
-                      <FontAwesomeIcon
-                        icon={icon({ name: "star", style: "solid" })}
-                      />
-                    </div>
-                  </div>
-                </div>
               </>
             ) : (
               ""

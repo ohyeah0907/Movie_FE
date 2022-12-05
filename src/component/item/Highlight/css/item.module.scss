@@ -20,7 +20,7 @@
     }
   }
   &__content {
-    display: block;
+    display: flex;
     padding: 0 4px;
   }
 
@@ -129,16 +129,6 @@
   &--recommend {
     position: relative;
     height: 100%;
-    &--hero {
-      .item {
-        &__content {
-          align-items: flex-start !important;
-        }
-        &__name {
-          margin-top: 80px;
-        }
-      }
-    }
     .item {
       &__content {
         height: 100%;
@@ -192,6 +182,16 @@
         }
       }
     }
+    &--hero {
+      .item {
+        &__content {
+          align-items: flex-start;
+        }
+        &__name {
+          margin-top: 80px;
+        }
+      }
+    }
   }
 }
 
@@ -240,6 +240,9 @@
   .item {
     &--recommend {
       .item {
+        &__content {
+          align-items: center;
+        }
         &__overview {
           display: none;
         }
@@ -262,6 +265,16 @@
         }
         &__button-wrapper {
           justify-content: center;
+        }
+      }
+      &--hero {
+        .item {
+          &__content {
+            align-items: center;
+          }
+          &__name {
+            margin-top: 0;
+          }
         }
       }
     }
