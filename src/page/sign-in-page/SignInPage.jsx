@@ -1,26 +1,52 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
-import React, { useContext, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+  useReducer,
+} from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { userContext } from '../../layout/UserContext';
-import { getUser } from '../../service/sign-in-page/SignInPageService';
+import { signIn, signUp } from '../../service/sign-in-page/SignInPageService';
 import clsx from 'clsx';
+import { useCookies } from 'react-cookie';
 import styles from './css/sign-in-page.module.css';
+import {
+  initialState,
+  reducer,
+  checkValidEmailAction,
+  checkValidPasswordAction,
+  checkValidRePasswordAction,
+} from '../../utils/sign-in-page/Validate';
 
 export const SignInPage = () => {
-  const user = useContext(userContext);
   const [signInForm, setSignInForm] = useState(true);
+  const [cookies, setCookie] = useCookies(['refresh_token']);
+  const context = useContext(userContext);
+  const controller = new AbortController();
+  const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
-  const handleSignIn = () => {
-    getUser().then((data) => {
-      if (data[0].roleId === 2) {
-        navigate('/admin');
-      } else {
-        localStorage.setItem('user', JSON.stringify(data[0]));
-        user.handleUser(data[0]);
-        navigate('/');
-      }
+
+  useEffect(() => {
+    return () => controller.abort();
+  }, []);
+
+  const handleSignIn = async (email, password) => {
+    const res = await signIn(email, password, controller.signal);
+    setCookie('refresh_token', res.refreshToken, { path: '/' });
+    localStorage.setItem('access_token', res.token);
+    context.handleToken({
+      refreshToken: res.refreshToken,
+    });
+    navigate({ pathname: '/' });
+  };
+
+  const handleSignUp = (email, password) => {
+    signUp(email, password, controller.signal).then((res) => {
+      console.table(res);
     });
   };
   return (
@@ -65,56 +91,107 @@ export const SignInPage = () => {
                   className={styles.signInPage__wrapper__modal__content__info}
                 >
                   <div
-                    className={
-                      styles.signInPage__wrapper__modal__content__info__name
-                    }
+                    className={clsx(
+                      styles.signInPage__wrapper__modal__content__info__name,
+                      { [styles['invalid-input']]: state.email?.message }
+                    )}
                   >
                     <FontAwesomeIcon
                       icon={icon({ style: 'solid', name: 'user' })}
                     />
-                    <input placeholder="Account" name="account" />
+                    <input
+                      autoComplete="off"
+                      placeholder="Email"
+                      name="email"
+                      onBlur={(e) => {
+                        console.log(
+                          '>>> Email value: ' + e.currentTarget.value
+                        );
+                        dispatch(checkValidEmailAction(e.currentTarget.value));
+                      }}
+                    />
                     <span className={clsx(styles.progressing)}></span>
                   </div>
+                  {state.email?.message && (
+                    <div className={clsx(styles['invalid-message'])}>
+                      {state.email.message}
+                    </div>
+                  )}
                   <div
-                    className={
-                      styles.signInPage__wrapper__modal__content__info__password
-                    }
+                    className={clsx(
+                      styles.signInPage__wrapper__modal__content__info__password,
+                      { [styles['invalid-input']]: state.password?.message }
+                    )}
                   >
                     <FontAwesomeIcon
                       icon={icon({ style: 'solid', name: 'key' })}
                     />
                     <input
+                      autoComplete="off"
                       placeholder="Password"
                       name="password"
                       type="password"
+                      onBlur={(e) => {
+                        console.log(
+                          '>>> Password value: ' + e.currentTarget.value
+                        );
+                        dispatch(
+                          checkValidPasswordAction(e.currentTarget.value)
+                        );
+                      }}
                     />
                     <span className={clsx(styles.progressing)}></span>
                   </div>
+                  {state.password?.message && (
+                    <div className={clsx(styles['invalid-message'])}>
+                      {state.password.message}
+                    </div>
+                  )}
                   {signInForm ? (
                     false
                   ) : (
-                    <div
-                      className={
-                        styles.signInPage__wrapper__modal__content__info__password
-                      }
-                    >
-                      <FontAwesomeIcon
-                        icon={icon({ style: 'solid', name: 'key' })}
-                      />
-                      <input
-                        placeholder="Confirm password"
-                        name="confirm-password"
-                        type="password"
-                      />
-                      <span className={clsx(styles.progressing)}></span>
-                    </div>
+                    <>
+                      <div
+                        className={clsx(
+                          styles.signInPage__wrapper__modal__content__info__password,
+                          {
+                            [styles['invalid-input']]:
+                              state.rePassword?.message,
+                          }
+                        )}
+                      >
+                        <FontAwesomeIcon
+                          icon={icon({ style: 'solid', name: 'key' })}
+                        />
+                        <input
+                          placeholder="Confirm password"
+                          name="confirm-password"
+                          type="password"
+                          onBlur={(e) => {
+                            dispatch(
+                              checkValidRePasswordAction(e.currentTarget.value)
+                            );
+                          }}
+                        />
+                        <span className={clsx(styles.progressing)}></span>
+                      </div>
+                      {state.rePassword?.message && (
+                        <div className={clsx(styles['invalid-message'])}>
+                          {state.rePassword.message}
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
                 <button
                   className={
                     styles.signInPage__wrapper__modal__content__submitButton
                   }
-                  onClick={() => {}}
+                  onClick={() => {
+                    console.log(state);
+                    if (signInForm)
+                      handleSignIn(state.email.value, state.password.value);
+                  }}
                 >
                   Submit
                 </button>

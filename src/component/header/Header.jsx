@@ -5,20 +5,27 @@ import { userContext } from '../../layout/UserContext';
 import styles from './Header.module.scss';
 import clsx from 'clsx';
 import { MainLogo, Burger } from '../Logo';
+import { useCookies } from 'react-cookie';
+import { isExpired, decodeToken } from 'react-jwt';
 
 export const Header = () => {
-  console.log('rerender');
+  const [cookies, setCookie, removeCookie] = useCookies(['refresh_token']);
+  const [showSideBar, setShowSideBar] = useState(false);
   const [navHeader, setNavHeader] = useState(routes);
   const [active, setActive] = useState('Home');
-  const [showSideBar, setShowSideBar] = useState(false);
-  const user = useContext(userContext);
+  const context = useContext(userContext);
+  const user = decodeToken(localStorage.getItem('access_token'));
+
+  console.log('>>> Current user: ' + user?.sub);
 
   const handleShow = () => {
     setShowSideBar(!showSideBar);
   };
+
   const handleSignOut = () => {
-    user.handleUser({});
+    removeCookie('refresh_token');
     localStorage.clear();
+    context.handleToken({});
     reverseHide();
   };
 
@@ -39,8 +46,11 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    if (user.name) reverseHide();
-  }, [user]);
+    if (user?.sub) {
+      console.log('>>> Have user');
+      reverseHide();
+    } else console.log('>>> Do not have user');
+  }, [context]);
 
   return (
     <div className={styles.navbar}>
@@ -104,7 +114,7 @@ export const Header = () => {
           <Burger size="30" fill="#fff"></Burger>
         </div>
         <ul id="nav" className={clsx('align-items-center', styles.navbar__nav)}>
-          {user.name ? <div>{user.name}</div> : ''}
+          {user?.sub ? <div>{user.sub}</div> : ''}
           {navHeader.map((route) => {
             if (route.hasOwnProperty('hide')) {
               if (route.hide === false) {
@@ -128,7 +138,7 @@ export const Header = () => {
               }
             }
           })}
-          {user.name ? <button onClick={handleSignOut}>Sign out</button> : ''}
+          {user?.sub ? <button onClick={handleSignOut}>Sign out</button> : ''}
         </ul>
       </div>
     </div>

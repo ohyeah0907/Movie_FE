@@ -57,6 +57,7 @@
           }
           &__title {
             width: 100%;
+            text-align: center;
           }
         }
         &__info {
@@ -85,6 +86,16 @@
             background-color: var(--primary-color);
             transition: all 1s;
           }
+          // Invalid input
+          .invalid-input .progressing {
+            width: 100% !important;
+            background-color: red;
+          }
+          // Invalid message
+          .invalid-message {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+          }
           &__name {
             position: relative;
             svg {
@@ -106,7 +117,9 @@
           margin-top: 10px;
           width: 100%;
           padding: 10px;
-          background-color: var(--light-green-dark-color);
+          color: var(--black-color);
+          border: none;
+          background-color: var(--primary-color);
           font-size: 1.6rem;
         }
         &__form {

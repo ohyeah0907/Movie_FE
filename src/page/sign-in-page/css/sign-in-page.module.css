@@ -86,6 +86,7 @@
 
 .signInPage__wrapper__modal__content__heading__title {
   width: 100%;
+  text-align: center;
 }
 
 .signInPage__wrapper__modal__content__info {
@@ -125,6 +126,16 @@
   transition: all 1s;
 }
 
+.signInPage__wrapper__modal__content__info .invalid-input .progressing {
+  width: 100% !important;
+  background-color: red;
+}
+
+.signInPage__wrapper__modal__content__info .invalid-message {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+}
+
 .signInPage__wrapper__modal__content__info__name {
   position: relative;
 }
@@ -151,7 +162,9 @@
   margin-top: 10px;
   width: 100%;
   padding: 10px;
-  background-color: var(--light-green-dark-color);
+  color: var(--black-color);
+  border: none;
+  background-color: var(--primary-color);
   font-size: 1.6rem;
 }
 

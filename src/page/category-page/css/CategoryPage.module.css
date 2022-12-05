@@ -16,6 +16,7 @@
 
 .category-nav__button {
   background-color: #000;
+  min-width: 150px;
   padding: 0 8px;
   font-size: 1.6rem;
   font-weight: 600;
@@ -26,6 +27,7 @@
 }
 
 .category-nav__button:hover {
+  cursor: pointer;
   background-color: transparent;
 }
 
@@ -60,6 +62,7 @@
   color: var(--white-color);
   font-size: 1.5rem;
   padding: 6px 0;
+  cursor: pointer;
   width: 100%;
 }
 

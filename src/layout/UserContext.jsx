@@ -1,20 +1,22 @@
-import React from "react";
-import { useState } from "react";
+import axios from 'axios';
+import React from 'react';
+import { useState } from 'react';
+import { useCookies } from 'react-cookie';
+import { isExpired } from 'react-jwt';
 
 export const userContext = React.createContext();
-const localUser = localStorage.getItem("user");
-
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(localUser ? JSON.parse(localUser) : {});
+  const [cookies] = useCookies(['refresh_token']);
+  const [token, setToken] = useState({
+    refreshToken: cookies.refresh_token,
+  });
 
-  const globalUser = {
-    ...user,
-    handleUser: (user) => {
-      setUser(user);
+  const jwt = {
+    token,
+    handleToken: (token) => {
+      setToken(token);
     },
   };
 
-  return (
-    <userContext.Provider value={globalUser}>{children}</userContext.Provider>
-  );
+  return <userContext.Provider value={jwt}>{children}</userContext.Provider>;
 };

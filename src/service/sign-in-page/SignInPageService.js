@@ -1,19 +1,30 @@
-// Test if client get user through sign in
-export const getUser = () => {
-  return fetch(
-    'https://633f9ec4d1fcddf69ca601dd.mockapi.io/api/movie-management/user',
-    {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  )
-    .then((res) => {
-      if (!res.ok) throw Error(res.statusText);
-      return res;
-    })
-    .then((res) => {
-      return res.json();
+import { instance } from '../../constant/axios/Axios';
+// import axios from 'axios';
+export const signIn = async (username, password, signal) => {
+  // Gọi api sign in
+  return instance
+    .post(
+      '/auth/signin',
+      { username, password },
+      {
+        signal,
+      }
+    )
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const signUp = async (username, password, signal) => {
+  //Gọi api sign up
+  return instance
+    .post(
+      '/auth/signup',
+      { username, password },
+      {
+        signal,
+      }
+    )
+    .catch((error) => {
+      console.log(error);
     });
 };

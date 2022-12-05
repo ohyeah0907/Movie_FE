@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "searchBar.module.scss"
+    ],
+    "names": [],
+    "file": "searchBar.module.css"
+}
