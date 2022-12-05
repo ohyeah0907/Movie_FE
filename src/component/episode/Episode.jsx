@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import styles from './css/episode.module.css';
 import clsx from 'clsx';
-import { BaseUrl } from '../../constant/api/BaseUrl';
+import { API } from '../../constant/api-moviedb/API';
 
 /* Episode nhận tham số bao gồm episode_number, name, overview, image(still_path), runtime */
 // const episode = {
@@ -21,7 +21,7 @@ export const Episode = memo(({ episode }) => {
         {episode_number}
       </div>
       <div className={clsx(styles.episode__wrapper__image)}>
-        <img alt="episode" src={BaseUrl.STILL_URL + still_path} />
+        <img alt="episode" src={API.IMAGE_URL + still_path} />
       </div>
       <div className={clsx(styles.episode__wrapper__content)}>
         <div className={clsx(styles.episode__wrapper__content__heading)}>

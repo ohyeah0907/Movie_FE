@@ -1,3 +1,5 @@
+import { API } from '../constant/api-moviedb/API';
+
 export class TVSeries {
   constructor(
     id = 0,
@@ -13,8 +15,8 @@ export class TVSeries {
   ) {
     this.id = id;
     this.name = name;
-    this.poster = 'https://image.tmdb.org/t/p/original/' + poster;
-    this.backdrop = 'https://image.tmdb.org/t/p/original/' + backdrop;
+    this.poster = API.IMAGE_URL + poster;
+    this.backdrop = API.IMAGE_URL + backdrop;
     this.rating = rating;
     this.star = star;
     this.genres = genres;

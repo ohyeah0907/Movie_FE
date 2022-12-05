@@ -1,4 +1,4 @@
-import { API } from '../../constant/api/API';
+import { API } from '../../constant/api-moviedb/API';
 
 // Movie
 export const getDetailMovie = (id, signal) => {

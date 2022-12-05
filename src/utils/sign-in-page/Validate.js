@@ -1,12 +1,12 @@
 export const initialState = {
   email: {
-    value: null,
+    value: '',
   },
   password: {
-    value: null,
+    value: '',
   },
   rePassword: {
-    value: null,
+    value: '',
   },
 };
 
@@ -18,7 +18,7 @@ export const reducer = (state, action) => {
         return {
           ...state,
           email: {
-            value: null,
+            value: '',
             message: "The email's format is not valid",
           },
         };
@@ -33,7 +33,7 @@ export const reducer = (state, action) => {
         return {
           ...state,
           password: {
-            value: null,
+            value: '',
             message:
               "The password's length is not less than 8 and more than 20",
           },
@@ -42,7 +42,7 @@ export const reducer = (state, action) => {
         return {
           ...state,
           password: {
-            value: null,
+            value: '',
             message: 'The password must not contain space at begin or at end',
           },
         };
@@ -53,11 +53,11 @@ export const reducer = (state, action) => {
         },
       };
     case 'value/validRePasswordChecked':
-      if (action.payload != state.password.value)
+      if (action.payload !== state.password.value)
         return {
           ...state,
           rePassword: {
-            value: null,
+            value: '',
             message: 'The re-password does not match',
           },
         };
@@ -65,6 +65,18 @@ export const reducer = (state, action) => {
         ...state,
         rePassword: {
           value: action.payload,
+        },
+      };
+    default:
+      return {
+        email: {
+          value: '',
+        },
+        password: {
+          value: '',
+        },
+        rePassword: {
+          value: '',
         },
       };
   }

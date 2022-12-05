@@ -36,10 +36,10 @@ export const SignInPage = () => {
 
   const handleSignIn = async (email, password) => {
     const res = await signIn(email, password, controller.signal);
-    setCookie('refresh_token', res.refreshToken, { path: '/' });
-    localStorage.setItem('access_token', res.token);
+    setCookie('refresh_token', res.data.refreshToken, { path: '/' });
+    localStorage.setItem('access_token', res.data.token);
     context.handleToken({
-      refreshToken: res.refreshToken,
+      refreshToken: res.data.refreshToken,
     });
     navigate({ pathname: '/' });
   };
@@ -189,8 +189,26 @@ export const SignInPage = () => {
                   }
                   onClick={() => {
                     console.log(state);
-                    if (signInForm)
-                      handleSignIn(state.email.value, state.password.value);
+                    if (state.email.value === '')
+                      dispatch(checkValidEmailAction(''));
+                    if (state.password.value === '')
+                      dispatch(checkValidPasswordAction(''));
+                    if (signInForm) {
+                      if (
+                        state.email.value !== '' &&
+                        state.password.value !== ''
+                      )
+                        handleSignIn(state.email.value, state.password.value);
+                    } else {
+                      if (state.rePassword.value === '')
+                        dispatch(checkValidRePasswordAction(''));
+                      else
+                        handleSignUp(
+                          state.email.value,
+                          state.password.value,
+                          state.rePassword.value
+                        );
+                    }
                   }}
                 >
                   Submit
