@@ -4,7 +4,7 @@ import styles from "./css/HomePage.module.scss";
 import { movieList } from "../../component/testdata";
 import { Item } from "../../component/item/Item";
 import { Col, Row } from "react-bootstrap";
-import { HeroSlider } from "../../component/slider";
+import { FadeSlider, HeroSlider } from "../../component/slider";
 import { NormalItem, HighlightItem } from "../../component/item";
 
 export const HomePage = () => {
@@ -46,7 +46,7 @@ export const HomePage = () => {
         </div>
       </div>
       <div className={clsx("section", styles.section__recommend)}>
-        <HighlightItem movie={movieList[0]} layout="recommend"></HighlightItem>
+        <FadeSlider></FadeSlider>
       </div>
       <div className={clsx("section", styles["section__new"])}>
         <div className="container">

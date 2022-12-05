@@ -12,27 +12,23 @@ import clsx from "clsx";
 import { useState } from "react";
 
 export function HeroSlider() {
-  const swiperRef = useRef(null);
+  const heroSwiperRef = useRef(null);
+  const paginationSwiperRef = useRef(null);
   const [itemList, setItemList] = useState(movieList);
   const [currentMovie, setCurrentMovie] = useState(itemList[0].id);
 
   const handleSwipeNext = () => {
-    swiperRef.current?.slideNext();
+    paginationSwiperRef.current?.slideNext();
   };
 
   const handleSwipePrevious = () => {
-    swiperRef.current?.slidePrev();
+    paginationSwiperRef.current?.slidePrev();
   };
 
   const handelSlideTo = (selectedID, index) => {
-    swiperRef.current?.slideTo(index + 1, 1000, false);
-    setCurrentMovie((prev) => (prev = selectedID));
-  };
-
-  const handleSlideChange = (swiper) => {
-    console.log(swiper.activeIndex);
-    const currentIndex = swiper.activeIndex - 1;
-    setCurrentMovie(itemList[currentIndex].id);
+    let swiper = heroSwiperRef.current;
+    swiper.slideTo(index + 1, 1000, false);
+    setCurrentMovie(selectedID);
   };
 
   return (
@@ -41,12 +37,10 @@ export function HeroSlider() {
         loop={true}
         modules={[Autoplay, Thumbs, Pagination]}
         onBeforeInit={(swiper) => {
-          swiperRef.current = swiper;
+          heroSwiperRef.current = swiper;
         }}
         onSlideChange={(swiper) => {
-          if (swiper.isEnd) swiper.activeIndex = 1;
-          const currentIndex = swiper.activeIndex - 1;
-          console.log(swiper.activeIndex);
+          const currentIndex = (swiper.activeIndex - 1) % itemList.length;
           setCurrentMovie(itemList[currentIndex].id);
         }}
         speed={650}
@@ -62,28 +56,27 @@ export function HeroSlider() {
             <Item movie={movie} hero={true} />
           </SwiperSlide>
         ))}
-        <div
-          className={clsx(
-            styles.swiperNavigation,
-            styles["swiperNavigation--next"]
-          )}
-          onClick={() => handleSwipeNext()}
-        >
-          <i className="fa-solid fa-chevron-right"></i>
-        </div>
-        <div
-          className={clsx(
-            styles.swiperNavigation,
-            styles["swiperNavigation--previous"]
-          )}
-          onClick={() => handleSwipePrevious()}
-        >
-          <i className="fa-solid fa-chevron-left"></i>
-        </div>
       </Swiper>
-      <div className={clsx(styles["pagination-wrapper"])}>
-        <div class="container">
-          <Swiper slidesPerView={7} spaceBetween={8}>
+      <div className={styles["pagination-wrapper"]}>
+        <div class={clsx("container", styles.pagination)}>
+          <Swiper
+            loop={true}
+            speed={600}
+            slidesPerGroup={6}
+            slidesPerView={7}
+            spaceBetween={6}
+            breakpoints={{
+              1024: {
+                slidesPerView: 6,
+              },
+              300: {
+                slidesPerView: 4,
+              },
+            }}
+            onBeforeInit={(swiper) => {
+              paginationSwiperRef.current = swiper;
+            }}
+          >
             {itemList.map((movie, index) => (
               <SwiperSlide
                 key={movie.id}
@@ -104,6 +97,24 @@ export function HeroSlider() {
                 </div>
               </SwiperSlide>
             ))}
+            <div
+              className={clsx(
+                styles.swiperNavigation,
+                styles["swiperNavigation--next"]
+              )}
+              onClick={() => handleSwipeNext()}
+            >
+              <i className="fa-solid fa-chevron-right"></i>
+            </div>
+            <div
+              className={clsx(
+                styles.swiperNavigation,
+                styles["swiperNavigation--previous"]
+              )}
+              onClick={() => handleSwipePrevious()}
+            >
+              <i className="fa-solid fa-chevron-left"></i>
+            </div>
           </Swiper>
         </div>
       </div>

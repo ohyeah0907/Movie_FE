@@ -32,7 +32,6 @@
     margin-bottom: 30px;
   }
   &__recommend {
-    height: 100vh;
     padding: 0 !important;
   }
 }
@@ -72,6 +71,9 @@
     }
     &__paragraph {
       font-size: 1.4rem;
+    }
+    &__hero {
+      margin: 0;
     }
   }
   .movie {
