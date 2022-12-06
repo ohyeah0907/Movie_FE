@@ -10,7 +10,11 @@ import React, {
 import { Col, Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { userContext } from '../../layout/UserContext';
-import { signIn, signUp } from '../../service/sign-in-page/SignInPageService';
+import {
+  resetPassword,
+  signIn,
+  signUp,
+} from '../../service/sign-in-page/SignInPageService';
 import clsx from 'clsx';
 import { useCookies } from 'react-cookie';
 import styles from './css/sign-in-page.module.css';
@@ -49,6 +53,10 @@ export const SignInPage = () => {
     signUp(email, password, controller.signal).then((res) => {
       console.table(res);
     });
+  };
+
+  const handleResetPassword = (email) => {
+    resetPassword(email, controller.signal);
   };
   return (
     <Container fluid className={styles.signInPage}>
@@ -204,25 +212,28 @@ export const SignInPage = () => {
                   }
                   onClick={() => {
                     console.log(state);
-                    if (state.email.value === '')
-                      dispatch(checkValidEmailAction(''));
-                    if (state.password.value === '')
-                      dispatch(checkValidPasswordAction(''));
-                    if (signInForm) {
-                      if (
-                        state.email.value !== '' &&
-                        state.password.value !== ''
-                      )
-                        handleSignIn(state.email.value, state.password.value);
-                    } else {
-                      if (state.rePassword.value === '')
-                        dispatch(checkValidRePasswordAction(''));
-                      else
-                        handleSignUp(
-                          state.email.value,
-                          state.password.value,
-                          state.rePassword.value
-                        );
+                    if (state.email.value !== '') {
+                      if (forgetPasswordForm)
+                        handleResetPassword(state.email.value);
+                      else {
+                        if (signInForm) {
+                          if (state.password.value !== '')
+                            handleSignIn(
+                              state.email.value,
+                              state.password.value
+                            );
+                        } else {
+                          if (
+                            state.password.value !== '' &&
+                            state.rePassword.value !== ''
+                          )
+                            handleSignUp(
+                              state.email.value,
+                              state.password.value,
+                              state.rePassword.value
+                            );
+                        }
+                      }
                     }
                   }}
                 >
@@ -250,7 +261,6 @@ export const SignInPage = () => {
                     onClick={() => {
                       setForgetPasswordForm(false);
                       setSignInForm(true);
-                      dispatch({ type: 'reset' });
                     }}
                   >
                     Sign in
@@ -262,7 +272,6 @@ export const SignInPage = () => {
                     onClick={() => {
                       setForgetPasswordForm(false);
                       setSignInForm(false);
-                      dispatch({ type: 'reset' });
                     }}
                   >
                     Sign Up

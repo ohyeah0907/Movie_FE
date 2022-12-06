@@ -51,7 +51,7 @@ export const DetailPage = () => {
     });
   };
 
-  const getDataFirstTime = async () => {
+  const getDataFirstTime = async (isMovie) => {
     if (
       isMovie.current === null ||
       (isMovie.current !== 'true' && isMovie.current !== 'false')

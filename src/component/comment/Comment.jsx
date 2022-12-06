@@ -10,12 +10,14 @@ import {
 import { UserComment } from '../user-comment/UserComment';
 import styles from './css/comment.module.css';
 
-export const Comment = ({ movieId }) => {
+// Component Comment nhận array comment và movie's id làm props
+export const Comment = ({ movieId, commentList }) => {
   let controller = new AbortController();
-  const user = useContext(userContext);
+  const context = useContext(userContext);
   const [listUserComment, setListUserComment] = useState();
   const [userInput, setuserInput] = useState();
   const navigate = useNavigate();
+  const token = localStorage.getItem('access_token');
 
   useEffect(() => {
     getComments(movieId, controller.signal)
@@ -30,7 +32,7 @@ export const Comment = ({ movieId }) => {
   const handleAddComment = async (value) => {
     if (value !== '') {
       const result = {
-        user_id: user.id,
+        user_id: token,
         movie_id: movieId,
         content: value,
         date: Date.now(),
@@ -50,7 +52,7 @@ export const Comment = ({ movieId }) => {
         </div>
       </div>
       <div className={clsx(styles.comment__input)}>
-        {user.id ? (
+        {token ? (
           <input
             onKeyDown={(e) => {
               if (e.key === 'Enter') handleAddComment(e.target.value);

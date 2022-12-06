@@ -29,13 +29,13 @@ export const reducer = (state, action) => {
         },
       };
     case 'value/validPasswordChecked':
-      if (action.payload.length < 8 || action.payload.length > 20)
+      if (action.payload.length < 6 || action.payload.length > 20)
         return {
           ...state,
           password: {
             value: '',
             message:
-              "The password's length is not less than 8 and more than 20",
+              "The password's length is not less than 6 and more than 20",
           },
         };
       else if (action.payload.startsWith(' ') || action.payload.endsWith(' '))
@@ -82,6 +82,8 @@ export const reducer = (state, action) => {
   }
 };
 export const checkValidEmailAction = (value) => {
+  console.log(value);
+
   return {
     type: 'value/validEmailChecked',
     payload: value,

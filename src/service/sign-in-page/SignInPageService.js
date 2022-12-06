@@ -77,3 +77,41 @@ export const signUp = async (username, password, signal) => {
       });
     });
 };
+export const resetPassword = async (username, signal) => {
+  //Gọi api reset password
+  return instance
+    .post(
+      '/mail/password/reset',
+      { username },
+      {
+        signal,
+      }
+    )
+    .then((res) => {
+      console.log(res);
+      if (res.status == 200) {
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          title: 'Done',
+          text: 'Reset password successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      return res;
+    })
+    .catch((error) => {
+      console.log(error);
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: 'Failed',
+        text: 'Username is wrong',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
+};
