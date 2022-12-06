@@ -19,6 +19,7 @@ export const DefaultSlider = (props) => {
     let filteringData = async () => {
       let data = await getAllMovie(controller.signal);
       let dataFiltered = data.filter((value) => value.title !== null);
+
       if (sortDate) {
         let moviesWithDateFiltered = [...dataFiltered]
           .filter((movie) => movie.release_date !== null)
@@ -54,8 +55,6 @@ export const DefaultSlider = (props) => {
     <>
       <Swiper
         className={clsx(styles.slider, styles[`slider--${layout}`])}
-        loop={true}
-        initialSlide={6}
         slidesPerGroup={1}
         speed={1000}
         spaceBetween={6}
