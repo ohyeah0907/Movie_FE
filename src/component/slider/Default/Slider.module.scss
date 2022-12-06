@@ -1,0 +1,76 @@
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+.slider {
+  position: relative;
+  width: 100%;
+  &--feature {
+    height: 420px;
+  }
+  &--normal,
+  &--normal-home {
+  }
+  &Navigation {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 5%;
+    z-index: 100;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 4rem;
+    color: rgba(#777, 0.6);
+    cursor: pointer;
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    &--next {
+      right: 0;
+    }
+    &--previous {
+      left: 0;
+    }
+  }
+}
+.pagination {
+  &-wrapper {
+    padding: 10px 0;
+    position: absolute;
+    bottom: -5%;
+    left: 0;
+    right: 0;
+    background-color: var(--base-color);
+  }
+  &-item {
+    cursor: pointer;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 4px 14px 15px rgb(0 0 0 / 70%);
+    overflow: hidden;
+    transition: 0.15s ease-in;
+    &:hover {
+      border-color: rgba(#888, 0.3);
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .slider {
+    height: 70vh;
+    &Navigation {
+      display: none;
+    }
+  }
+  .pagination {
+    &-wrapper {
+      bottom: 0;
+    }
+    &-item {
+      height: 90px;
+    }
+  }
+}
