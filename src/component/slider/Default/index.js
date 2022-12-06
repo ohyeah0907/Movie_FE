@@ -54,8 +54,6 @@ export const DefaultSlider = (props) => {
     <>
       <Swiper
         className={clsx(styles.slider, styles[`slider--${layout}`])}
-        loop={true}
-        initialSlide={6}
         slidesPerGroup={1}
         speed={1000}
         spaceBetween={6}

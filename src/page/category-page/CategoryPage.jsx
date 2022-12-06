@@ -4,9 +4,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useAsyncError } from 'react-router-dom';
 import { Action } from '@remix-run/router';
 import { movieList, categoryList } from '../../component/testdata';
-
+import { DefaultSlider } from '../../component/slider/Default';
 import { NormalItem } from '../../component/item';
 import { getAllGenres } from '../../service/component/movie-genres';
+
 export const CategoryPage = () => {
   const [data, setData] = useState(movieList);
   const [genresList, setGenresList] = useState([]);
@@ -118,40 +119,12 @@ export const CategoryPage = () => {
             >
               Featuring Movies
             </div>
-            <div
-              className={clsx('row flex-wrap', styles['movie-feature__list'])}
-            >
-              {featureList.map((movie, index) => (
-                <div
-                  key={index}
-                  className={clsx(
-                    'col-md-3 col-6 ',
-                    styles['movie-feature__item']
-                  )}
-                >
-                  <NormalItem movie={movie} layout="feature" />
-                </div>
-              ))}
-            </div>
+            <DefaultSlider layout="feature" />
           </div>
           <div className={clsx(styles['movie-default'])}>
             <div className={clsx(styles.section)}>
               <div className={clsx(styles['movie-title'])}>Movies</div>
-              <div
-                className={clsx('row flex-wrap', styles['movie-default__list'])}
-              >
-                {movieList.map((movie, index) => (
-                  <div
-                    key={index}
-                    className={clsx(
-                      'col-lg-2 col-md-3 col-sm-4 col-6',
-                      styles['movie-default__item']
-                    )}
-                  >
-                    <NormalItem movie={movie} />
-                  </div>
-                ))}
-              </div>
+              <DefaultSlider category={'Kids'} />
             </div>
           </div>
         </div>
