@@ -4,6 +4,7 @@ import styles from "./css/item.module.scss";
 import { memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { BaseUrl } from "../../../constant/api/BaseUrl";
 
 export const Item = memo((props) => {
   const { movie, layout = "normal" } = props;
@@ -13,7 +14,9 @@ export const Item = memo((props) => {
         <img
           className={clsx(styles.item__imageWrapper__content)}
           src={
-            layout.includes("feature") ? movie.poster_path : movie.backdrop_path
+            layout.includes("feature")
+              ? BaseUrl.BACKDROP_URL + movie.poster_path
+              : BaseUrl.BACKDROP_URL + movie.backdrop_path
           }
           alt="movie"
         />
@@ -27,8 +30,10 @@ export const Item = memo((props) => {
               <div className={clsx(styles.item__name)}>{movie.title}</div>
               {layout.includes("feature") ? (
                 <p className={clsx(styles["item__rating-wrapper"])}>
-                  <span className={styles.item__rating}>{movie.vote_average}</span>
-                  /100
+                  <span className={styles.item__rating}>
+                    {movie.vote_average}
+                  </span>
+                  /10
                 </p>
               ) : (
                 ""
@@ -49,15 +54,17 @@ export const Item = memo((props) => {
                         className={clsx(styles.item__genres__text)}
                         key={index}
                       >
-                        {genres}
+                        {genres.name}
                       </a>
                     ))}
                   </div>
                 </div>
                 {/* Overview */}
-                <div className={clsx(styles.item__overview)}>
-                  {movie.overview}
-                </div>
+                {movie.overview && (
+                  <div className={clsx(styles.item__overview)}>
+                    {movie.overview}
+                  </div>
+                )}
               </>
             ) : (
               ""
