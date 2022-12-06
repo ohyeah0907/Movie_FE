@@ -8,9 +8,10 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 
 import { Autoplay, Thumbs, Pagination, EffectFade } from "swiper";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import clsx from "clsx";
 import { useState } from "react";
+import { getAllMovie } from "../../../service/component/movie";
 
 export function FadeSlider() {
   const swiperRef = useRef(null);
@@ -24,6 +25,15 @@ export function FadeSlider() {
     swiperRef.current?.slidePrev();
   };
 
+  const controller = new AbortController();
+  useEffect(() => {
+    let testData = async () => {
+      let data = await getAllMovie(controller.signal);
+      let dataFiltered = data.filter((value) => value.title !== null);
+      setItemList(dataFiltered);
+    };
+    testData().catch(console.error);
+  }, []);
   return (
     <div className={styles.hero}>
       <Swiper

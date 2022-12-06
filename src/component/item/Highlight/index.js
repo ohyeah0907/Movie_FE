@@ -4,6 +4,7 @@ import styles from "./css/item.module.scss";
 import { memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { BaseUrl } from "../../../constant/api/BaseUrl";
 
 export const Item = memo((props) => {
   const { movie, hero = false, layout = "recommend" } = props;
@@ -18,7 +19,7 @@ export const Item = memo((props) => {
       <div className={clsx(styles.item__imageWrapper)}>
         <img
           className={clsx(styles.item__imageWrapper__content)}
-          src={movie.backdrop}
+          src={BaseUrl.BACKDROP_URL + movie.backdrop_path}
           alt="movie backdrop"
         />
       </div>
@@ -27,10 +28,11 @@ export const Item = memo((props) => {
         <div className={clsx(styles.item__content, "container")}>
           <div className={clsx(styles["item__content-wrapper"])}>
             {/* Name and Rating */}
-            <div className={clsx(styles.item__name)}>{movie.name}</div>
+            <div className={clsx(styles.item__name)}>{movie.title}</div>
             <p className={clsx(styles["item__rating-wrapper"])}>
               Rating:{" "}
-              <span className={styles.item__rating}>{movie.rating}</span>/100
+              <span className={styles.item__rating}>{movie.vote_average}</span>
+              /10
             </p>
             {/* Genres */}
             <div className={clsx(styles.item__genres)}>
@@ -45,13 +47,15 @@ export const Item = memo((props) => {
                     className={clsx(styles.item__genres__text)}
                     key={index}
                   >
-                    {genres}
+                    {genres.name}
                   </a>
                 ))}
               </div>
             </div>
             {/* Overview */}
-            <div className={clsx(styles.item__overview)}>{movie.overview}</div>
+            <div className={clsx(styles.item__overview)}>
+              {movie.overview || "Phim rat hay"}
+            </div>
             <div
               className={clsx(
                 "d-flex align-items-center",
