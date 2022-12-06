@@ -29,6 +29,7 @@ export const SignInPage = () => {
   const controller = new AbortController();
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
+  const [forgetPasswordForm, setForgetPasswordForm] = useState(false);
 
   useEffect(() => {
     return () => controller.abort();
@@ -84,9 +85,19 @@ export const SignInPage = () => {
                       styles.signInPage__wrapper__modal__content__heading__title
                     )}
                   >
-                    {signInForm ? 'Sign In' : 'Sign Up'}
+                    {forgetPasswordForm
+                      ? 'Forget Your Password'
+                      : signInForm
+                      ? 'Sign In'
+                      : 'Sign Up'}
                   </p>
                 </div>
+                {forgetPasswordForm && (
+                  <p className={styles['signInPage__forget-password-note']}>
+                    We will send you an email with instructions on how to reset
+                    your password.
+                  </p>
+                )}
                 <div
                   className={styles.signInPage__wrapper__modal__content__info}
                 >
@@ -117,39 +128,43 @@ export const SignInPage = () => {
                       {state.email.message}
                     </div>
                   )}
-                  <div
-                    className={clsx(
-                      styles.signInPage__wrapper__modal__content__info__password,
-                      { [styles['invalid-input']]: state.password?.message }
-                    )}
-                  >
-                    <FontAwesomeIcon
-                      icon={icon({ style: 'solid', name: 'key' })}
-                    />
-                    <input
-                      autoComplete="off"
-                      placeholder="Password"
-                      name="password"
-                      type="password"
-                      onBlur={(e) => {
-                        console.log(
-                          '>>> Password value: ' + e.currentTarget.value
-                        );
-                        dispatch(
-                          checkValidPasswordAction(e.currentTarget.value)
-                        );
-                      }}
-                    />
-                    <span className={clsx(styles.progressing)}></span>
-                  </div>
-                  {state.password?.message && (
-                    <div className={clsx(styles['invalid-message'])}>
-                      {state.password.message}
-                    </div>
+                  {/* Password */}
+                  {forgetPasswordForm || (
+                    <>
+                      <div
+                        className={clsx(
+                          styles.signInPage__wrapper__modal__content__info__password,
+                          { [styles['invalid-input']]: state.password?.message }
+                        )}
+                      >
+                        <FontAwesomeIcon
+                          icon={icon({ style: 'solid', name: 'key' })}
+                        />
+                        <input
+                          autoComplete="off"
+                          placeholder="Password"
+                          name="password"
+                          type="password"
+                          onBlur={(e) => {
+                            console.log(
+                              '>>> Password value: ' + e.currentTarget.value
+                            );
+                            dispatch(
+                              checkValidPasswordAction(e.currentTarget.value)
+                            );
+                          }}
+                        />
+                        <span className={clsx(styles.progressing)}></span>
+                      </div>
+                      {state.password?.message && (
+                        <div className={clsx(styles['invalid-message'])}>
+                          {state.password.message}
+                        </div>
+                      )}
+                    </>
                   )}
-                  {signInForm ? (
-                    false
-                  ) : (
+                  {/* Re-password */}
+                  {forgetPasswordForm || signInForm || (
                     <>
                       <div
                         className={clsx(
@@ -213,6 +228,18 @@ export const SignInPage = () => {
                 >
                   Submit
                 </button>
+                <button
+                  className={clsx(styles['signInPage__forget-password'])}
+                  onClick={() => {
+                    dispatch({ type: 'reset' });
+                    setForgetPasswordForm(true);
+                  }}
+                >
+                  Forget your password
+                  <FontAwesomeIcon
+                    icon={icon({ style: 'solid', name: 'question' })}
+                  />
+                </button>
                 <div
                   className={styles.signInPage__wrapper__modal__content__form}
                 >
@@ -221,7 +248,9 @@ export const SignInPage = () => {
                       styles.signInPage__wrapper__modal__content__form__signIn
                     }
                     onClick={() => {
+                      setForgetPasswordForm(false);
                       setSignInForm(true);
+                      dispatch({ type: 'reset' });
                     }}
                   >
                     Sign in
@@ -231,7 +260,9 @@ export const SignInPage = () => {
                       styles.signInPage__wrapper__modal__content__form__signIn
                     }
                     onClick={() => {
+                      setForgetPasswordForm(false);
                       setSignInForm(false);
+                      dispatch({ type: 'reset' });
                     }}
                   >
                     Sign Up

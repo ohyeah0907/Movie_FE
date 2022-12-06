@@ -89,7 +89,7 @@
           // Invalid input
           .invalid-input .progressing {
             width: 100% !important;
-            background-color: red;
+            background-color: var(--red-color);
           }
           // Invalid message
           .invalid-message {
@@ -138,5 +138,24 @@
         }
       }
     }
+  }
+  &__forget-password {
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    color: var(--white-color);
+    &:hover {
+      color: var(--primary-color);
+    }
+    svg {
+      margin-left: 5px;
+    }
+  }
+  &__forget-password-note {
+    text-align: center;
+    font-size: 1.2rem;
   }
 }

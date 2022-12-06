@@ -1,3 +1,11 @@
+.home {
+  background-color: var(--base-color);
+}
+
+.section {
+  background-color: var(--base-color);
+}
+
 .section__heading {
   margin-bottom: 40px;
 }
@@ -21,14 +29,12 @@
   letter-spacing: 4px;
 }
 
-.section__recommend {
-  height: 100vh;
-  padding: 0 !important;
+.section__hero {
+  margin-bottom: 30px;
 }
 
-.section__hero {
-  height: 90vh;
-  overflow: hidden;
+.section__recommend {
+  padding: 0 !important;
 }
 
 .movie__feature-list {
@@ -56,6 +62,9 @@
   }
   .section__paragraph {
     font-size: 1.4rem;
+  }
+  .section__hero {
+    margin: 0;
   }
   .movie__feature-item {
     height: 320px;

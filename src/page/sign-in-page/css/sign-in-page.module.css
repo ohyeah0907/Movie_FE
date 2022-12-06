@@ -128,7 +128,7 @@
 
 .signInPage__wrapper__modal__content__info .invalid-input .progressing {
   width: 100% !important;
-  background-color: red;
+  background-color: var(--red-color);
 }
 
 .signInPage__wrapper__modal__content__info .invalid-message {
@@ -184,5 +184,29 @@
 .signInPage__wrapper__modal__content__form__signIn:hover {
   background-color: var(--primary-color);
   color: var(--black-color);
+}
+
+.signInPage__forget-password {
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  color: var(--white-color);
+}
+
+.signInPage__forget-password:hover {
+  color: var(--primary-color);
+}
+
+.signInPage__forget-password svg {
+  margin-left: 5px;
+}
+
+.signInPage__forget-password-note {
+  text-align: center;
+  font-size: 1.2rem;
 }
 /*# sourceMappingURL=sign-in-page.module.css.map */
