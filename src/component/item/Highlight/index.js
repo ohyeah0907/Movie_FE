@@ -47,13 +47,15 @@ export const Item = memo((props) => {
                     className={clsx(styles.item__genres__text)}
                     key={index}
                   >
-                    {genres}
+                    {genres.name}
                   </a>
                 ))}
               </div>
             </div>
             {/* Overview */}
-            <div className={clsx(styles.item__overview)}>{movie.overview}</div>
+            <div className={clsx(styles.item__overview)}>
+              {movie.overview || "Phim rat hay"}
+            </div>
             <div
               className={clsx(
                 "d-flex align-items-center",
