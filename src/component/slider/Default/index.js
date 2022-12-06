@@ -1,16 +1,16 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useState, useEffect, useRef } from "react";
-import styles from "./Slider.module.scss";
-import { NormalItem as Item } from "../../item";
-import { Autoplay, Thumbs, Pagination } from "swiper";
-import { getAllMovie } from "../../../service/component/movie";
-import { BaseUrl } from "../../../constant/api/BaseUrl";
-import clsx from "clsx";
-import "swiper/css";
-import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState, useEffect, useRef } from 'react';
+import styles from './Slider.module.scss';
+import { NormalItem as Item } from '../../item';
+import { Autoplay, Thumbs, Pagination } from 'swiper';
+import { getAllMovie } from '../../../service/component/movie';
+import { API } from '../../../constant/api-moviedb/API';
+import clsx from 'clsx';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export const DefaultSlider = (props) => {
-  const { layout = "normal", category = null, sortDate = false } = props;
+  const { layout = 'normal', category = null, sortDate = false } = props;
   const [itemList, setItemList] = useState([]);
   const paginationSwiperRef = useRef();
   const controller = new AbortController();
@@ -18,7 +18,7 @@ export const DefaultSlider = (props) => {
   useEffect(() => {
     let filteringData = async () => {
       let data = await getAllMovie(controller.signal);
-      let dataFiltered = data.filter((value) => value.title !== null);
+      let dataFiltered = data.data.filter((value) => value.title !== null);
       if (sortDate) {
         let moviesWithDateFiltered = [...dataFiltered]
           .filter((movie) => movie.release_date !== null)
@@ -72,7 +72,7 @@ export const DefaultSlider = (props) => {
         <div
           className={clsx(
             styles.sliderNavigation,
-            styles["sliderNavigation--next"]
+            styles['sliderNavigation--next']
           )}
           onClick={() => handleSwipeNext()}
         >
@@ -81,7 +81,7 @@ export const DefaultSlider = (props) => {
         <div
           className={clsx(
             styles.sliderNavigation,
-            styles["sliderNavigation--previous"]
+            styles['sliderNavigation--previous']
           )}
           onClick={() => handleSwipePrevious()}
         >

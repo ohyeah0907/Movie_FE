@@ -1,14 +1,14 @@
-import clsx from "clsx";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useState, useEffect, useRef } from "react";
-import styles from "./Hero.module.scss";
-import { HighlightItem as Item } from "../../item";
-import { Autoplay, Thumbs, Pagination } from "swiper";
+import clsx from 'clsx';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState, useEffect, useRef } from 'react';
+import styles from './Hero.module.scss';
+import { HighlightItem as Item } from '../../item';
+import { Autoplay, Thumbs, Pagination } from 'swiper';
 
-import { BaseUrl } from "../../../constant/api/BaseUrl";
-import { getAllMovie } from "../../../service/component/movie";
+import { API } from '../../../constant/api-moviedb/API';
+import { getAllMovie } from '../../../service/component/movie';
 
 export function HeroSlider() {
   const heroSwiperRef = useRef(null);
@@ -21,7 +21,7 @@ export function HeroSlider() {
   useEffect(() => {
     let testData = async () => {
       let data = await getAllMovie(controller.signal);
-      let dataFiltered = data.filter((value) => value.title !== null);
+      let dataFiltered = data.data.filter((value) => value.title !== null);
       setItemList(dataFiltered);
       setCurrentMovie(dataFiltered[0].id);
     };
@@ -70,8 +70,8 @@ export function HeroSlider() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className={styles["pagination-wrapper"]}>
-            <div className={clsx("container", styles.pagination)}>
+          <div className={styles['pagination-wrapper']}>
+            <div className={clsx('container', styles.pagination)}>
               <Swiper
                 loop={true}
                 slidesPerGroup={1}
@@ -102,15 +102,15 @@ export function HeroSlider() {
                   >
                     <div
                       className={clsx(
-                        styles["pagination-item"],
+                        styles['pagination-item'],
                         movie.id === currentMovie
-                          ? styles["pagination-item--active"]
-                          : ""
+                          ? styles['pagination-item--active']
+                          : ''
                       )}
                     >
                       <img
-                        className={styles["pagination-item__image"]}
-                        src={BaseUrl.BACKDROP_URL + movie.backdrop_path}
+                        className={styles['pagination-item__image']}
+                        src={API.IMAGE_URL + movie.backdrop_path}
                       />
                     </div>
                   </SwiperSlide>
@@ -118,7 +118,7 @@ export function HeroSlider() {
                 <div
                   className={clsx(
                     styles.swiperNavigation,
-                    styles["swiperNavigation--next"]
+                    styles['swiperNavigation--next']
                   )}
                   onClick={() => handleSwipeNext()}
                 >
@@ -127,7 +127,7 @@ export function HeroSlider() {
                 <div
                   className={clsx(
                     styles.swiperNavigation,
-                    styles["swiperNavigation--previous"]
+                    styles['swiperNavigation--previous']
                   )}
                   onClick={() => handleSwipePrevious()}
                 >

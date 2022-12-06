@@ -1,17 +1,17 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { movieList } from "../../testdata";
-import styles from "./FadeSlider.module.scss";
-import { HighlightItem as Item } from "../../item";
-import "clsx";
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { movieList } from '../../testdata';
+import styles from './FadeSlider.module.scss';
+import { HighlightItem as Item } from '../../item';
+import 'clsx';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 
-import { Autoplay, Thumbs, Pagination, EffectFade } from "swiper";
-import { useRef, useEffect } from "react";
-import clsx from "clsx";
-import { useState } from "react";
-import { getAllMovie } from "../../../service/component/movie";
+import { Autoplay, Thumbs, Pagination, EffectFade } from 'swiper';
+import { useRef, useEffect } from 'react';
+import clsx from 'clsx';
+import { useState } from 'react';
+import { getAllMovie } from '../../../service/component/movie';
 
 export function FadeSlider() {
   const swiperRef = useRef(null);
@@ -29,7 +29,7 @@ export function FadeSlider() {
   useEffect(() => {
     let testData = async () => {
       let data = await getAllMovie(controller.signal);
-      let dataFiltered = data.filter((value) => value.title !== null);
+      let dataFiltered = data.data.filter((value) => value.title !== null);
       setItemList(dataFiltered);
     };
     testData().catch(console.error);
@@ -37,7 +37,7 @@ export function FadeSlider() {
   return (
     <div className={styles.hero}>
       <Swiper
-        effect={"fade"}
+        effect={'fade'}
         loop={true}
         modules={[Autoplay, EffectFade, Thumbs, Pagination]}
         onBeforeInit={(swiper) => {
@@ -57,7 +57,7 @@ export function FadeSlider() {
         <div
           className={clsx(
             styles.swiperNavigation,
-            styles["swiperNavigation--next"]
+            styles['swiperNavigation--next']
           )}
           onClick={() => handleSwipeNext()}
         >
@@ -66,7 +66,7 @@ export function FadeSlider() {
         <div
           className={clsx(
             styles.swiperNavigation,
-            styles["swiperNavigation--previous"]
+            styles['swiperNavigation--previous']
           )}
           onClick={() => handleSwipePrevious()}
         >
