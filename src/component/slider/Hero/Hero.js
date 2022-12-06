@@ -1,25 +1,23 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { movieList } from "../../testdata";
-import styles from "./Hero.module.scss";
-import { HighlightItem as Item } from "../../item";
-import "clsx";
+import clsx from "clsx";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useState, useEffect, useRef } from "react";
+import styles from "./Hero.module.scss";
+import { HighlightItem as Item } from "../../item";
+import { Autoplay, Thumbs, Pagination } from "swiper";
 
 import { BaseUrl } from "../../../constant/api/BaseUrl";
-import { Autoplay, Thumbs, Pagination } from "swiper";
-import { useEffect, useRef } from "react";
-import clsx from "clsx";
-import { useState } from "react";
 import { getAllMovie } from "../../../service/component/movie";
 
 export function HeroSlider() {
   const heroSwiperRef = useRef(null);
-  const paginationSwiperRef = useRef(null);
+  const heroPaginationRef = useRef(null);
   const [itemList, setItemList] = useState([]);
   const [currentMovie, setCurrentMovie] = useState(null);
 
   const controller = new AbortController();
+
   useEffect(() => {
     let testData = async () => {
       let data = await getAllMovie(controller.signal);
@@ -31,11 +29,11 @@ export function HeroSlider() {
   }, []);
 
   const handleSwipeNext = () => {
-    paginationSwiperRef.current?.slideNext();
+    heroPaginationRef.current?.slideNext();
   };
 
   const handleSwipePrevious = () => {
-    paginationSwiperRef.current?.slidePrev();
+    heroPaginationRef.current?.slidePrev();
   };
 
   const handelSlideTo = (selectedID, index) => {
@@ -91,7 +89,7 @@ export function HeroSlider() {
                   },
                 }}
                 onBeforeInit={(swiper) => {
-                  paginationSwiperRef.current = swiper;
+                  heroPaginationRef.current = swiper;
                 }}
               >
                 {itemList.map((movie, index) => (
