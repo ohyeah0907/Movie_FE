@@ -5,11 +5,12 @@ import { NormalItem as Item } from "../../item";
 import { Autoplay, Thumbs, Pagination } from "swiper";
 import { getAllMovie } from "../../../service/component/movie";
 import { BaseUrl } from "../../../constant/api/BaseUrl";
+import { memo } from "react";
 import clsx from "clsx";
 import "swiper/css";
 import "swiper/css/pagination";
 
-export const DefaultSlider = (props) => {
+export const DefaultSlider = memo((props) => {
   const { layout = "normal", category = null, sortDate = false } = props;
   const [itemList, setItemList] = useState([]);
   const paginationSwiperRef = useRef();
@@ -17,7 +18,7 @@ export const DefaultSlider = (props) => {
 
   useEffect(() => {
     let filteringData = async () => {
-      let data = await getAllMovie(controller.signal);
+      let data = await getAllMovie(controller.signal).finally();
       let dataFiltered = data.filter((value) => value.title !== null);
 
       if (sortDate) {
@@ -37,14 +38,17 @@ export const DefaultSlider = (props) => {
         let categoryFiltered = [...dataFiltered].filter((movie) => {
           return movie.genres.some((genre) => genre.name === category);
         });
-        if (categoryFiltered.length > 0) dataFiltered = [...categoryFiltered];
+        console.log("trong effect", category);
+        if (categoryFiltered.length > 0) {
+          dataFiltered = [...categoryFiltered];
+        }
       }
 
       setItemList(dataFiltered);
       if (itemList.length > 0) console.log(itemList);
     };
     filteringData().catch(console.error);
-  }, []);
+  }, [category]);
 
   const shuffleData = (array) => {
     let currentIndex = array.length,
@@ -90,11 +94,15 @@ export const DefaultSlider = (props) => {
                 slidesPerView: 3,
               },
           // when window width is >= 480px
-          680: {
-            slidesPerView: 4,
-          },
+          680: layout.includes("feature")
+            ? {
+                slidesPerView: 4,
+              }
+            : {
+                slidesPerView: 5,
+              },
           // when window width is >= 640px
-          1028: layout.includes("feature")
+          1100: layout.includes("feature")
             ? {
                 slidesPerView: 5,
               }
@@ -132,4 +140,4 @@ export const DefaultSlider = (props) => {
       </Swiper>
     </>
   );
-};
+});
