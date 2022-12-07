@@ -242,6 +242,9 @@
       .item {
         &__content {
           align-items: center;
+          &-wrapper {
+            gap: 4px;
+          }
         }
         &__overview {
           display: none;
@@ -256,24 +259,28 @@
         }
         &__name {
           text-align: center;
+          font-size: 2.1rem;
+          line-height: 2.2rem;
         }
-        &__star {
-          display: none;
+        &__rating {
+          &-wrapper {
+            font-size: 1.2rem;
+          }
+          font-size: 3rem;
         }
         &__genres {
           justify-content: center;
+          font-size: 1.2rem;
         }
         &__button-wrapper {
+          margin-top: 8px;
           justify-content: center;
         }
       }
       &--hero {
         .item {
           &__content {
-            align-items: center;
-          }
-          &__name {
-            margin-top: 0;
+            align-items: flex-start;
           }
         }
       }

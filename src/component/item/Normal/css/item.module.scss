@@ -193,6 +193,7 @@
     .item__name {
       display: -webkit-box;
       font-weight: 500;
+      font-size: 1.4rem;
       margin: 8px 0;
       text-align: center;
       -webkit-line-clamp: 1;
@@ -229,7 +230,6 @@
     }
     .item__name {
       text-align: left;
-      font-size: 1.8rem;
     }
     .item__content__overlay {
       background-image: linear-gradient(180deg, transparent 60%, #000);
@@ -268,7 +268,8 @@
     }
     &--feature {
       .item__name {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
 
         -webkit-line-clamp: 2;
       }
@@ -296,16 +297,36 @@
 
 @include media-breakpoint-down(md) {
   .item {
+    &--normal {
+      &,
+      &-home {
+        .item {
+          &__name {
+            font-size: 1.2rem;
+          }
+          &__imageWrapper {
+            height: 80px;
+          }
+        }
+      }
+    }
     &--normal-home {
       .item__imageWrapper {
         height: 80px;
       }
     }
     &--feature {
+      padding: 0;
       .item {
+        &__content {
+          &__overlay {
+            display: none;
+          }
+        }
         &__name {
           font-size: 1.4rem;
           margin: 2px;
+          line-height: 1.6rem;
         }
         &__rating {
           font-size: 1.2rem;
