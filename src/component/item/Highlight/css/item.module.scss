@@ -138,7 +138,7 @@
           width: 40%;
           display: flex;
           flex-direction: column;
-          gap: 12px 0;
+          gap: 8px 0;
         }
 
         color: var(--white-color);
@@ -158,8 +158,8 @@
       }
       &__name {
         display: -webkit-box;
-        font-size: 4rem;
-        line-height: 5rem;
+        font-size: 3rem;
+        line-height: 4rem;
         letter-spacing: 2px;
         order: 1;
       }
@@ -195,10 +195,6 @@
   }
 }
 
-@include media-breakpoint-down(xl) {
-  .item {
-  }
-}
 @include media-breakpoint-down(lg) {
   .item {
     &--recommend {
@@ -243,7 +239,7 @@
         &__content {
           align-items: center;
           &-wrapper {
-            gap: 4px;
+            gap: 2px;
           }
         }
         &__overview {
@@ -280,7 +276,10 @@
       &--hero {
         .item {
           &__content {
-            align-items: flex-start;
+            align-items: center;
+          }
+          &__name {
+            margin: 0;
           }
         }
       }
