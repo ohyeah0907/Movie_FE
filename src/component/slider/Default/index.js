@@ -29,6 +29,8 @@ export const DefaultSlider = (props) => {
             return date2 - date1;
           });
         dataFiltered = [...moviesWithDateFiltered];
+      } else {
+        dataFiltered = shuffleData([...dataFiltered]);
       }
 
       if (category) {
@@ -43,6 +45,26 @@ export const DefaultSlider = (props) => {
     };
     filteringData().catch(console.error);
   }, []);
+
+  const shuffleData = (array) => {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  };
 
   const handleSwipeNext = () => {
     paginationSwiperRef.current?.slideNext();
@@ -59,6 +81,27 @@ export const DefaultSlider = (props) => {
         speed={1000}
         spaceBetween={6}
         slidesPerView={6}
+        breakpoints={{
+          200: layout.includes("feature")
+            ? {
+                slidesPerView: 4,
+              }
+            : {
+                slidesPerView: 3,
+              },
+          // when window width is >= 480px
+          680: {
+            slidesPerView: 4,
+          },
+          // when window width is >= 640px
+          1028: layout.includes("feature")
+            ? {
+                slidesPerView: 5,
+              }
+            : {
+                slidesPerView: 7,
+              },
+        }}
         onBeforeInit={(swiper) => {
           paginationSwiperRef.current = swiper;
         }}
