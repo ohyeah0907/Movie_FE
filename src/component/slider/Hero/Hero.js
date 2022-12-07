@@ -102,7 +102,10 @@ export function HeroSlider() {
                   200: {
                     slidesPerView: 4,
                   },
-                  1028: {
+                  680: {
+                    slidesPerView: 5,
+                  },
+                  1200: {
                     slidesPerView: 7,
                   },
                 }}
