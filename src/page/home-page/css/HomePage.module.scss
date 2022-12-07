@@ -28,9 +28,6 @@
       }
     }
   }
-  &__hero {
-    margin-bottom: 30px;
-  }
   &__recommend {
     padding: 0 !important;
   }
@@ -67,10 +64,12 @@
 @include media-breakpoint-down(md) {
   .section {
     &__title {
-      font-size: 3rem;
+      font-size: 2rem;
+      text-align: center;
     }
     &__paragraph {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
+      text-align: center;
     }
     &__hero {
       margin: 0;
