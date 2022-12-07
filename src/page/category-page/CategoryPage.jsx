@@ -9,8 +9,6 @@ import { NormalItem } from "../../component/item";
 import { getAllGenres } from "../../service/component/movie-genres";
 
 export const CategoryPage = () => {
-  const [data, setData] = useState(movieList);
-  const [genresList, setGenresList] = useState([]);
   const [genresMenu, setGenresMenu] = useState([]);
   const [currentGenre, setCurrentGenre] = useState("Genres");
   const [showCategoryMenu, setShowCatergoryMenu] = useState(false);
@@ -19,10 +17,6 @@ export const CategoryPage = () => {
     setCurrentGenre(selectedGenre);
     setShowCatergoryMenu(false);
   };
-
-  const featureList = movieList.filter((movie, index) => {
-    return movie.rating > 50 && index < 4 ? movie : undefined;
-  });
 
   const renderMenuColumns = (menuList = [], maxRow) => {
     var menuColumn = [];
@@ -36,9 +30,13 @@ export const CategoryPage = () => {
   useEffect(() => {
     let getGenresData = async () => {
       let rawData = await getAllGenres();
-      let genresMenuFiltered = rawData.filter((genre) => genre !== null);
-      setGenresList(genresMenuFiltered);
-      let menuColumns = renderMenuColumns(genresMenuFiltered, 9);
+      let genresMenuFiltered = rawData.filter(
+        (genre) => genre !== null && genre.movies.length > 0
+      );
+      let menuColumns = renderMenuColumns(
+        genresMenuFiltered,
+        Math.ceil(genresMenuFiltered.length / 3)
+      );
       setGenresMenu(menuColumns);
     };
     getGenresData().catch(console.error);
@@ -118,12 +116,18 @@ export const CategoryPage = () => {
             >
               Featuring Movies
             </div>
-            <DefaultSlider layout="feature" />
+            <DefaultSlider
+              layout="feature"
+              category={currentGenre !== "Genres" ? currentGenre : null}
+            />
           </div>
           <div className={clsx(styles["movie-default"])}>
             <div className={clsx(styles.section)}>
               <div className={clsx(styles["movie-title"])}>Movies</div>
-              <DefaultSlider category={"Kids"} />
+              <DefaultSlider
+                layout="normal"
+                category={currentGenre !== "Genres" ? currentGenre : null}
+              />
             </div>
           </div>
         </div>
