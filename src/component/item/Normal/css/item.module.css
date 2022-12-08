@@ -212,6 +212,7 @@
 .item--normal .item__name, .item--normal-home .item__name {
   display: -webkit-box;
   font-weight: 500;
+  font-size: 1.4rem;
   margin: 8px 0;
   text-align: center;
   -webkit-line-clamp: 1;
@@ -259,7 +260,6 @@
 
 .item--normal-home .item__name {
   text-align: left;
-  font-size: 1.8rem;
 }
 
 .item--normal-home .item__content__overlay {
@@ -290,7 +290,8 @@
     font-size: 1.6rem;
   }
   .item--feature .item__name {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
     -webkit-line-clamp: 2;
   }
   .item--feature .item__genres {
@@ -311,12 +312,25 @@
 }
 
 @media (max-width: 767.98px) {
+  .item--normal .item__name, .item--normal-home .item__name {
+    font-size: 1.2rem;
+  }
+  .item--normal .item__imageWrapper, .item--normal-home .item__imageWrapper {
+    height: 80px;
+  }
   .item--normal-home .item__imageWrapper {
     height: 80px;
+  }
+  .item--feature {
+    padding: 0;
+  }
+  .item--feature .item__content__overlay {
+    display: none;
   }
   .item--feature .item__name {
     font-size: 1.4rem;
     margin: 2px;
+    line-height: 1.6rem;
   }
   .item--feature .item__rating {
     font-size: 1.2rem;

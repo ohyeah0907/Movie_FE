@@ -1,4 +1,7 @@
 .detailPage {
+  &:focus-within {
+    scroll-behavior: smooth;
+  }
   background-color: var(--green-dark-color);
   color: var(--white-color);
   min-height: 100vh;
@@ -118,6 +121,7 @@
           }
         }
         &__overview {
+          word-break: break-word;
           text-align: left;
           display: -webkit-box;
           -webkit-line-clamp: 5;
@@ -194,10 +198,10 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        width: fit-content;
+        max-width: 780px;
         background-color: var(--black-color);
         padding: 15px 20px;
-
+        border-radius: 10px;
         &__heading {
           display: flex;
           justify-content: space-between;
@@ -213,7 +217,10 @@
           max-height: 600px;
           height: 600px;
           margin: 0;
-
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
           overflow-y: scroll;
           &::-webkit-scrollbar {
             width: 5px;
@@ -226,7 +233,7 @@
       }
     }
     &__comment {
-      margin-top: 45px;
+      margin: 45px 0;
     }
   }
 }

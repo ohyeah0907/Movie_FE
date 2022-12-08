@@ -49,7 +49,7 @@ export function FadeSlider() {
   useEffect(() => {
     let testData = async () => {
       let data = await getAllMovie(controller.signal);
-      let dataFiltered = data.filter((value) => value.title !== null);
+      let dataFiltered = data.data.filter((value) => value.title !== null);
       dataFiltered = shuffleData(dataFiltered);
       setItemList(dataFiltered);
     };

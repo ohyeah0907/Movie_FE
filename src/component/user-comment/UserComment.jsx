@@ -10,15 +10,8 @@ const option = {
   day: 'numeric',
 };
 
-// const user = {
-//   name: 'MrOhyeah',
-//   content:
-//     'Nice movie Nice movie Nice movie Nice movie Nice movie Nice movie Nice movie Nice movie Nice movieNice movieNice movie Nice movieNice movie Nice movie Nice movie Nice movie Nice movie Nice movie Nice movie ',
-//   date: new Date(Date.now()).toLocaleDateString('vi', option),
-// };
-
 export const UserComment = ({ user }) => {
-  const { user_id, content, date } = user;
+  const { username, content, time } = user;
   return (
     <div className={clsx(styles.userComment)}>
       <div className={clsx(styles.userComment__avatar)}>
@@ -27,10 +20,10 @@ export const UserComment = ({ user }) => {
       <div className={clsx(styles.userComment__info)}>
         <div className={clsx(styles.userComment__info__heading)}>
           <div className={clsx(styles.userComment__info__heading__name)}>
-            {user_id}
+            {username}
           </div>
           <div className={clsx(styles.userComment__info__heading__date)}>
-            {new Date(date).toLocaleDateString('vi', option)}
+            {new Date(time).toLocaleDateString('vi', option)}
           </div>
         </div>
         <div className={clsx(styles.userComment__info__content)}>{content}</div>

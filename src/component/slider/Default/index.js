@@ -4,7 +4,7 @@ import styles from './Slider.module.scss';
 import { NormalItem as Item } from '../../item';
 import { Autoplay, Thumbs, Pagination } from 'swiper';
 import { getAllMovie } from '../../../service/component/movie';
-import { BaseUrl } from '../../../constant/api/BaseUrl';
+import { API } from '../../../constant/api-moviedb/API';
 import { memo } from 'react';
 import clsx from 'clsx';
 import 'swiper/css';
@@ -19,7 +19,7 @@ export const DefaultSlider = memo((props) => {
   useEffect(() => {
     let filteringData = async () => {
       let data = await getAllMovie(controller.signal).finally();
-      let dataFiltered = data.filter((value) => value.title !== null);
+      let dataFiltered = data.data.filter((value) => value.title !== null);
 
       if (sortDate) {
         let moviesWithDateFiltered = [...dataFiltered]

@@ -5,6 +5,7 @@ import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { API } from '../../../constant/api-moviedb/API';
+import { Link } from 'react-router-dom';
 
 export const Item = memo((props) => {
   const { movie, hero = false, layout = 'recommend' } = props;
@@ -62,14 +63,16 @@ export const Item = memo((props) => {
                 styles['item__button-wrapper']
               )}
             >
-              <span
-                className={clsx(
-                  'button button--secondary',
-                  styles['item__button--play']
-                )}
-              >
-                Watch now
-              </span>
+              <Link to={`/watch/${movie.id}?is-movie=${!!movie.isMovie}`}>
+                <span
+                  className={clsx(
+                    'button button--secondary',
+                    styles['item__button--play']
+                  )}
+                >
+                  Watch now
+                </span>
+              </Link>
               <span
                 className={clsx(
                   'button button--favourite',

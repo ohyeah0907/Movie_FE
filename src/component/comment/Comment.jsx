@@ -10,35 +10,37 @@ import {
 } from '../../service/component/comment/Comment';
 import { UserComment } from '../user-comment/UserComment';
 import styles from './css/comment.module.css';
+import { decodeToken } from 'react-jwt';
 
 // Component Comment nhận array comment và movie's id làm props
-export const Comment = ({ movieId, commentList }) => {
+export const Comment = ({ movieId }) => {
   let controller = new AbortController();
-  const context = useContext(userContext);
-  const [listUserComment, setListUserComment] = useState(commentList);
-  const [userInput, setuserInput] = useState();
-  const navigate = useNavigate();
+  const [listUserComment, setListUserComment] = useState();
+  const [comment, setComment] = useState();
   const token = localStorage.getItem('access_token');
+  const user = decodeToken(token);
 
+  console.log(user);
   useEffect(() => {
-    // getComments(movieId, controller.signal)
-    //   .then((data) => {
-    //     setListUserComment(data);
-    //   })
-    //   .catch((error) => navigate('/'));
-
+    handleGetComments(movieId, controller.signal).then((res) =>
+      setListUserComment(res.data.comments)
+    );
     return () => controller.abort();
-  }, [userInput]);
+  }, [comment]);
 
-  const handleAddComment = async (value) => {
+  const handleGetComments = async (movieId, signal) => {
+    const res = await getComments(movieId, signal);
+    return res;
+  };
+
+  const handleAddComment = async (value, signal) => {
     if (value !== '') {
       const result = {
         content: value,
         time: moment().format('YYYY-MM-DD HH:mm:ss'),
       };
-      console.log(result);
-      const res = await addComment(result, 663712, controller.signal);
-      setuserInput(result);
+      const res = await addComment(result, movieId, signal);
+      setComment(result);
     }
     return;
   };
@@ -54,7 +56,8 @@ export const Comment = ({ movieId, commentList }) => {
         {token ? (
           <input
             onKeyDown={(e) => {
-              if (e.key === 'Enter') handleAddComment(e.target.value);
+              if (e.key === 'Enter')
+                handleAddComment(e.target.value, controller.signal);
             }}
           />
         ) : (
@@ -64,10 +67,9 @@ export const Comment = ({ movieId, commentList }) => {
         )}
       </div>
       <div className={clsx(styles.comment_list)}>
-        {listUserComment &&
-          listUserComment.map(({ user_id, content, date }, index) => (
-            <UserComment key={index} user={{ user_id, content, date }} />
-          ))}
+        {listUserComment?.map(({ username, content, time }, index) => (
+          <UserComment key={index} user={{ username, content, time }} />
+        ))}
       </div>
     </div>
   );

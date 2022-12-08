@@ -1,7 +1,8 @@
 .comment {
   width: 100%;
-  max-width: 640px;
+  max-width: 780px;
   margin: 0 auto;
+  border-radius: 10px;
   background-color: var(--black-color);
   padding: 10px 15px;
   &__heading {

@@ -7,8 +7,10 @@ html {
   font-size: 62.5%;
   overflow-x: hidden;
 }
+
 body {
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 * {
   box-sizing: inherit;

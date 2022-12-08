@@ -7,6 +7,10 @@
   font-size: 1.6rem;
 }
 
+.detailPage:focus-within {
+  scroll-behavior: smooth;
+}
+
 .detailPage__background {
   position: absolute;
   top: 0;
@@ -153,6 +157,7 @@
 }
 
 .detailPage__wrapper__generalInfo__content__overview {
+  word-break: break-word;
   text-align: left;
   display: -webkit-box;
   -webkit-line-clamp: 5;
@@ -254,11 +259,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  max-width: 780px;
   background-color: var(--black-color);
   padding: 15px 20px;
+  border-radius: 10px;
 }
 
 .detailPage__wrapper__season__content__heading {
@@ -285,6 +289,17 @@
   max-height: 600px;
   height: 600px;
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
   overflow-y: scroll;
 }
 
@@ -298,7 +313,7 @@
 }
 
 .detailPage__wrapper__comment {
-  margin-top: 45px;
+  margin: 45px 0;
 }
 
 @media (max-width: 576px) {

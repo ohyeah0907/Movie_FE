@@ -183,7 +183,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 12px 0;
+  gap: 8px 0;
 }
 
 .item--recommend .item__content__overlay {
@@ -201,8 +201,8 @@
 
 .item--recommend .item__name {
   display: -webkit-box;
-  font-size: 4rem;
-  line-height: 5rem;
+  font-size: 3rem;
+  line-height: 4rem;
   letter-spacing: 2px;
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
@@ -282,6 +282,9 @@
         -ms-flex-align: center;
             align-items: center;
   }
+  .item--recommend .item__content-wrapper {
+    gap: 2px;
+  }
   .item--recommend .item__overview {
     display: none;
   }
@@ -296,16 +299,23 @@
   }
   .item--recommend .item__name {
     text-align: center;
+    font-size: 2.1rem;
+    line-height: 2.2rem;
   }
-  .item--recommend .item__star {
-    display: none;
+  .item--recommend .item__rating {
+    font-size: 3rem;
+  }
+  .item--recommend .item__rating-wrapper {
+    font-size: 1.2rem;
   }
   .item--recommend .item__genres {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    font-size: 1.2rem;
   }
   .item--recommend .item__button-wrapper {
+    margin-top: 8px;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -316,7 +326,7 @@
             align-items: center;
   }
   .item--recommend--hero .item__name {
-    margin-top: 0;
+    margin: 0;
   }
 }
 /*# sourceMappingURL=item.module.css.map */

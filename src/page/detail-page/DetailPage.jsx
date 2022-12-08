@@ -51,7 +51,7 @@ export const DetailPage = () => {
     });
   };
 
-  const getDataFirstTime = async (isMovie) => {
+  const getDataFirstTime = async () => {
     if (
       isMovie.current === null ||
       (isMovie.current !== 'true' && isMovie.current !== 'false')
@@ -164,42 +164,6 @@ export const DetailPage = () => {
                     styles.detailPage__wrapper__generalInfo__content__starGenres
                   )}
                 >
-                  <div className={clsx(styles.star)}>
-                    <FontAwesomeIcon
-                      icon={icon({ name: 'star', style: 'solid' })}
-                    />
-                    <FontAwesomeIcon
-                      icon={icon({ name: 'star', style: 'solid' })}
-                    />
-                    <FontAwesomeIcon
-                      icon={icon({ name: 'star', style: 'solid' })}
-                    />
-                    <FontAwesomeIcon
-                      icon={icon({ name: 'star', style: 'solid' })}
-                    />
-                    <FontAwesomeIcon
-                      icon={icon({ name: 'star', style: 'solid' })}
-                    />
-                    <div className={clsx(styles.star__inner)}>
-                      <div className={clsx(styles.star__inner__content)}>
-                        <FontAwesomeIcon
-                          icon={icon({ name: 'star', style: 'solid' })}
-                        />
-                        <FontAwesomeIcon
-                          icon={icon({ name: 'star', style: 'solid' })}
-                        />
-                        <FontAwesomeIcon
-                          icon={icon({ name: 'star', style: 'solid' })}
-                        />
-                        <FontAwesomeIcon
-                          icon={icon({ name: 'star', style: 'solid' })}
-                        />
-                        <FontAwesomeIcon
-                          icon={icon({ name: 'star', style: 'solid' })}
-                        />
-                      </div>
-                    </div>
-                  </div>
                   {movie?.genres ? (
                     <div className={clsx(styles.genres)}>
                       {movie.genres.map((genres, index) => (
@@ -239,6 +203,31 @@ export const DetailPage = () => {
                   <a href="#" className={clsx(styles.buttonWishList)}>
                     Add to my favorite
                   </a>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+        <div className={clsx(styles.detailPage__wrapper__trailer)}>
+          <Row xl={12} lg={12}>
+            <Col xl={12} lg={12}>
+              <div
+                className={clsx(styles.detailPage__wrapper__trailer__content)}
+              >
+                <div
+                  className={clsx(
+                    styles.detailPage__wrapper__trailer__content__heading
+                  )}
+                >
+                  Official trailer of this movie
+                </div>
+                <div
+                  className={clsx(
+                    styles.detailPage__wrapper__trailer__content__video
+                  )}
+                  id="video"
+                >
+                  <iframe src={movie.trailer} title="trailer"></iframe>
                 </div>
               </div>
             </Col>
@@ -320,31 +309,6 @@ export const DetailPage = () => {
                 className={clsx(styles.detailPage__wrapper__comment__content)}
               >
                 <Comment movieId={movieId} />
-              </div>
-            </Col>
-          </Row>
-        </div>
-        <div className={clsx(styles.detailPage__wrapper__trailer)}>
-          <Row xl={12} lg={12}>
-            <Col xl={12} lg={12}>
-              <div
-                className={clsx(styles.detailPage__wrapper__trailer__content)}
-              >
-                <div
-                  className={clsx(
-                    styles.detailPage__wrapper__trailer__content__heading
-                  )}
-                >
-                  Official trailer of this movie
-                </div>
-                <div
-                  className={clsx(
-                    styles.detailPage__wrapper__trailer__content__video
-                  )}
-                  id="video"
-                >
-                  <iframe src={movie.trailer} title="trailer"></iframe>
-                </div>
               </div>
             </Col>
           </Row>
