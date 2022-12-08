@@ -15,6 +15,9 @@
   --dark-color: #081b27;
   --red-color: #f5474a;
 }
+
+html {
+}
 .link {
   text-decoration: none;
 }
@@ -32,8 +35,8 @@
 
 .section {
   font-family: inherit;
-  padding-top: 60px;
-  padding-bottom: 80px;
+  padding-top: 20px;
+  padding-bottom: 30px;
   background-color: var(--base-color);
   &--footer {
     padding: 100px 0;

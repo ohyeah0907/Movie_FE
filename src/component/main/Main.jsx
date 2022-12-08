@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import {
   HomePage,
   CategoryPage,
@@ -10,15 +10,8 @@ import {
   SignUpPage,
   AdminPage,
   ErrorPage,
-} from '../../page';
+} from "../../page";
 
-// import { CategoryPage } from "../../page/category-page/CategoryPage";
-// import { DetailPage } from "../../page/detail-page/DetailPage";
-// import { ProfilePage } from "../../page/profile-page/ProfilePage";
-// import { ListPage } from "../../page/list-page/ListPage";
-// import { SignInPage } from "../../page/sign-in-page/SignInPage";
-// import { SignUpPage } from "../../page/sign-up-page/SignUpPage";
-// import { AdminPage } from "../../page/admin-page/AdminPage";
 export const Main = () => {
   return (
     <>

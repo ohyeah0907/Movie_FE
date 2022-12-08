@@ -2,16 +2,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState, useEffect, useRef } from 'react';
 import styles from './Slider.module.scss';
 import { NormalItem as Item } from '../../item';
-import { Autoplay, Thumbs, Pagination } from 'swiper';
 import { getAllMovie } from '../../../service/component/movie';
-import { API } from '../../../constant/api-moviedb/API';
 import { memo } from 'react';
 import clsx from 'clsx';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 export const DefaultSlider = memo((props) => {
-  const { layout = 'normal', category = null, sortDate = false } = props;
+  const {
+    layout = 'normal',
+    category = null,
+    sortDate = false,
+    tvShow = false,
+    limit = true,
+  } = props;
   const [itemList, setItemList] = useState([]);
   const paginationSwiperRef = useRef();
   const controller = new AbortController();
@@ -19,7 +23,18 @@ export const DefaultSlider = memo((props) => {
   useEffect(() => {
     let filteringData = async () => {
       let data = await getAllMovie(controller.signal).finally();
-      let dataFiltered = data.data.filter((value) => value.title !== null);
+      let dataFiltered = data.data.filter(
+        (movie) => movie.title !== null && movie.backdrop_path !== null
+      );
+
+      if (layout.includes('feature'))
+        dataFiltered = dataFiltered.filter(
+          (movie) => movie.vote_average > 5 && movie.genres.length > 0
+        );
+
+      if (tvShow) {
+        dataFiltered = dataFiltered.filter((movie) => movie.isMovie === 0);
+      }
 
       if (sortDate) {
         let moviesWithDateFiltered = [...dataFiltered]
@@ -38,14 +53,12 @@ export const DefaultSlider = memo((props) => {
         let categoryFiltered = [...dataFiltered].filter((movie) => {
           return movie.genres.some((genre) => genre.name === category);
         });
-        console.log('trong effect', category);
         if (categoryFiltered.length > 0) {
           dataFiltered = [...categoryFiltered];
         }
       }
 
       setItemList(dataFiltered);
-      if (itemList.length > 0) console.log(itemList);
     };
     filteringData().catch(console.error);
   }, [category]);

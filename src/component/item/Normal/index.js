@@ -83,6 +83,35 @@ export const Item = memo((props) => {
                 ''
               )}
             </div>
+            {layout.includes('feature') ? (
+              <>
+                {/* Genres */}
+                <div className={clsx(styles.item__genres)}>
+                  <FontAwesomeIcon
+                    icon={icon({ name: 'tag', style: 'solid' })}
+                    className={clsx(styles.item__genres__text__icon)}
+                  />
+                  <div className={clsx(styles['item__genres__text-wrapper'])}>
+                    {movie.genres.map((genre, index) => (
+                      <Link
+                        to={{
+                          pathname: '/category',
+                        }}
+                        state={{
+                          selectedGenre: genre.name,
+                        }}
+                        className={clsx(styles.item__genres__text)}
+                        key={index}
+                      >
+                        {genre.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>

@@ -17,6 +17,11 @@ export var routes = [
     text: "Category",
   },
   {
+    path: "/list",
+    component: ListPage,
+    text: "My List",
+  },
+  {
     path: "/sign-in",
     component: SignInPage,
     text: "Sign In",
@@ -33,10 +38,5 @@ export var routes = [
     component: ProfilePage,
     text: "Profile",
     hide: true,
-  },
-  {
-    path: "/list",
-    component: ListPage,
-    text: "My List",
   },
 ];

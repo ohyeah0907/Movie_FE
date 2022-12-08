@@ -39,14 +39,21 @@ export function HeroSlider() {
   };
 
   useEffect(() => {
-    let testData = async () => {
+    let getData = async () => {
       let data = await getAllMovie(controller.signal);
-      let dataFiltered = data.data.filter((value) => value.title !== null);
+      let dataFiltered = data.data.filter(
+        (item) =>
+          item.title !== null &&
+          item.vote_average > 5 &&
+          item.overview.length > 0
+      );
       dataFiltered = shuffleData(dataFiltered);
+      if (dataFiltered.length > 20) dataFiltered = dataFiltered.splice(0, 20);
+      console.log(dataFiltered.length);
       setItemList(dataFiltered);
       setCurrentMovie(dataFiltered[0].id);
     };
-    testData().catch(console.error);
+    getData().catch(console.error);
   }, []);
 
   const handleSwipeNext = () => {
@@ -77,10 +84,9 @@ export function HeroSlider() {
               handleSwipeNext();
               setCurrentMovie(itemList[currentIndex].id);
             }}
-            speed={1000}
+            speed={850}
             autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
+              delay: 7000,
             }}
             grabCursor={true}
             className={styles.swiper}
