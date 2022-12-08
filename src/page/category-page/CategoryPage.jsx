@@ -31,7 +31,7 @@ export const CategoryPage = () => {
   useEffect(() => {
     let getGenresData = async () => {
       let rawData = await getAllGenres();
-      let genresMenuFiltered = rawData.filter(
+      let genresMenuFiltered = rawData.data.filter(
         (genre) => genre !== null && genre.movies.length > 0
       );
       let menuColumns = renderMenuColumns(
@@ -48,7 +48,7 @@ export const CategoryPage = () => {
   }, [data]);
 
   useEffect(() => {
-    document.querySelector("body").scrollTo(0, 0);
+    document.querySelector('body').scrollTo(0, 0);
   }, []);
 
   return (

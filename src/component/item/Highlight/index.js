@@ -4,7 +4,7 @@ import styles from './css/item.module.scss';
 import { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { BaseUrl } from '../../../constant/api/BaseUrl';
+import { API } from '../../../constant/api-moviedb/API';
 import { Link } from 'react-router-dom';
 
 export const Item = memo((props) => {
