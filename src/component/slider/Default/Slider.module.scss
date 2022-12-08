@@ -60,17 +60,11 @@
 
 @include media-breakpoint-down(md) {
   .slider {
-    height: 70vh;
     &Navigation {
       display: none;
     }
-  }
-  .pagination {
-    &-wrapper {
-      bottom: 0;
-    }
-    &-item {
-      height: 90px;
+    &--feature {
+      height: 160px;
     }
   }
 }

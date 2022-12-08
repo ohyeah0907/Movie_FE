@@ -67,7 +67,7 @@
 
 @include media-breakpoint-down(md) {
   .swiper {
-    height: 70vh;
+    height: 50vh;
     &Navigation {
       display: none;
     }
@@ -77,7 +77,7 @@
       bottom: 0;
     }
     &-item {
-      height: 90px;
+      height: 60px;
     }
   }
 }

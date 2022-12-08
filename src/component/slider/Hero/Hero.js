@@ -18,10 +18,31 @@ export function HeroSlider() {
 
   const controller = new AbortController();
 
+  const shuffleData = (array) => {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  };
+
   useEffect(() => {
     let testData = async () => {
       let data = await getAllMovie(controller.signal);
-      let dataFiltered = data.data.filter((value) => value.title !== null);
+      let dataFiltered = data.filter((value) => value.title !== null);
+      dataFiltered = shuffleData(dataFiltered);
       setItemList(dataFiltered);
       setCurrentMovie(dataFiltered[0].id);
     };
@@ -78,14 +99,14 @@ export function HeroSlider() {
                 speed={1000}
                 spaceBetween={6}
                 breakpoints={{
-                  1024: {
+                  200: {
+                    slidesPerView: 4,
+                  },
+                  680: {
+                    slidesPerView: 5,
+                  },
+                  1200: {
                     slidesPerView: 7,
-                  },
-                  768: {
-                    slidePerView: 5,
-                  },
-                  300: {
-                    slidesPerView: 3,
                   },
                 }}
                 onBeforeInit={(swiper) => {
@@ -96,7 +117,6 @@ export function HeroSlider() {
                   <SwiperSlide
                     key={movie.id}
                     onClick={(swiper) => {
-                      console.log(swiper.activeIndex);
                       handelSlideTo(movie.id, index);
                     }}
                   >
