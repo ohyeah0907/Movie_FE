@@ -132,7 +132,16 @@ export const Header = () => {
               );
             }
           })}
-          {user?.sub ? <button onClick={handleSignOut}>Sign out</button> : ""}
+          {user?.sub ? (
+            <div
+              className={clsx("link", styles.navItem__link)}
+              onClick={handleSignOut}
+            >
+              Sign out
+            </div>
+          ) : (
+            ""
+          )}
         </ul>
       </div>
     </div>

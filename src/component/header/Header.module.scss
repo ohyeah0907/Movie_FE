@@ -35,6 +35,7 @@
       font-size: 1.6rem;
       border-bottom: 2px solid transparent;
       transition: 0.2s ease-in;
+      cursor: pointer;
       &:hover {
         color: var(--white-color);
       }
