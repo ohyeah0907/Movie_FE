@@ -7,15 +7,13 @@ import { useLocation } from "react-router-dom";
 
 export const CategoryPage = () => {
   const location = useLocation();
+
+  /** @type String  */
   const data = location.state?.selectedGenre;
 
   const [genresMenu, setGenresMenu] = useState([]);
   const [currentGenre, setCurrentGenre] = useState("Genres");
   const [showCategoryMenu, setShowCatergoryMenu] = useState(false);
-
-  if (data) {
-    console.log(data);
-  }
 
   const handleChangeGenre = (selectedGenre) => {
     setCurrentGenre(selectedGenre);
@@ -48,6 +46,10 @@ export const CategoryPage = () => {
   useEffect(() => {
     if (data) setCurrentGenre(data);
   }, [data]);
+
+  useEffect(() => {
+    document.querySelector("body").scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={clsx(styles.category)}>
