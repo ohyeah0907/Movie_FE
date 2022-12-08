@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import moment from 'moment/moment';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -14,17 +15,17 @@ import styles from './css/comment.module.css';
 export const Comment = ({ movieId, commentList }) => {
   let controller = new AbortController();
   const context = useContext(userContext);
-  const [listUserComment, setListUserComment] = useState();
+  const [listUserComment, setListUserComment] = useState(commentList);
   const [userInput, setuserInput] = useState();
   const navigate = useNavigate();
   const token = localStorage.getItem('access_token');
 
   useEffect(() => {
-    getComments(movieId, controller.signal)
-      .then((data) => {
-        setListUserComment(data);
-      })
-      .catch((error) => navigate('/'));
+    // getComments(movieId, controller.signal)
+    //   .then((data) => {
+    //     setListUserComment(data);
+    //   })
+    //   .catch((error) => navigate('/'));
 
     return () => controller.abort();
   }, [userInput]);
@@ -32,13 +33,11 @@ export const Comment = ({ movieId, commentList }) => {
   const handleAddComment = async (value) => {
     if (value !== '') {
       const result = {
-        user_id: token,
-        movie_id: movieId,
         content: value,
-        date: Date.now(),
+        time: moment().format('YYYY-MM-DD HH:mm:ss'),
       };
       console.log(result);
-      await addComment(result, controller.signal);
+      const res = await addComment(result, 663712, controller.signal);
       setuserInput(result);
     }
     return;

@@ -15,6 +15,8 @@ export const CategoryPage = () => {
   const [currentGenre, setCurrentGenre] = useState('Genres');
   const [showCategoryMenu, setShowCatergoryMenu] = useState(false);
 
+  console.log('Category rerender');
+
   const handleChangeGenre = (selectedGenre) => {
     setCurrentGenre(selectedGenre);
     setShowCatergoryMenu(false);

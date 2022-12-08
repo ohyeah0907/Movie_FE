@@ -3,7 +3,7 @@
   display: flex;
   gap: 0 15px;
   padding-top: 15px;
-  height: 25%;
+  height: fit-content;
   &__avatar {
     width: fit-content;
     height: fit-content;
@@ -24,7 +24,9 @@
     &__heading {
       display: flex;
       gap: 0 15px;
+      flex-direction: column;
       &__name {
+        word-break: break-word;
         color: var(--white-color);
       }
       &__date {

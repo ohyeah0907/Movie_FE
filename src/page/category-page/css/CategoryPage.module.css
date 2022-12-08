@@ -7,17 +7,10 @@
   background-color: var(--header-color);
 }
 
-.category-nav__title {
-  display: inline-block;
-  font-size: 3.2rem;
-  color: var(--white-color);
-  margin-right: 45px;
-}
-
 .category-nav__button {
   background-color: #000;
   min-width: 150px;
-  padding: 0 8px;
+  padding: 8px;
   font-size: 1.6rem;
   font-weight: 600;
   -webkit-transition: ease-in 0.1s;
@@ -32,7 +25,7 @@
 }
 
 .category-nav__button .icon {
-  margin-left: 20px;
+  margin-right: 10px;
 }
 
 .category-nav__wrapper {
@@ -93,11 +86,6 @@
 
 .movie-feature {
   padding-bottom: 30px;
-}
-
-.movie-feature__wrapper {
-  width: 1000px;
-  margin: 0 auto;
 }
 
 .movie-feature__list {

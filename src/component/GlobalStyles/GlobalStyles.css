@@ -30,8 +30,8 @@
 
 .section {
   font-family: inherit;
-  padding-top: 30px;
-  padding-bottom: 40px;
+  padding-top: 60px;
+  padding-bottom: 80px;
   background-color: var(--base-color);
 }
 

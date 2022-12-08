@@ -1,9 +1,9 @@
-import { instance } from "../../../constant/axios/Axios";
+import { instance } from '../../../constant/axios/Axios';
 export const getAllMovie = async (signal) => {
   return await instance
-    .get("/movies/all", {
+    .get('/movies/all', {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     })
     .catch((error) => {
@@ -13,9 +13,9 @@ export const getAllMovie = async (signal) => {
 
 export const getMovieDetail = async (movieID) => {
   return await instance
-    .get("/movies/all", {
+    .get('/movies/all', {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     })
     .catch((error) => {
