@@ -1,14 +1,51 @@
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import styles from "./css/HomePage.module.scss";
-import { movieList } from "../../component/testdata";
-import { Col, Row } from "react-bootstrap";
 import { FadeSlider, HeroSlider } from "../../component/slider";
-import { NormalItem, HighlightItem } from "../../component/item";
-import { Link } from "react-router-dom";
 import { DefaultSlider } from "../../component/slider/Default";
+import { getAllGenres } from "../../service/component/movie-genres";
 
 export const HomePage = () => {
+  const [randomGenres, setRandomGenres] = useState();
+  const controller = new AbortController();
+
+  useEffect(() => {
+    let filteringData = async () => {
+      let data = await getAllGenres(controller.signal).finally();
+      let dataFiltered = data
+        .filter((genre) => genre.movies.length > 6)
+        .map((genre) => genre.name);
+      dataFiltered = shuffleData(dataFiltered);
+      setRandomGenres(dataFiltered);
+    };
+    filteringData().catch(controller.error);
+  }, []);
+
+  const shuffleData = (array) => {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+    return array;
+  };
+
+  const randomLayout = () => {
+    let layouts = ["feature", "normal"];
+    return layouts[Math.floor(Math.random() * layouts.length)];
+  };
+
+  console.log(randomLayout());
   return (
     <div className="home">
       <div className={clsx(styles.section, styles.section__hero)}>
@@ -39,6 +76,30 @@ export const HomePage = () => {
           <DefaultSlider layout="normal" sortDate={true} />
         </div>
       </div>
+      <div className={clsx("section")}>
+        <div className="container">
+          <div className={clsx(styles["section__heading"])}>
+            <div className={clsx(styles["section__title"])}>
+              Amazing TV-Shows
+            </div>
+            <div className={clsx(styles["section__paragraph"])}>
+              Don't pass on these thrilling TV shows
+            </div>
+          </div>
+          <DefaultSlider layout="feature" tvShow={true} />
+        </div>
+      </div>
+      {randomGenres &&
+        randomGenres.map((genre, index) => (
+          <div key={index} className={clsx("section")}>
+            <div className="container">
+              <div className={clsx(styles["section__heading"])}>
+                <div className={clsx(styles["section__title"])}>{genre}</div>
+              </div>
+              <DefaultSlider layout={randomLayout()} category={genre} />
+            </div>
+          </div>
+        ))}
     </div>
   );
 };
