@@ -11,7 +11,6 @@ import { useLocation } from "react-router-dom";
 
 export const Header = () => {
   const { pathname } = useLocation();
-
   const [cookies, setCookie, removeCookie] = useCookies(["refresh_token"]);
   const [showSideBar, setShowSideBar] = useState(false);
   const [navHeader, setNavHeader] = useState(routes);
@@ -36,7 +35,9 @@ export const Header = () => {
     setActive(path);
   };
 
-  useEffect(() => {});
+  useEffect(() => {
+    handleActive(pathname);
+  }, [pathname]);
 
   // reverse property hide of object
   const reverseHide = () => {
@@ -67,7 +68,7 @@ export const Header = () => {
       >
         <div className={clsx("d-flex h-100", styles["navbar__nav-left"])}>
           <Link
-            onClick={() => setActive("Home")}
+            onClick={() => setActive("/")}
             className={clsx(
               "d-inline-flex align-items-center link",
               styles.navbar__logo
