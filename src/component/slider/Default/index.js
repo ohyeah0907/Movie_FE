@@ -14,6 +14,7 @@ export const DefaultSlider = memo((props) => {
     category = null,
     sortDate = false,
     tvShow = false,
+    limit = true,
   } = props;
   const [itemList, setItemList] = useState([]);
   const paginationSwiperRef = useRef();
