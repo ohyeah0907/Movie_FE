@@ -5,13 +5,10 @@ import { movieList } from "../../component/testdata";
 import { Col, Row } from "react-bootstrap";
 import { FadeSlider, HeroSlider } from "../../component/slider";
 import { NormalItem, HighlightItem } from "../../component/item";
+import { Link } from "react-router-dom";
 import { DefaultSlider } from "../../component/slider/Default";
 
 export const HomePage = () => {
-  const featureList = movieList.filter((movie, index) => {
-    return movie.rating > 50 && index < 4 ? movie : undefined;
-  });
-
   return (
     <div className="home">
       <div className={clsx(styles.section, styles.section__hero)}>
