@@ -77,34 +77,6 @@ export const Header = () => {
           >
             <MainLogo />
           </Link>
-          <div
-            className={clsx(
-              "d-inline-flex align-items-center",
-              styles.navbar__nav
-            )}
-          >
-            {navHeader.map((route) => {
-              if (route.hasOwnProperty("hide") === false) {
-                return (
-                  <span className={styles.navItem} key={route.text}>
-                    <Link
-                      className={clsx(
-                        "link",
-                        styles.navItem__link,
-                        route.path === active
-                          ? styles["navItem__link--active"]
-                          : ""
-                      )}
-                      to={route.path}
-                      onClick={() => handleActive(route.path)}
-                    >
-                      {route.text}
-                    </Link>
-                  </span>
-                );
-              }
-            })}
-          </div>
         </div>
         <div
           id="burger"
@@ -120,7 +92,6 @@ export const Header = () => {
           <Burger size="30" fill="#fff"></Burger>
         </div>
         <ul id="nav" className={clsx("align-items-center", styles.navbar__nav)}>
-          {user?.sub ? <div>{user.sub}</div> : ""}
           {navHeader.map((route) => {
             if (route.hasOwnProperty("hide")) {
               if (route.hide === false) {
@@ -142,6 +113,24 @@ export const Header = () => {
                   </span>
                 );
               }
+            } else {
+              return (
+                <span className={styles.navItem} key={route.text}>
+                  <Link
+                    className={clsx(
+                      "link",
+                      styles.navItem__link,
+                      route.text === active
+                        ? styles["navItem__link--active"]
+                        : ""
+                    )}
+                    to={route.path}
+                    onClick={() => handleActive(route.text)}
+                  >
+                    {route.text}
+                  </Link>
+                </span>
+              );
             }
           })}
           {user?.sub ? <button onClick={handleSignOut}>Sign out</button> : ""}
