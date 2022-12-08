@@ -65,12 +65,6 @@ export const Item = memo((props) => {
                     ))}
                   </div>
                 </div>
-                {/* Overview */}
-                {movie.overview && (
-                  <div className={clsx(styles.item__overview)}>
-                    {movie.overview}
-                  </div>
-                )}
               </>
             ) : (
               ""
