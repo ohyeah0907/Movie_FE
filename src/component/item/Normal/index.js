@@ -5,6 +5,7 @@ import { memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { BaseUrl } from "../../../constant/api/BaseUrl";
+import { Link } from "react-router-dom";
 
 export const Item = memo((props) => {
   const { movie, layout = "normal" } = props;
@@ -48,14 +49,19 @@ export const Item = memo((props) => {
                     className={clsx(styles.item__genres__text__icon)}
                   />
                   <div className={clsx(styles["item__genres__text-wrapper"])}>
-                    {movie.genres.map((genres, index) => (
-                      <a
-                        href="/"
+                    {movie.genres.map((genre, index) => (
+                      <Link
+                        to={{
+                          pathname: "/category",
+                        }}
+                        state={{
+                          selectedGenre: genre.name,
+                        }}
                         className={clsx(styles.item__genres__text)}
                         key={index}
                       >
-                        {genres.name}
-                      </a>
+                        {genre.name}
+                      </Link>
                     ))}
                   </div>
                 </div>
