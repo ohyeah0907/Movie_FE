@@ -117,7 +117,6 @@ export function HeroSlider() {
                   <SwiperSlide
                     key={movie.id}
                     onClick={(swiper) => {
-                      console.log(swiper.activeIndex);
                       handelSlideTo(movie.id, index);
                     }}
                   >
