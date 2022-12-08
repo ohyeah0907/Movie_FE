@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import { routes } from "../../routes/routes";
 import { userContext } from "../../layout/UserContext";
@@ -32,11 +32,12 @@ export const Header = () => {
   };
 
   const handleActive = (path) => {
+    console.log(path);
     setActive(path);
   };
 
   useEffect(() => {
-    handleActive(pathname);
+    setActive(pathname);
   }, [pathname]);
 
   // reverse property hide of object
@@ -101,12 +102,11 @@ export const Header = () => {
                       className={clsx(
                         "link",
                         styles.navItem__link,
-                        route.text === active
+                        route.path === active
                           ? styles["navItem__link--active"]
                           : ""
                       )}
                       to={route.path}
-                      onClick={() => handleActive(route.text)}
                     >
                       {route.text}
                     </Link>
@@ -120,12 +120,11 @@ export const Header = () => {
                     className={clsx(
                       "link",
                       styles.navItem__link,
-                      route.text === active
+                      route.path === active
                         ? styles["navItem__link--active"]
                         : ""
                     )}
                     to={route.path}
-                    onClick={() => handleActive(route.text)}
                   >
                     {route.text}
                   </Link>
