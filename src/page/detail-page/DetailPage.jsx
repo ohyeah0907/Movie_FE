@@ -1,22 +1,22 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
-import clsx from 'clsx';
-import React, { useEffect, useRef, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import styles from './css/detail-page.module.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
+import clsx from "clsx";
+import React, { useEffect, useRef, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import styles from "./css/detail-page.module.css";
 import {
   getDetailMovie,
   getDetailMovieVideo,
   getDetailTV,
   getDetailTVSeason,
   getDetailTVVideo,
-} from '../../service/detail-page/DetailPageService';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { Movie } from '../../model/Movie';
-import { TVSeries } from '../../model/TVSeries';
-import { Episode } from '../../component/episode/Episode';
-import { SeasonDropBox } from '../../component/season-dropbox/SeasonDropBox';
-import { Comment } from '../../component/comment/Comment';
+} from "../../service/detail-page/DetailPageService";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { Movie } from "../../model/Movie";
+import { TVSeries } from "../../model/TVSeries";
+import { Episode } from "../../component/episode/Episode";
+import { SeasonDropBox } from "../../component/season-dropbox/SeasonDropBox";
+import { Comment } from "../../component/comment/Comment";
 
 /* Trang Detail page sẽ nhận object có thuộc tính id và isMovie, isMovie để kiểm tra xem id vừa nhận
 là của TV series hay Movie */
@@ -26,7 +26,7 @@ export const DetailPage = () => {
   let controller = new AbortController();
   const { movieId } = useParams();
   const [searchParams] = useSearchParams();
-  const isMovie = useRef(searchParams.get('is-movie'));
+  const isMovie = useRef(searchParams.get("is-movie"));
   const [movie, setMovie] = useState({});
   const [season, setSeason] = useState(1);
   const [listEpisode, setListEpisode] = useState([]);
@@ -35,12 +35,13 @@ export const DetailPage = () => {
   /* Kiểm tra id nhận vào là tv series hay là movie từ đó fetch dữ liệu phù hợp, ngoài ra thì còn kiểm tra url của trang */
   useEffect(() => {
     getDataFirstTime(isMovie);
+
     return () => controller.abort();
   }, []);
 
   /* Lấy danh sách episode của season đầu vì giả dụ tv series nào cũng có it nhất là 1 season đầu */
   useEffect(() => {
-    if (isMovie.current === 'false') getEpisodes();
+    if (isMovie.current === "false") getEpisodes();
     return () => controller.abort();
   }, [season]);
 
@@ -50,16 +51,19 @@ export const DetailPage = () => {
       setListEpisode(episodes);
     });
   };
+  useEffect(() => {
+    document.querySelector("body").scrollTo(0, 0);
+  }, []);
 
   const getDataFirstTime = async () => {
     if (
       isMovie.current === null ||
-      (isMovie.current !== 'true' && isMovie.current !== 'false')
+      (isMovie.current !== "true" && isMovie.current !== "false")
     )
       navigate(-1);
 
     let film;
-    if (isMovie.current === 'true') {
+    if (isMovie.current === "true") {
       const {
         id,
         title,
@@ -71,10 +75,10 @@ export const DetailPage = () => {
         overview,
       } = await getDetailMovie(movieId, controller.signal)
         .then((data) => data)
-        .catch((error) => navigate('/error'));
+        .catch((error) => navigate("/error"));
       const trailer = await getDetailMovieVideo(movieId, controller.signal)
         .then((data) => data.results[0].key)
-        .catch((error) => navigate('/error'));
+        .catch((error) => navigate("/error"));
 
       film = new Movie(
         id,
@@ -100,10 +104,10 @@ export const DetailPage = () => {
         number_of_seasons,
       } = await getDetailTV(movieId, controller.signal)
         .then((data) => data)
-        .catch((error) => navigate('/error'));
+        .catch((error) => navigate("/error"));
       const trailer = await getDetailTVVideo(movieId, controller.signal)
         .then((data) => data.results[0].key)
-        .catch((error) => navigate('/error'));
+        .catch((error) => navigate("/error"));
       film = new TVSeries(
         id,
         name,
@@ -173,7 +177,7 @@ export const DetailPage = () => {
                           key={index}
                         >
                           <FontAwesomeIcon
-                            icon={icon({ name: 'tag', style: 'solid' })}
+                            icon={icon({ name: "tag", style: "solid" })}
                             className={clsx(styles.genres__icon)}
                           />
                           {genres.name}
@@ -261,7 +265,7 @@ export const DetailPage = () => {
                     </div>
                   </div>
                   {/* List episode */}
-                  {isMovie.current === 'false' ? (
+                  {isMovie.current === "false" ? (
                     <ul
                       className={clsx(
                         styles.detailPage__wrapper__season__content__episode
