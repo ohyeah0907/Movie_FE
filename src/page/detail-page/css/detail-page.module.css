@@ -7,10 +7,6 @@
   font-size: 1.6rem;
 }
 
-.detailPage:focus-within {
-  scroll-behavior: smooth;
-}
-
 .detailPage__background {
   position: absolute;
   top: 0;

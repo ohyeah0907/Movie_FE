@@ -10,8 +10,8 @@ const option = {
   day: 'numeric',
 };
 
-export const UserComment = ({ user }) => {
-  const { username, content, time } = user;
+export const UserComment = ({ info }) => {
+  const { user, content, time } = info;
   return (
     <div className={clsx(styles.userComment)}>
       <div className={clsx(styles.userComment__avatar)}>
@@ -20,7 +20,7 @@ export const UserComment = ({ user }) => {
       <div className={clsx(styles.userComment__info)}>
         <div className={clsx(styles.userComment__info__heading)}>
           <div className={clsx(styles.userComment__info__heading__name)}>
-            {username}
+            {user}
           </div>
           <div className={clsx(styles.userComment__info__heading__date)}>
             {new Date(time).toLocaleDateString('vi', option)}

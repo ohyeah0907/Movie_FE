@@ -1,7 +1,4 @@
 .detailPage {
-  &:focus-within {
-    scroll-behavior: smooth;
-  }
   background-color: var(--green-dark-color);
   color: var(--white-color);
   min-height: 100vh;

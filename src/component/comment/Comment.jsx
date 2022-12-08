@@ -1,9 +1,7 @@
 import clsx from 'clsx';
 import moment from 'moment/moment';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { userContext } from '../../layout/UserContext';
 import {
   addComment,
   getComments,
@@ -30,6 +28,7 @@ export const Comment = ({ movieId }) => {
 
   const handleGetComments = async (movieId, signal) => {
     const res = await getComments(movieId, signal);
+    console.log(res.data);
     return res;
   };
 
@@ -53,11 +52,13 @@ export const Comment = ({ movieId }) => {
         </div>
       </div>
       <div className={clsx(styles.comment__input)}>
-        {token ? (
+        {user ? (
           <input
             onKeyDown={(e) => {
-              if (e.key === 'Enter')
+              if (e.key === 'Enter') {
                 handleAddComment(e.target.value, controller.signal);
+                e.currentTarget.value = '';
+              }
             }}
           />
         ) : (
@@ -67,8 +68,8 @@ export const Comment = ({ movieId }) => {
         )}
       </div>
       <div className={clsx(styles.comment_list)}>
-        {listUserComment?.map(({ username, content, time }, index) => (
-          <UserComment key={index} user={{ username, content, time }} />
+        {listUserComment?.map(({ user, content, time }, index) => (
+          <UserComment key={index} info={{ user, content, time }} />
         ))}
       </div>
     </div>

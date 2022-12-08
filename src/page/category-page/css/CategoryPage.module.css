@@ -3,13 +3,13 @@
 }
 
 .category-nav {
-  padding: 8px 0;
-  background-color: var(--header-color);
+  padding: 20px 0 0;
+  background-color: var(--base-color);
 }
 
 .category-nav__button {
   background-color: #000;
-  min-width: 150px;
+  min-width: 160px;
   padding: 8px;
   font-size: 1.6rem;
   font-weight: 600;
