@@ -1,17 +1,21 @@
 import clsx from "clsx";
 import styles from "./css/CategoryPage.module.scss";
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useAsyncError } from "react-router-dom";
-import { Action } from "@remix-run/router";
-import { movieList, categoryList } from "../../component/testdata";
 import { DefaultSlider } from "../../component/slider/Default";
-import { NormalItem } from "../../component/item";
 import { getAllGenres } from "../../service/component/movie-genres";
+import { useLocation } from "react-router-dom";
 
 export const CategoryPage = () => {
+  const location = useLocation();
+  const data = location.state?.selectedGenre;
   const [genresMenu, setGenresMenu] = useState([]);
   const [currentGenre, setCurrentGenre] = useState("Genres");
   const [showCategoryMenu, setShowCatergoryMenu] = useState(false);
+
+  if (data) {
+    console.log(data);
+    let lmao = data;
+  }
 
   const handleChangeGenre = (selectedGenre) => {
     setCurrentGenre(selectedGenre);
@@ -23,7 +27,6 @@ export const CategoryPage = () => {
     for (let index = 0; index < menuList.length; index += maxRow + 1) {
       menuColumn.push(menuList.slice(index, maxRow + index));
     }
-    console.log(menuColumn);
     return menuColumn;
   };
 
@@ -35,7 +38,7 @@ export const CategoryPage = () => {
       );
       let menuColumns = renderMenuColumns(
         genresMenuFiltered,
-        Math.ceil(genresMenuFiltered.length / 3)
+        Math.floor(genresMenuFiltered.length / 3)
       );
       setGenresMenu(menuColumns);
     };
@@ -52,25 +55,42 @@ export const CategoryPage = () => {
           )}
         >
           <div
-            className={clsx([
+            className={clsx("d-flex align-items-center", [
               styles["category-nav__wrapper"],
               showCategoryMenu ? styles["category-nav__wrapper--focus"] : "",
             ])}
           >
+            {currentGenre !== "Genres" && (
+              <span
+                className={clsx(
+                  "d-inline-flex justify-content-between align-items-center",
+                  styles["category-nav__button"],
+                  styles["category-nav__button--label"]
+                )}
+                onClick={() => setCurrentGenre("Genres")}
+              >
+                Genres <i className="fa-solid fa-angle-right"></i>
+              </span>
+            )}
             <div
               className={clsx(
-                "d-flex justify-content-between align-items-center",
-                styles["category-nav__button"]
+                "d-inline-flex justify-content-between align-items-center",
+                styles["category-nav__button"],
+                currentGenre !== "Genres"
+                  ? styles["category-nav__button--selected"]
+                  : ""
               )}
               onClick={() => {
                 setShowCatergoryMenu(!showCategoryMenu);
               }}
             >
               <div>
-                <i
-                  className={clsx("fa-sharp fa-solid fa-film", styles.icon)}
-                ></i>
-                {currentGenre}
+                <span className={styles["category-nav__button-text"]}>
+                  <i
+                    className={clsx("fa-sharp fa-solid fa-film", styles.icon)}
+                  ></i>
+                  {currentGenre}
+                </span>
               </div>
               <i className={clsx("fa-solid fa-caret-down")}></i>
             </div>
