@@ -1,23 +1,23 @@
-import clsx from 'clsx';
-import moment from 'moment/moment';
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { userContext } from '../../layout/UserContext';
+import clsx from "clsx";
+import moment from "moment/moment";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { userContext } from "../../layout/UserContext";
 import {
   addComment,
   getComments,
-} from '../../service/component/comment/Comment';
-import { UserComment } from '../user-comment/UserComment';
-import styles from './css/comment.module.css';
-import { decodeToken } from 'react-jwt';
+} from "../../service/component/comment/Comment";
+import { UserComment } from "../user-comment/UserComment";
+import styles from "./css/comment.module.css";
+import { decodeToken } from "react-jwt";
 
 // Component Comment nhận array comment và movie's id làm props
 export const Comment = ({ movieId }) => {
   let controller = new AbortController();
   const [listUserComment, setListUserComment] = useState();
   const [comment, setComment] = useState();
-  const token = localStorage.getItem('access_token');
+  const token = localStorage.getItem("access_token");
   const user = decodeToken(token);
 
   console.log(user);
@@ -34,10 +34,10 @@ export const Comment = ({ movieId }) => {
   };
 
   const handleAddComment = async (value, signal) => {
-    if (value !== '') {
+    if (value !== "") {
       const result = {
         content: value,
-        time: moment().format('YYYY-MM-DD HH:mm:ss'),
+        time: moment().format("YYYY-MM-DD HH:mm:ss"),
       };
       const res = await addComment(result, movieId, signal);
       setComment(result);
@@ -49,20 +49,20 @@ export const Comment = ({ movieId }) => {
     <div className={clsx(styles.comment)}>
       <div className={clsx(styles.comment__heading)}>
         <div className={clsx(styles.comment__heading__totalComment)}>
-          {listUserComment?.length} bình luận
+          {listUserComment?.length} comments.
         </div>
       </div>
       <div className={clsx(styles.comment__input)}>
         {token ? (
           <input
             onKeyDown={(e) => {
-              if (e.key === 'Enter')
+              if (e.key === "Enter")
                 handleAddComment(e.target.value, controller.signal);
             }}
           />
         ) : (
           <p className={clsx(styles.comment__input__notify)}>
-            Please <Link to={'/sign-in'}>sign in</Link> to use comment
+            Please <Link to={"/sign-in"}>sign in</Link> to use comment
           </p>
         )}
       </div>
