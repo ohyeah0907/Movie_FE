@@ -46,7 +46,8 @@ export const SignInPage = () => {
     context.handleToken({
       refreshToken: res.data.refreshToken,
     });
-    navigate({ pathname: '/' });
+    if (res.data.roles.includes('ROLE_ADMIN')) navigate({ pathname: '/admin' });
+    else navigate({ pathname: '/' });
   };
 
   const handleSignUp = (email, password) => {
