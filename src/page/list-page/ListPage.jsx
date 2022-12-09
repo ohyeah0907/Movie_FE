@@ -6,20 +6,28 @@ import { NormalItem as Item } from "../../component/item";
 import { getAllMovie } from "../../service/component/movie";
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
+import { decodeToken } from "react-jwt";
+import { getUserDetail } from "../../service/component/userWishList";
 
 export const ListPage = () => {
   const [userMovies, setUserMovies] = useState([]);
   const controller = new AbortController();
+  const token = localStorage.getItem("access_token");
 
   useEffect(() => {
-    let getData = async () => {
+    let getUserWishList = async () => {
+      let userDetails = await getUserDetail(controller.signal);
+      let wishList = userDetails.data.wishLists.map((list) => list.movie);
+      console.log(wishList);
       let data = await getAllMovie(controller.signal);
-      let dataFiltered = data.filter(
-        (item) => item.title !== null && item.overview.length > 0
+      let dataFiltered = data.data.filter((movie) =>
+        wishList.includes(movie.id)
       );
+      console.log(dataFiltered);
       setUserMovies(dataFiltered);
     };
-    getData().catch(console.error);
+
+    getUserWishList().catch(console.error());
   }, []);
 
   return (
@@ -27,7 +35,7 @@ export const ListPage = () => {
       <div className="container">
         <div className={clsx(styles["section__heading"])}>
           <div className={clsx(styles["section__title"])}>
-            My Favourite Movie List
+            My Favourite Movie List{" "}
           </div>
           <div className={clsx(styles["section__paragraph"])}>
             Here are your beloved movies.
