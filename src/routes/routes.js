@@ -1,30 +1,31 @@
-import { HomePage } from "../page/home-page/HomePage";
-import { CategoryPage } from "../page/category-page/CategoryPage";
-import { ListPage } from "../page/list-page/ListPage";
-import { ProfilePage } from "../page/profile-page/ProfilePage";
-import { SignInPage } from "../page/sign-in-page/SignInPage";
-import { SignUpPage } from "../page/sign-up-page/SignUpPage";
+import { HomePage } from '../page/home-page/HomePage';
+import { CategoryPage } from '../page/category-page/CategoryPage';
+import { ListPage } from '../page/list-page/ListPage';
+import { ProfilePage } from '../page/profile-page/ProfilePage';
+import { SignInPage } from '../page/sign-in-page/SignInPage';
+import { SignUpPage } from '../page/sign-up-page/SignUpPage';
 
 export var routes = [
   {
-    path: "/",
+    path: '/',
     component: HomePage,
-    text: "Home",
+    text: 'Home',
   },
   {
-    path: "/category",
+    path: '/category',
     component: CategoryPage,
-    text: "Category",
+    text: 'Category',
   },
   {
-    path: "/list",
+    path: '/list',
     component: ListPage,
-    text: "My List",
+    text: 'My List',
+    hide: true,
   },
   {
-    path: "/sign-in",
+    path: '/sign-in',
     component: SignInPage,
-    text: "Sign In",
+    text: 'Sign In',
     hide: false,
   },
   // {
@@ -34,9 +35,9 @@ export var routes = [
   //   hide: false,
   // },
   {
-    path: "/profile",
+    path: '/profile',
     component: ProfilePage,
-    text: "Profile",
+    text: 'Profile',
     hide: true,
   },
 ];
