@@ -17,6 +17,7 @@ import { TVSeries } from "../../model/TVSeries";
 import { Episode } from "../../component/episode/Episode";
 import { SeasonDropBox } from "../../component/season-dropbox/SeasonDropBox";
 import { Comment } from "../../component/comment/Comment";
+import { Link } from "react-router-dom";
 
 /* Trang Detail page sẽ nhận object có thuộc tính id và isMovie, isMovie để kiểm tra xem id vừa nhận
 là của TV series hay Movie */
@@ -170,9 +171,14 @@ export const DetailPage = () => {
                 >
                   {movie?.genres ? (
                     <div className={clsx(styles.genres)}>
-                      {movie.genres.map((genres, index) => (
-                        <a
-                          href="#"
+                      {movie.genres.map((genre, index) => (
+                        <Link
+                          to={{
+                            pathname: "/category",
+                          }}
+                          state={{
+                            selectedGenre: genre.name,
+                          }}
                           className={clsx(styles.genres__link)}
                           key={index}
                         >
@@ -180,8 +186,8 @@ export const DetailPage = () => {
                             icon={icon({ name: "tag", style: "solid" })}
                             className={clsx(styles.genres__icon)}
                           />
-                          {genres.name}
-                        </a>
+                          {genre.name}
+                        </Link>
                       ))}
                     </div>
                   ) : (

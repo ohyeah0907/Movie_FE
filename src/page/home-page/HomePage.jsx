@@ -12,7 +12,7 @@ export const HomePage = () => {
   useEffect(() => {
     let filteringData = async () => {
       let data = await getAllGenres(controller.signal).finally();
-      let dataFiltered = data
+      let dataFiltered = data.data
         .filter((genre) => genre.movies.length > 6)
         .map((genre) => genre.name);
       dataFiltered = shuffleData(dataFiltered);

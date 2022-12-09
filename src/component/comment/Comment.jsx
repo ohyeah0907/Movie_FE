@@ -48,7 +48,7 @@ export const Comment = ({ movieId }) => {
     <div className={clsx(styles.comment)}>
       <div className={clsx(styles.comment__heading)}>
         <div className={clsx(styles.comment__heading__totalComment)}>
-          {listUserComment?.length} bình luận
+          {listUserComment?.length} comments.
         </div>
       </div>
       <div className={clsx(styles.comment__input)}>
