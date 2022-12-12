@@ -1,0 +1,23 @@
+.loader {
+  &Container {
+    background-color: rgba(#000, 0.6);
+    height: 90vh;
+    position: relative;
+  }
+  &Content {
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    transform: translateX(-40%);
+  }
+  &Icon {
+    height: 160px;
+    width: 160px;
+  }
+}
+
+.slider {
+  &Container {
+    position: absolute;
+  }
+}

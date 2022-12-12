@@ -7,7 +7,7 @@ const MainLogo = ({ width, height }) => {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       width={width || "160"}
-      height="60"
+      height={height || "60"}
       viewBox="0 0 1000 634"
     >
       <g transform="matrix(1,0,0,1,0.1066666666666265,0.5160345253824516)">
