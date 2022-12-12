@@ -18,8 +18,7 @@ export const SearchPage = () => {
   }, [searchParam]);
 
   const handleSearchFilm = async (name, signal) => {
-    const filmList = await getFilmByName(name, signal).then((res) => res.data);
-    console.log(filmList);
+    const filmList = await getFilmByName(name, signal);
     setUserMovies(filmList);
   };
 
