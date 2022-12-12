@@ -1,17 +1,17 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useState, useEffect, useRef } from "react";
-import styles from "./Slider.module.scss";
-import { NormalItem as Item } from "../../item";
-import { getAllMovie } from "../../../service/component/movie";
-import { ItemLoader } from "../../skeleton";
-import { memo } from "react";
-import clsx from "clsx";
-import "swiper/css";
-import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState, useEffect, useRef } from 'react';
+import styles from './Slider.module.scss';
+import { NormalItem as Item } from '../../item';
+import { getAllMovie } from '../../../service/component/movie';
+import { ItemLoader } from '../../skeleton';
+import { memo } from 'react';
+import clsx from 'clsx';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export const DefaultSlider = memo((props) => {
   const {
-    layout = "normal",
+    layout = 'normal',
     category = null,
     sortDate = false,
     tvShow = false,
@@ -30,7 +30,7 @@ export const DefaultSlider = memo((props) => {
         (movie) => movie.title !== null && movie.backdrop_path !== null
       );
 
-      if (layout.includes("feature"))
+      if (layout.includes('feature'))
         dataFiltered = dataFiltered.filter(
           (movie) => movie.vote_average > 5 && movie.genres.length > 0
         );
@@ -102,7 +102,7 @@ export const DefaultSlider = memo((props) => {
         spaceBetween={6}
         slidesPerView={6}
         breakpoints={{
-          200: layout.includes("feature")
+          200: layout.includes('feature')
             ? {
                 slidesPerView: 4,
               }
@@ -110,7 +110,7 @@ export const DefaultSlider = memo((props) => {
                 slidesPerView: 3,
               },
           // when window width is >= 480px
-          680: layout.includes("feature")
+          680: layout.includes('feature')
             ? {
                 slidesPerView: 4,
               }
@@ -118,7 +118,7 @@ export const DefaultSlider = memo((props) => {
                 slidesPerView: 5,
               },
           // when window width is >= 640px
-          1100: layout.includes("feature")
+          1100: layout.includes('feature')
             ? {
                 slidesPerView: 5,
               }
@@ -152,7 +152,7 @@ export const DefaultSlider = memo((props) => {
         <div
           className={clsx(
             styles.sliderNavigation,
-            styles["sliderNavigation--next"]
+            styles['sliderNavigation--next']
           )}
           onClick={() => handleSwipeNext()}
         >
@@ -161,7 +161,7 @@ export const DefaultSlider = memo((props) => {
         <div
           className={clsx(
             styles.sliderNavigation,
-            styles["sliderNavigation--previous"]
+            styles['sliderNavigation--previous']
           )}
           onClick={() => handleSwipePrevious()}
         >
