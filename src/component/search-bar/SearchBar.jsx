@@ -7,9 +7,7 @@ import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 export const SearchBar = (props) => {
   const { getData } = props;
   const [input, setInput] = useState('');
-  const getFilmBySearch = (e) => {
-    
-  };
+  const getFilmBySearch = (e) => {};
   return (
     <div className={clsx(styles['search-bar'])}>
       <FontAwesomeIcon
