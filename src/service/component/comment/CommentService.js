@@ -18,3 +18,17 @@ export const addComment = async (requestBody, movieId, signal) => {
       console.log(error);
     });
 };
+
+export const deleteComment = async (commentId, signal) => {
+  console.log(commentId);
+  return instance
+    .get(`/comments/delete/${commentId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+      signal,
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import {
   HomePage,
   CategoryPage,
@@ -10,7 +10,8 @@ import {
   SignUpPage,
   AdminPage,
   ErrorPage,
-} from "../../page";
+} from '../../page';
+import { SearchPage } from '../../page/search-page/SearchPage';
 
 export const Main = () => {
   return (
@@ -24,6 +25,7 @@ export const Main = () => {
         {/* <Route path="/sign-up" element={<SignUpPage />} /> */}
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

@@ -10,8 +10,9 @@ const option = {
   day: 'numeric',
 };
 
-export const UserComment = ({ info }) => {
-  const { user, content, time } = info;
+export const UserComment = ({ info, pos, currentUser }) => {
+  const { user, content, time, id, deleteComment } = info;
+  console.log(currentUser);
   return (
     <div className={clsx(styles.userComment)}>
       <div className={clsx(styles.userComment__avatar)}>
@@ -27,6 +28,17 @@ export const UserComment = ({ info }) => {
           </div>
         </div>
         <div className={clsx(styles.userComment__info__content)}>{content}</div>
+        {currentUser == user && (
+          <button
+            className={clsx(styles['button'], styles['button--delete'])}
+            onClick={() => {
+              deleteComment(pos, id);
+            }}
+          >
+            <FontAwesomeIcon icon={icon({ name: 'xmark', style: 'solid' })} />
+            Delete
+          </button>
+        )}
       </div>
     </div>
   );

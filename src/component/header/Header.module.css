@@ -43,6 +43,7 @@
   border-bottom: 2px solid transparent;
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
+  cursor: pointer;
 }
 
 .navbar .navItem__link:hover {

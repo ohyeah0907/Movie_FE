@@ -26,6 +26,10 @@
 }
 
 .userComment__info {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   width: 100%;
   max-width: 600px;
   display: -webkit-box;
@@ -63,5 +67,22 @@
   text-align: left;
   white-space: wrap;
   word-break: break-word;
+}
+
+.button {
+  background-color: transparent;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0;
+}
+
+.button--delete {
+  color: #e6ddc4;
+  font-size: 1.2rem;
+}
+
+.button--delete svg {
+  margin-right: 5px;
 }
 /*# sourceMappingURL=user-comment.module.css.map */

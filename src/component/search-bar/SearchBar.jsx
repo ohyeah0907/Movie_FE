@@ -8,17 +8,20 @@ export const SearchBar = (props) => {
   const { getData } = props;
   const [input, setInput] = useState('');
   const getFilmBySearch = (e) => {
-    if (e.key == 'Enter')
-      fetch({
-        url: 'url-backend',
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    
   };
   return (
     <div className={clsx(styles['search-bar'])}>
+      <FontAwesomeIcon
+        className={clsx(
+          styles['search-bar__icon'],
+          styles['search-bar__icon--search']
+        )}
+        icon={icon({ name: 'magnifying-glass', style: 'solid' })}
+        onClick={() => {
+          setInput('');
+        }}
+      />
       <input
         value={input}
         className={clsx(styles['search-bar__input-content'])}
@@ -30,6 +33,10 @@ export const SearchBar = (props) => {
         }}
       />
       <FontAwesomeIcon
+        className={clsx(
+          styles['search-bar__icon'],
+          styles['search-bar__icon--delete']
+        )}
         icon={icon({ name: 'xmark', style: 'solid' })}
         onClick={() => {
           setInput('');

@@ -1,0 +1,15 @@
+.section {
+  background-color: var(--base-color);
+  &__heading {
+    margin-bottom: 40px;
+  }
+  &__title {
+    font-size: 5rem;
+    font-weight: 600;
+    color: var(--white-color);
+  }
+  &__paragraph {
+    font-size: 2rem;
+    color: #b8c5c5;
+  }
+}

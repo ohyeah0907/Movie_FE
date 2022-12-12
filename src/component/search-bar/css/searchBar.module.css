@@ -1,1 +1,41 @@
-/* No CSS *//*# sourceMappingURL=searchBar.module.css.map */
+.search-bar {
+  position: relative;
+  max-width: 275px;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.search-bar__input-content {
+  padding: 5px 30px 5px 30px;
+  width: 100%;
+  font-size: 1.6rem;
+}
+
+.search-bar__input-content:focus {
+  outline: none;
+}
+
+.search-bar__icon {
+  font-size: 1.4rem;
+}
+
+.search-bar__icon--delete {
+  position: absolute;
+  right: 10px;
+  padding: 10px;
+  cursor: pointer;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.search-bar__icon--search {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+/*# sourceMappingURL=searchBar.module.css.map */

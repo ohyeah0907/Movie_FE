@@ -8,6 +8,7 @@ import { MainLogo, Burger } from '../Logo';
 import { useCookies } from 'react-cookie';
 import { isExpired, decodeToken } from 'react-jwt';
 import { useLocation } from 'react-router-dom';
+import { SearchBar } from '../search-bar/SearchBar';
 
 export const Header = () => {
   const { pathname } = useLocation();
@@ -94,6 +95,7 @@ export const Header = () => {
         >
           <Burger size="30" fill="#fff"></Burger>
         </div>
+        <SearchBar />
         <ul id="nav" className={clsx('align-items-center', styles.navbar__nav)}>
           {navHeader.map((route) => {
             if (route.hasOwnProperty('hide')) {

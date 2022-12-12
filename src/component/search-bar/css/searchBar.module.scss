@@ -1,0 +1,32 @@
+.search-bar {
+  position: relative;
+  max-width: 275px;
+  width: 100%;
+  height: fit-content;
+  &__input-content {
+    padding: 5px 30px 5px 30px;
+    width: 100%;
+    font-size: 1.6rem;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__icon {
+    font-size: 1.4rem;
+
+    &--delete {
+      position: absolute;
+      right: 10px;
+      padding: 10px;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &--search {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

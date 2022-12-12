@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   addComment,
+  deleteComment,
   getComments,
-} from '../../service/component/comment/Comment';
+} from '../../service/component/comment/CommentService';
 import { UserComment } from '../user-comment/UserComment';
 import styles from './css/comment.module.css';
 import { decodeToken } from 'react-jwt';
@@ -16,9 +17,9 @@ export const Comment = ({ movieId }) => {
   const [listUserComment, setListUserComment] = useState();
   const [comment, setComment] = useState();
   const token = localStorage.getItem('access_token');
-  const user = decodeToken(token);
+  const currentUser = decodeToken(token);
 
-  console.log(user);
+  console.log(currentUser);
   useEffect(() => {
     handleGetComments(movieId, controller.signal).then((res) =>
       setListUserComment(res.data.comments)
@@ -39,9 +40,20 @@ export const Comment = ({ movieId }) => {
         time: moment().format('YYYY-MM-DD HH:mm:ss'),
       };
       const res = await addComment(result, movieId, signal);
-      setComment(result);
+      setListUserComment((prev) => [
+        { user: currentUser.sub, ...result },
+        ...prev,
+      ]);
     }
     return;
+  };
+  const handelDeleteComment = async (posComment, commentId, signal) => {
+    const res = await deleteComment(commentId, signal);
+    setListUserComment((prev) => {
+      const newCommentList = [...prev];
+      newCommentList.splice(posComment, 1);
+      return newCommentList;
+    });
   };
 
   return (
@@ -52,7 +64,7 @@ export const Comment = ({ movieId }) => {
         </div>
       </div>
       <div className={clsx(styles.comment__input)}>
-        {user ? (
+        {currentUser ? (
           <input
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
@@ -68,8 +80,19 @@ export const Comment = ({ movieId }) => {
         )}
       </div>
       <div className={clsx(styles.comment_list)}>
-        {listUserComment?.map(({ user, content, time }, index) => (
-          <UserComment key={index} info={{ user, content, time }} />
+        {listUserComment?.map(({ user, content, time, id }, index) => (
+          <UserComment
+            key={index}
+            info={{
+              user,
+              content,
+              time,
+              id,
+              deleteComment: handelDeleteComment,
+            }}
+            pos={index}
+            currentUser={currentUser.sub}
+          />
         ))}
       </div>
     </div>

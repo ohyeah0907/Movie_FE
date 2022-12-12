@@ -25,7 +25,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  content: '';
+  content: "";
   background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(var(--green-dark-color)));
   background-image: linear-gradient(to bottom, transparent, var(--green-dark-color));
   height: 200px;
