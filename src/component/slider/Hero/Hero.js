@@ -1,20 +1,22 @@
-import clsx from 'clsx';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState, useEffect, useRef } from 'react';
-import styles from './Hero.module.scss';
-import { HighlightItem as Item } from '../../item';
-import { Autoplay, Thumbs, Pagination } from 'swiper';
+import clsx from "clsx";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useState, useEffect, useRef } from "react";
+import styles from "./Hero.module.scss";
+import { HighlightItem as Item } from "../../item";
+import { Autoplay, Thumbs, Pagination } from "swiper";
+import { HeroLoader } from "../../skeleton";
 
-import { API } from '../../../constant/api-moviedb/API';
-import { getAllMovie } from '../../../service/component/movie';
+import { API } from "../../../constant/api-moviedb/API";
+import { getAllMovie } from "../../../service/component/movie";
 
 export function HeroSlider() {
   const heroSwiperRef = useRef(null);
   const heroPaginationRef = useRef(null);
   const [itemList, setItemList] = useState([]);
   const [currentMovie, setCurrentMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const controller = new AbortController();
 
@@ -39,8 +41,12 @@ export function HeroSlider() {
   };
 
   useEffect(() => {
+    let loadingTimeOut;
     let getData = async () => {
       let data = await getAllMovie(controller.signal);
+      loadingTimeOut = setTimeout(() => {
+        setIsLoading(false);
+      }, 3 * 1000);
       let dataFiltered = data.data.filter(
         (item) =>
           item.title !== null &&
@@ -54,6 +60,9 @@ export function HeroSlider() {
       setCurrentMovie(dataFiltered[0].id);
     };
     getData().catch(console.error);
+    return () => {
+      clearTimeout(loadingTimeOut);
+    };
   }, []);
 
   const handleSwipeNext = () => {
@@ -71,7 +80,8 @@ export function HeroSlider() {
   };
   return (
     <>
-      {itemList.length > 0 && (
+      {isLoading && <HeroLoader />}
+      {itemList.length > 0 && isLoading === false && (
         <div className={styles.hero}>
           <Swiper
             loop={true}
@@ -97,8 +107,8 @@ export function HeroSlider() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className={styles['pagination-wrapper']}>
-            <div className={clsx('container', styles.pagination)}>
+          <div className={styles["pagination-wrapper"]}>
+            <div className={clsx("container", styles.pagination)}>
               <Swiper
                 loop={true}
                 slidesPerGroup={1}
@@ -128,14 +138,14 @@ export function HeroSlider() {
                   >
                     <div
                       className={clsx(
-                        styles['pagination-item'],
+                        styles["pagination-item"],
                         movie.id === currentMovie
-                          ? styles['pagination-item--active']
-                          : ''
+                          ? styles["pagination-item--active"]
+                          : ""
                       )}
                     >
                       <img
-                        className={styles['pagination-item__image']}
+                        className={styles["pagination-item__image"]}
                         src={API.IMAGE_URL + movie.backdrop_path}
                       />
                     </div>
@@ -144,7 +154,7 @@ export function HeroSlider() {
                 <div
                   className={clsx(
                     styles.swiperNavigation,
-                    styles['swiperNavigation--next']
+                    styles["swiperNavigation--next"]
                   )}
                   onClick={() => handleSwipeNext()}
                 >
@@ -153,7 +163,7 @@ export function HeroSlider() {
                 <div
                   className={clsx(
                     styles.swiperNavigation,
-                    styles['swiperNavigation--previous']
+                    styles["swiperNavigation--previous"]
                   )}
                   onClick={() => handleSwipePrevious()}
                 >
