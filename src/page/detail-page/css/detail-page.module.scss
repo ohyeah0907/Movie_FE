@@ -23,7 +23,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      content: "";
+      content: '';
       background-image: linear-gradient(
         to bottom,
         transparent,
@@ -151,6 +151,7 @@
           .buttonWishList {
             margin-left: 20px;
             background-color: #293462;
+            cursor: pointer;
             &:hover {
               background-color: var(--light-green-dark-color);
               opacity: 1;

@@ -3,7 +3,7 @@ import { isExpired } from 'react-jwt';
 
 // Tạo config axios
 export const instance = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: 'https://movie-rnr-spring-boot.herokuapp.com/api',
   headers: {
     'Content-Type': 'application/json',
   },
