@@ -22,7 +22,6 @@ export const Main = () => {
         <Route path="/watch/:movieId" element={<DetailPage />} />
         <Route path="/list" element={<ListPage />} />
         <Route path="/sign-in" element={<SignInPage />} />
-        {/* <Route path="/sign-up" element={<SignUpPage />} /> */}
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/search" element={<SearchPage />} />

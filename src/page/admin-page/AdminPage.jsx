@@ -35,14 +35,14 @@ export const AdminPage = () => {
   return (
     <div className={clsx(styles.adminContainer)}>
       <AdminLTE title={['Admin', ' page']} theme="black" sidebar={sidebar}>
-        <Navbar.Core>
+        {/* <Navbar.Core>
           <Entry
             icon="fa-sign-out-alt"
             onClick={() => {
               console.log('button log out is clicked');
             }}
           ></Entry>
-        </Navbar.Core>
+        </Navbar.Core> */}
         <UserDatatable path={'/user'} />
         <RoleDatatable path={'/role'} />
         <CommentDatatable path={'/comment'} />
