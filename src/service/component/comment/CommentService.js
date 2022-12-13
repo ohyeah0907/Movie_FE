@@ -22,7 +22,7 @@ export const addComment = async (requestBody, movieId, signal) => {
 export const deleteComment = async (commentId, signal) => {
   console.log(commentId);
   return instance
-    .get(`/comments/delete/${commentId}`, {
+    .delete(`/comments/delete/${commentId}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
       },

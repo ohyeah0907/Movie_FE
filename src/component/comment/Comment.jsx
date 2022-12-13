@@ -39,7 +39,7 @@ export const Comment = ({ movieId }) => {
         content: value,
         time: moment().format('YYYY-MM-DD HH:mm:ss'),
       };
-      const res = await addComment(result, movieId, signal);
+      await addComment(result, movieId, signal);
       setListUserComment((prev) => [
         { user: currentUser.sub, ...result },
         ...prev,
@@ -48,7 +48,7 @@ export const Comment = ({ movieId }) => {
     return;
   };
   const handelDeleteComment = async (posComment, commentId, signal) => {
-    const res = await deleteComment(commentId, signal);
+    await deleteComment(commentId, signal);
     setListUserComment((prev) => {
       const newCommentList = [...prev];
       newCommentList.splice(posComment, 1);
@@ -91,7 +91,7 @@ export const Comment = ({ movieId }) => {
               deleteComment: handelDeleteComment,
             }}
             pos={index}
-            currentUser={currentUser.sub}
+            currentUser={currentUser?.sub}
           />
         ))}
       </div>
