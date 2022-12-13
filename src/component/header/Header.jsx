@@ -95,8 +95,13 @@ export const Header = () => {
         >
           <Burger size="30" fill="#fff"></Burger>
         </div>
-        <SearchBar />
+        <div className={clsx(styles['navbar__search-bar'])}>
+          <SearchBar />
+        </div>
         <ul id="nav" className={clsx('align-items-center', styles.navbar__nav)}>
+          <div className={clsx(styles['navbar__search-bar-menu'])}>
+            <SearchBar />
+          </div>
           {navHeader.map((route) => {
             if (route.hasOwnProperty('hide')) {
               if (route.hide === false) {

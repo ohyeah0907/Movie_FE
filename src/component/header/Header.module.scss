@@ -1,9 +1,12 @@
-@import "../../../node_modules/bootstrap/scss/functions";
-@import "../../../node_modules/bootstrap/scss/variables";
-@import "../../../node_modules/bootstrap/scss/mixins";
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../../node_modules/bootstrap/scss/mixins';
 
 .navbar {
   background-color: var(--header-color);
+  &__search-bar-menu {
+    display: none;
+  }
   .container {
     display: flex;
     justify-content: space-between;
@@ -52,8 +55,15 @@
   }
   .navbar {
     position: relative;
+    &__search-bar {
+      display: none;
+      &-menu {
+        display: block;
+      }
+    }
+
     &__nav {
-      position: absolute;
+      position: fixed;
       background-color: var(--base-color);
       box-shadow: -4px 0 16px rgba(#111, 0.3);
       display: block;
@@ -70,6 +80,7 @@
       height: fit-content;
 
       &__link {
+        margin-left: 0px;
         text-align: left;
         padding: 15px 0;
         border-color: rgba(#899ead, 0.2);
@@ -80,6 +91,9 @@
     }
   }
   .burger__btn {
+    position: fixed;
+    top: 0;
+    right: 0;
     z-index: 200;
     padding: 10px;
     &--over {

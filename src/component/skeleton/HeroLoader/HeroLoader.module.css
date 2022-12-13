@@ -1,0 +1,23 @@
+.loaderContainer {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 90vh;
+  position: relative;
+}
+
+.loaderContent {
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  -webkit-transform: translateX(-40%);
+          transform: translateX(-40%);
+}
+
+.loaderIcon {
+  height: 160px;
+  width: 160px;
+}
+
+.sliderContainer {
+  position: absolute;
+}
+/*# sourceMappingURL=HeroLoader.module.css.map */

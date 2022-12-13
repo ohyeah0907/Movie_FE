@@ -2,6 +2,10 @@
   background-color: var(--header-color);
 }
 
+.navbar__search-bar-menu {
+  display: none;
+}
+
 .navbar .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -61,8 +65,14 @@
   .navbar {
     position: relative;
   }
+  .navbar__search-bar {
+    display: none;
+  }
+  .navbar__search-bar-menu {
+    display: block;
+  }
   .navbar__nav {
-    position: absolute;
+    position: fixed;
     background-color: var(--base-color);
     -webkit-box-shadow: -4px 0 16px rgba(17, 17, 17, 0.3);
             box-shadow: -4px 0 16px rgba(17, 17, 17, 0.3);
@@ -86,6 +96,7 @@
     height: fit-content;
   }
   .navbar .navItem__link {
+    margin-left: 0px;
     text-align: left;
     padding: 15px 0;
     border-color: rgba(137, 158, 173, 0.2);
@@ -94,6 +105,9 @@
     font-size: 2rem;
   }
   .burger__btn {
+    position: fixed;
+    top: 0;
+    right: 0;
     z-index: 200;
     padding: 10px;
   }

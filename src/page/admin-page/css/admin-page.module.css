@@ -2,4 +2,8 @@
   width: 100%;
   text-align: left;
 }
+
+.adminContainer nav {
+  display: block;
+}
 /*# sourceMappingURL=admin-page.module.css.map */

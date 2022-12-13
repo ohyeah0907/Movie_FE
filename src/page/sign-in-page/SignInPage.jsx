@@ -41,6 +41,7 @@ export const SignInPage = () => {
 
   const handleSignIn = async (email, password) => {
     const res = await signIn(email, password, controller.signal);
+    console.log(res);
     setCookie('refresh_token', res.data.refreshToken, { path: '/' });
     localStorage.setItem('access_token', res.data.token);
     context.handleToken({

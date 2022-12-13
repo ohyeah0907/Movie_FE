@@ -17,21 +17,18 @@ import {
   getUsers,
   updateUser,
 } from '../../../service/component/user-datatble/UserDatatableService';
-import { getRoles } from '../../../service/component/role-datatable/RoleDatableService';
 
 const { Text, Radio } = Inputs;
 const firstColumns = [
   { title: 'id', data: 'id' },
-  { title: 'Name', data: 'name' },
+  { title: 'Name', data: 'username' },
   { title: 'Password', data: 'password' },
-  { title: 'RoleId', data: 'roleId' },
   {
     title: 'Actions',
     data: null,
     render: () => (
       <>
         <Button text="Delete" className="on-delete-event" margin />
-        <Button text="Update" className="on-update-event" margin></Button>
       </>
     ),
   },
@@ -40,7 +37,7 @@ const firstColumns = [
 export const UserDatatable = () => {
   const [data, setData] = useState([]);
   const [dataUpdate, setDataUpdate] = useState();
-  const [dataAdd, setDataAdd] = useState(false);
+  const [enableAdd, setEnableAdd] = useState(false);
 
   const inputAdd = useRef({});
   //Foreign key in table
@@ -48,24 +45,17 @@ export const UserDatatable = () => {
 
   //Fetch data first time and fetch foreign key first time
   useEffect(() => {
-    getDataFirstTime();
+    getUsers().then((res) => {
+      setData(res.data);
+    });
   }, []);
-
-  const getDataFirstTime = async () => {
-    await getRoles().then((data) => {
-      roles.current = data;
-    });
-    await getUsers().then((data) => {
-      setData(data);
-    });
-  };
 
   return (
     <Content title="User">
       <Row>
         <Col xs={12}>
           {/* Add Form */}
-          {dataAdd ? (
+          {enableAdd && (
             <Box title={'Add Form'} collapsed collapsable>
               <Text
                 name="name-add-form"
@@ -116,7 +106,7 @@ export const UserDatatable = () => {
                   name="close-button-add-form"
                   text="Close"
                   onClick={() => {
-                    setDataAdd(false);
+                    setEnableAdd(false);
                   }}
                 />
                 <Button
@@ -129,11 +119,9 @@ export const UserDatatable = () => {
                 />
               </ButtonGroup>
             </Box>
-          ) : (
-            ''
           )}
           {/* Update Form */}
-          {dataUpdate ? (
+          {/* {dataUpdate ? (
             <Box title={'Update Form'} collapsed collapsable>
               <Text
                 name="name-update-form"
@@ -202,7 +190,7 @@ export const UserDatatable = () => {
             </Box>
           ) : (
             ''
-          )}
+          )} */}
           {/* View Form */}
           <Box
             title="Data Table"
@@ -212,7 +200,7 @@ export const UserDatatable = () => {
                 text="Add"
                 pullRight
                 onClick={() => {
-                  setDataAdd(true);
+                  setEnableAdd(true);
                 }}
               />
             }
@@ -234,11 +222,11 @@ export const UserDatatable = () => {
                 onClickEvents={{
                   onDeleteEvent: async (data, rowIdx, rowData) => {
                     await deleteUser(data.id);
-                    await getUsers().then((data) => setData(data));
+                    await getUsers().then((res) => setData(res.data));
                   },
-                  onUpdateEvent: (data, rowIdx, rowData) => {
-                    setDataUpdate(data);
-                  },
+                  // onUpdateEvent: (data, rowIdx, rowData) => {
+                  //   setDataUpdate(data);
+                  // },
                 }}
               />
             </div>
