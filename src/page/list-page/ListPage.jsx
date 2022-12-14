@@ -41,7 +41,7 @@ export const ListPage = () => {
             Here are your beloved movies.
           </div>
         </div>
-        <div className="row gx-2 gy-4">
+        <div className="row gx-1 gy-2">
           {userMovies.map((movie) => (
             <Col md={2} sm={3}>
               <Item movie={movie} layout="feature"></Item>
