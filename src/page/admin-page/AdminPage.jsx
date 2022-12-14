@@ -45,7 +45,7 @@ export const AdminPage = () => {
   return (
     <div className={clsx(styles.adminContainer)}>
       <AdminLTE title={['Admin', ' page']} theme="black" sidebar={sidebar}>
-        <Navbar.Core>
+        {/* <Navbar.Core>
           <Entry
             icon="fa-sign-out-alt"
             onClick={() => {
@@ -56,7 +56,7 @@ export const AdminPage = () => {
               navigate('/');
             }}
           ></Entry>
-        </Navbar.Core>
+        </Navbar.Core> */}
         <UserDatatable path={'/user'} />
       </AdminLTE>
     </div>
