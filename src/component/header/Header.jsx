@@ -64,47 +64,64 @@ export const Header = () => {
 
   return (
     <div className={styles.navbar}>
-      <div
-        className={clsx(
-          "container  px-0 align-items-center justify-content-between",
-          styles.container
-        )}
-      >
-        <div className={clsx("d-flex h-100", styles["navbar__nav-left"])}>
-          <Link
-            onClick={() => setActive("/")}
+      <div className={clsx("container  px-0 ", styles.container)}>
+        <div className="d-flex align-items-center justify-content-between">
+          <div className={clsx("d-flex h-100", styles["navbar__nav-left"])}>
+            <Link
+              onClick={() => setActive("/")}
+              className={clsx(
+                "d-inline-flex align-items-center link",
+                styles.navbar__logo
+              )}
+              to="/"
+            >
+              <MainLogo />
+            </Link>
+          </div>
+          <div
+            id="burger"
             className={clsx(
-              "d-inline-flex align-items-center link",
-              styles.navbar__logo
+              "d-xl-none d-lg-none d-md-block text-white z",
+              styles.burger__btn,
+              showSideBar ? styles["burger__btn--over"] : ""
             )}
-            to="/"
+            onClick={() => {
+              handleShow();
+            }}
           >
-            <MainLogo />
-          </Link>
-        </div>
-        <div
-          id="burger"
-          className={clsx(
-            "d-xl-none d-lg-none d-md-block text-white z",
-            styles.burger__btn,
-            showSideBar ? styles["burger__btn--over"] : ""
-          )}
-          onClick={() => {
-            handleShow();
-          }}
-        >
-          <Burger size="30" fill="#fff"></Burger>
-        </div>
-        {/* <div className={clsx(styles["navbar__search-bar"])}>
+            <Burger size="30" fill="#fff"></Burger>
+          </div>
+          {/* <div className={clsx(styles["navbar__search-bar"])}>
           <SearchBar />
         </div> */}
-        <ul id="nav" className={clsx("align-items-center", styles.navbar__nav)}>
-          <div className={clsx(styles["navbar__search-bar-menu"])}>
-            <SearchBar />
-          </div>
-          {navHeader.map((route) => {
-            if (route.hasOwnProperty("hide")) {
-              if (route.hide === false) {
+          <ul
+            id="nav"
+            className={clsx("align-items-center", styles.navbar__nav)}
+          >
+            <div className={clsx(styles["navbar__search-bar-menu"])}>
+              <SearchBar />
+            </div>
+            {navHeader.map((route) => {
+              if (route.hasOwnProperty("hide")) {
+                if (route.hide === false) {
+                  return (
+                    <span className={styles.navItem} key={route.text}>
+                      <Link
+                        className={clsx(
+                          "link",
+                          styles.navItem__link,
+                          route.path === active
+                            ? styles["navItem__link--active"]
+                            : ""
+                        )}
+                        to={route.path}
+                      >
+                        {route.text}
+                      </Link>
+                    </span>
+                  );
+                }
+              } else {
                 return (
                   <span className={styles.navItem} key={route.text}>
                     <Link
@@ -122,36 +139,19 @@ export const Header = () => {
                   </span>
                 );
               }
-            } else {
-              return (
-                <span className={styles.navItem} key={route.text}>
-                  <Link
-                    className={clsx(
-                      "link",
-                      styles.navItem__link,
-                      route.path === active
-                        ? styles["navItem__link--active"]
-                        : ""
-                    )}
-                    to={route.path}
-                  >
-                    {route.text}
-                  </Link>
-                </span>
-              );
-            }
-          })}
-          {user?.sub ? (
-            <div
-              className={clsx("link", styles.navItem__link)}
-              onClick={handleSignOut}
-            >
-              Sign out
-            </div>
-          ) : (
-            ""
-          )}
-        </ul>
+            })}
+            {user?.sub ? (
+              <div
+                className={clsx("link", styles.navItem__link)}
+                onClick={handleSignOut}
+              >
+                Sign out
+              </div>
+            ) : (
+              ""
+            )}
+          </ul>
+        </div>
       </div>
     </div>
   );
