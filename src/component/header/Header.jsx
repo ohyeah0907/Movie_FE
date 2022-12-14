@@ -95,9 +95,9 @@ export const Header = () => {
         >
           <Burger size="30" fill="#fff"></Burger>
         </div>
-        <div className={clsx(styles["navbar__search-bar"])}>
+        {/* <div className={clsx(styles["navbar__search-bar"])}>
           <SearchBar />
-        </div>
+        </div> */}
         <ul id="nav" className={clsx("align-items-center", styles.navbar__nav)}>
           <div className={clsx(styles["navbar__search-bar-menu"])}>
             <SearchBar />
