@@ -5,7 +5,7 @@
 .navbar {
   background-color: var(--header-color);
   &__search-bar-menu {
-    display: none;
+    display: inline-block;
   }
   .container {
     height: 80px;
@@ -54,8 +54,8 @@
   .navbar {
     position: relative;
     &__search-bar {
-      display: none;
-      &-menu {
+      display: block;
+      -menu {
         display: block;
       }
     }
