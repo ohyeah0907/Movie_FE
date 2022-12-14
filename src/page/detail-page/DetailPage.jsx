@@ -139,7 +139,7 @@ export const DetailPage = () => {
         {/* Movie general infomation */}
         <div className={clsx(styles.detailPage__wrapper__generalInfo)}>
           <Row xl={12} lg={12} xs={12}>
-            <Col xl={4} lg={12} xs={12}>
+            <Col xl={4} lg={4} xs={12}>
               <div
                 className={clsx(styles.detailPage__wrapper__generalInfo__image)}
               >
