@@ -130,7 +130,7 @@ export const DetailPage = () => {
   };
 
   return (
-    <Container fluid="lg" className={clsx(styles.detailPage)}>
+    <Container className={clsx(styles.detailPage)}>
       <div
         className={clsx(styles.detailPage__background)}
         style={{ backgroundImage: `url(${movie?.backdrop})` }}
