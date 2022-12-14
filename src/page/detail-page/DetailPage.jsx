@@ -130,7 +130,7 @@ export const DetailPage = () => {
   };
 
   return (
-    <Container className={clsx(styles.detailPage)}>
+    <div className={clsx(styles.detailPage)}>
       <div
         className={clsx(styles.detailPage__background)}
         style={{ backgroundImage: `url(${movie?.backdrop})` }}
@@ -331,6 +331,6 @@ export const DetailPage = () => {
           </Row>
         </div>
       </Container>
-    </Container>
+    </div>
   );
 };
