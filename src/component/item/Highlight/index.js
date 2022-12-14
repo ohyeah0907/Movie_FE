@@ -31,7 +31,7 @@ export const Item = memo((props) => {
       </div>
       {/* Layout content */}
       <div className={clsx(styles['item__content__overlay'])}>
-        <div className={clsx(styles.item__content, 'container-lg')}>
+        <div className={clsx(styles.item__content, 'container')}>
           <div className={clsx(styles['item__content-wrapper'])}>
             {/* Name and Rating */}
             <div className={clsx(styles.item__name)}>{movie.title}</div>
