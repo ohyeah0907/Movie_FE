@@ -66,7 +66,7 @@ export const Header = () => {
     <div className={styles.navbar}>
       <div
         className={clsx(
-          "container  px-0 align-items-center justify-content-betwwen ",
+          "container  px-0 align-items-center justify-content-between",
           styles.container
         )}
       >
