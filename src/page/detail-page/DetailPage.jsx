@@ -153,7 +153,7 @@ export const DetailPage = () => {
                 <img src={movie.poster} alt="movie" />
               </div>
             </Col>
-            <Col xl={8} lg={12} xs={12}>
+            <Col xl={8} lg={8} xs={12}>
               <div
                 className={clsx(
                   styles.detailPage__wrapper__generalInfo__content
