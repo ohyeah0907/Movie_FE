@@ -135,7 +135,7 @@ export const DetailPage = () => {
         className={clsx(styles.detailPage__background)}
         style={{ backgroundImage: `url(${movie?.backdrop})` }}
       ></div>
-      <Container fluid="xl" className={clsx(styles.detailPage__wrapper)}>
+      <Container  className={clsx(styles.detailPage__wrapper)}>
         {/* Movie general infomation */}
         <div className={clsx(styles.detailPage__wrapper__generalInfo)}>
           <Row xl={12} lg={12} xs={12}>
