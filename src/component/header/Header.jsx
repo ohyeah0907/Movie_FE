@@ -64,8 +64,13 @@ export const Header = () => {
 
   return (
     <div className={styles.navbar}>
-      <div className={clsx("container  px-0 ", styles.container)}>
-        <div className="d-flex align-items-center justify-content-between">
+      <div className={clsx("container  px-0")}>
+        <div
+          className={clsx(
+            "d-flex align-items-center justify-content-between",
+            styles.container
+          )}
+        >
           <div className={clsx("d-flex h-100", styles["navbar__nav-left"])}>
             <Link
               onClick={() => setActive("/")}
