@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
   const [token, setToken] = useState({
     refreshToken: cookies.refresh_token,
   });
-
+  console.log('UserContext');
   const jwt = {
     token,
     handleToken: (token) => {
