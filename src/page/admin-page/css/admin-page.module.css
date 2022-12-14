@@ -1,1 +1,10 @@
-/* No CSS *//*# sourceMappingURL=admin-page.module.css.map */
+.adminContainer {
+  width: 100%;
+  text-align: left;
+  height: 100%;
+}
+
+.adminContainer nav {
+  display: block;
+}
+/*# sourceMappingURL=admin-page.module.css.map */
