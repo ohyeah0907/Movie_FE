@@ -52,7 +52,7 @@ export const HomePage = () => {
         <HeroSlider></HeroSlider>
       </div>
       <div className={clsx("section", styles["section__highlight"])}>
-        <div className="container">
+        <div className="container-lg">
           <div className={clsx(styles["section__heading"])}>
             <div className={clsx(styles["section__title"])}>Highlights</div>
             <div className={clsx(styles["section__paragraph"])}>
@@ -66,7 +66,7 @@ export const HomePage = () => {
         <FadeSlider></FadeSlider>
       </div>
       <div className={clsx("section", styles["section__new"])}>
-        <div className="container">
+        <div className="container-lg">
           <div className={clsx(styles["section__heading"])}>
             <div className={clsx(styles["section__title"])}>New Releases</div>
             <div className={clsx(styles["section__paragraph"])}>
@@ -77,7 +77,7 @@ export const HomePage = () => {
         </div>
       </div>
       <div className={clsx("section")}>
-        <div className="container">
+        <div className="container-lg">
           <div className={clsx(styles["section__heading"])}>
             <div className={clsx(styles["section__title"])}>
               Amazing TV-Shows
@@ -92,7 +92,7 @@ export const HomePage = () => {
       {randomGenres &&
         randomGenres.map((genre, index) => (
           <div key={index} className={clsx("section")}>
-            <div className="container">
+            <div className="container-lg">
               <div className={clsx(styles["section__heading"])}>
                 <div className={clsx(styles["section__title"])}>{genre}</div>
               </div>
