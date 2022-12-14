@@ -56,7 +56,7 @@ export const CategoryPage = () => {
       <div className={clsx(styles["category-nav"])}>
         <div
           className={clsx(
-            "container d-flex align-items-center",
+            "container-lg d-flex align-items-center",
             styles["category__wrapper"]
           )}
         >
@@ -131,7 +131,7 @@ export const CategoryPage = () => {
       </div>
       <div className="content-section">
         <div
-          className={clsx("container", styles.section, styles["movie-feature"])}
+          className={clsx("container-lg", styles.section, styles["movie-feature"])}
         >
           <div className={clsx(styles["movie-feature__wrapper"])}>
             <div
